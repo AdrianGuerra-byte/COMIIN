@@ -1,0 +1,116 @@
+---
+import MemberCard from '../common/MemberCard.astro';
+import { comiteGeneral } from '../../data/comiteGeneral';
+---
+
+<section class="comite-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Comité General</h2>
+    </header>
+    
+    <div class="members-grid">
+      {comiteGeneral.map((miembro, index) => (
+        <MemberCard 
+          nombre={miembro.nombre}
+          cargo={miembro.cargo}
+          imagen={miembro.imagen}
+          isCoordinador={miembro.isCoordinador}
+          delay={index * 0.1}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .comite-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Header de sección */
+  .section-header {
+    text-align: center;
+    margin-block-end: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-block-end: 1rem;
+    position: relative;
+    padding-block-end: 1rem;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  /* Grid de miembros */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .members-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .comite-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      margin-block-end: 2.5rem;
+    }
+
+    .members-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 450px;
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .comite-section {
+      padding: 3rem 1rem;
+    }
+
+    .section-header {
+      margin-block-end: 2rem;
+    }
+
+    .members-grid {
+      max-width: 100%;
+    }
+  }
+</style>

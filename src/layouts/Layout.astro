@@ -2,32 +2,83 @@
 import { ClientRouter } from "astro:transitions";
 import FloatingButtons from "../components/common/FloatingButtons.astro";
 ---
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Título y descripción -->
-    <title>COMIIN 2026 - Congreso Multidisciplinario de Investigación e Innovación | CUH</title>
-    <meta name="description" content="Segundo Congreso CUH - COMIIN 2026. Evento académico con talleres, conferencias magistrales y oportunidades en Centro Universitario Hidalguense. 28-30 de Mayo, 2026.">
+    <title>COMIIN 2026 - Congreso Multidisciplinario de Investigación | CUH</title>
+    <meta name="description" content="Participa en el Segundo Congreso CUH - COMIIN 2026. Talleres, conferencias magistrales y más en el Centro Universitario Hidalguense. 28-30 de Mayo, 2026.">
     
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="canonical" href="https://comiin.cuh.edu.mx/">
+    
+    <meta name="robots" content="index, follow">
+    
+    <meta name="theme-color" content="#013367"> <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="COMIIN" />
     <link rel="manifest" href="/site.webmanifest" />
     
-    <!-- Fuentes y recursos externos -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta property="og:title" content="COMIIN 2026 - Congreso Multidisciplinario | CUH" />
+    <meta property="og:description" content="Participa en el congreso de investigación e innovación del Centro Universitario Hidalguense. 28-30 de Mayo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://comiin.cuh.edu.mx/" />
+    <meta property="og:image" content="https://comiin.cuh.edu.mx/social-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="COMIIN 2026" />
+    <meta property="og:locale" content="es_MX" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="COMIIN 2026 - Congreso Multidisciplinario | CUH">
+    <meta name="twitter:description" content="Participa en el congreso de investigación e innovación del Centro Universitario Hidalguense. 28-30 de Mayo.">
+    <meta name="twitter:image" content="https://comiin.cuh.edu.mx/social-share.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "COMIIN 2026 - Segundo Congreso Multidisciplinario de Investigación e Innovación",
+      "startDate": "2026-05-28T09:00:00-06:00",
+      "endDate": "2026-05-30T18:00:00-06:00",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Centro Universitario Hidalguense (CUH)",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Blvd. del Minero 305",
+          "addressLocality": "Pachuca",
+          "addressRegion": "Hidalgo",
+          "postalCode": "42030",
+          "addressCountry": "MX"
+        }
+      },
+      "image": [
+        "https://comiin.cuh.edu.mx/social-share.jpg"
+      ],
+      "description": "El evento académico más importante del año con talleres, conferencias magistrales y oportunidades en Centro Universitario Hidalguense.",
+      "organizer": {
+        "@type": "Organization",
+        "name": "Centro Universitario Hidalguense (CUH)",
+        "url": "https://cuh.edu.mx/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://comiin.cuh.edu.mx/#registro",
+        "price": "0",
+        "priceCurrency": "MXN",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-10-30T00:00:00-06:00"
+      }
+    }
+    </script>
     
-    <!-- Astro Client Router -->
-	<ClientRouter />
+    <ClientRouter />
 </head>
 <body>
 	<FloatingButtons />

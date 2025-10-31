@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.2"
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "astro": "^5.15.2",
+    "astro-icon": "^1.1.5"
   }
 }

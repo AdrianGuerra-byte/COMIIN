@@ -1,0 +1,231 @@
+---
+// Componente reutilizable para mostrar miembros del comité
+export interface Props {
+  nombre: string;
+  cargo: string;
+  imagen: string;
+  isCoordinador?: boolean;
+  delay?: number;
+}
+
+const { nombre, cargo, imagen, isCoordinador = false, delay = 0 } = Astro.props;
+---
+
+<article class="member-card" style={`animation-delay: ${delay}s`}>
+  {isCoordinador && (
+    <div class="coordinador-badge">
+      <i class="fas fa-star" aria-hidden="true"></i>
+      <span>Coordinador</span>
+    </div>
+  )}
+  
+  <div class="member-image">
+    <img 
+      src={imagen} 
+      alt={`Fotografía de ${nombre}`}
+      loading="lazy"
+    />
+    <div class="image-overlay"></div>
+  </div>
+  
+  <div class="member-info">
+    <h3 class="member-nombre">{nombre}</h3>
+    <p class="member-cargo">{cargo}</p>
+  </div>
+</article>
+
+<style>
+  .member-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.6s ease-out backwards;
+  }
+
+  .member-card::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+  .member-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .member-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Badge de coordinador */
+  .coordinador-badge {
+    position: absolute;
+    inset-block-start: 1rem;
+    inset-inline-end: 1rem;
+    background: linear-gradient(135deg, var(--accent-color), #20b358);
+    color: var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .coordinador-badge i {
+    font-size: 0.75rem;
+  }
+
+  /* Imagen del miembro */
+  .member-image {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .member-image img {
+    width: 85%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      transparent 0%, 
+      rgba(1, 51, 103, 0.3) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .member-card:hover .member-image img {
+    transform: scale(1.05);
+  }
+
+  .member-card:hover .image-overlay {
+    opacity: 1;
+  }
+
+  /* Información del miembro */
+  .member-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .member-nombre {
+    font-size: clamp(1.2rem, 2.5vw, 1.35rem);
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .member-cargo {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    line-height: 1.4;
+    margin: 0;
+    position: relative;
+    padding-block-start: 0.5rem;
+    text-wrap: pretty;
+  }
+
+  .member-cargo::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  /* Animación de entrada */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .member-image {
+      height: 280px;
+    }
+
+    .member-image img {
+      width: 90%;
+    }
+
+    .member-info {
+      padding: 1.25rem;
+    }
+
+    .coordinador-badge {
+      inset-block-start: 0.75rem;
+      inset-inline-end: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .member-image {
+      height: 260px;
+    }
+
+    .member-image img {
+      width: 95%;
+    }
+
+    .member-info {
+      padding: 1rem;
+    }
+
+    .coordinador-badge {
+      padding: 0.3rem 0.65rem;
+      font-size: 0.7rem;
+    }
+  }
+</style>

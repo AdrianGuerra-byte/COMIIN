@@ -1,7 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components';
 ---
 
-<!-- Iconos flotantes de contacto rápido -->
 <aside class="floating-icons" aria-label="Contacto rápido">
   <a 
     href="https://wa.me/1234567890" 
@@ -10,57 +10,57 @@
     rel="noopener noreferrer" 
     aria-label="Contactar por WhatsApp"
   >
-    <i class="fab fa-whatsapp"></i>
+    <Icon name="fa6-brands:whatsapp" />
   </a>
   <a 
-    href="https://www.facebook.com" 
+    href="https://www.facebook.com/CUH.oficial/?locale=es_LA" 
     class="floating-icon facebook" 
     target="_blank" 
     rel="noopener noreferrer" 
     aria-label="Facebook"
   >
-    <i class="fab fa-facebook-f"></i>
+    <Icon name="fa6-brands:facebook-f" />
   </a>
   <a 
-    href="https://www.instagram.com" 
+    href="https://www.instagram.com/cuh_oficial/" 
     class="floating-icon instagram" 
     target="_blank" 
     rel="noopener noreferrer" 
     aria-label="Instagram"
   >
-    <i class="fab fa-instagram"></i>
+    <Icon name="fa6-brands:instagram" />
   </a>
   <a 
-    href="https://www.tiktok.com" 
+    href="https://www.tiktok.com/@cuhoficial?lang=es" 
     class="floating-icon tiktok" 
     target="_blank" 
     rel="noopener noreferrer" 
     aria-label="TikTok"
   >
-    <i class="fab fa-tiktok"></i>
+    <Icon name="fa6-brands:tiktok" />
   </a>
 </aside>
 
 <style>
   .floating-icons {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px; /* CAMBIO: de 30px */
+    right: 20px;  /* CAMBIO: de 30px */
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;    /* CAMBIO: de 15px */
     z-index: 998;
   }
 
   .floating-icon {
-    width: 56px;
-    height: 56px;
+    width: 50px;   /* CAMBIO: de 56px */
+    height: 50px;  /* CAMBIO: de 56px */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     color: var(--white);
-    font-size: 24px;
+    font-size: 22px; /* CAMBIO: de 24px */
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -86,9 +86,11 @@
     opacity: 0.8;
   }
 
-  .floating-icon i {
+  .floating-icon svg {
     position: relative;
     z-index: 1;
+    width: 1em;
+    height: 1em;
   }
 
   /* Colores específicos de redes sociales */
@@ -140,57 +142,36 @@
   }
 
   .whatsapp {
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 2s ease-in-out infinite, floatIn 0.6s ease-out backwards;
+    animation-delay: 2s, 0.1s; /* Retrasa la animación de pulso */
   }
 
-  /* Iconos flotantes en móvil */
+  @media (max-width: 768px) {
+    /* Iconos flotantes en móvil */
     .floating-icons {
-      bottom: 20px;
-      right: 20px;
-      gap: 12px;
+      bottom: 15px; /* CAMBIO: de 20px */
+      right: 15px;  /* CAMBIO: de 20px */
+      gap: 10px;    /* CAMBIO: de 12px */
     }
 
     .floating-icon {
-      width: 50px;
-      height: 50px;
-      font-size: 22px;
+      width: 48px;   /* CAMBIO: de 50px */
+      height: 48px;  /* CAMBIO: de 50px */
+      font-size: 20px; /* CAMBIO: de 22px */
     }
   }
 
   @media (max-width: 480px) {
-    footer {
-      padding: 2.5rem 1rem 1.5rem;
-    }
-
-    .footer-logos {
-      gap: 1.5rem;
-      flex-direction: column;
-    }
-
-    .footer-logo {
-      height: 45px;
-    }
-
-    .social-links a {
-      width: 38px;
-      height: 38px;
-      font-size: 1rem;
-    }
-
-    .footer-divider {
-      width: 90%;
-    }
-
     .floating-icons {
-      bottom: 15px;
-      right: 15px;
-      gap: 10px;
+      bottom: 10px; /* CAMBIO: de 15px */
+      right: 10px;  /* CAMBIO: de 15px */
+      gap: 8px;     /* CAMBIO: de 10px */
     }
 
     .floating-icon {
-      width: 48px;
-      height: 48px;
-      font-size: 20px;
+      width: 44px;   /* CAMBIO: de 48px */
+      height: 44px;  /* CAMBIO: de 48px */
+      font-size: 18px; /* CAMBIO: de 20px */
     }
   }
 </style>

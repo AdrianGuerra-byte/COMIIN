@@ -1,0 +1,166 @@
+---
+import MemberCard from '../common/MemberCard.astro';
+import { comiteOrganizador } from '../../data/comiteOrganizador';
+---
+
+<section class="comite-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Nuestro Comité Organizador</h2>
+      <p class="section-subtitle">Profesionales dedicados a hacer del COMIIN 2026 un evento exitoso</p>
+    </header>
+    
+    <div class="section-intro">
+      <p>
+        El Comité Organizador del Congreso Multidisciplinario de Investigación e Innovación 2026 
+        está conformado por profesionales y académicos comprometidos con la excelencia y la promoción 
+        del conocimiento. Su dedicación y experiencia garantizan un evento de alta calidad académica 
+        y organizativa.
+      </p>
+    </div>
+    
+    <div class="members-grid">
+      {comiteOrganizador.map((miembro, index) => (
+        <MemberCard 
+          nombre={miembro.nombre}
+          cargo={miembro.cargo}
+          imagen={miembro.imagen}
+          isCoordinador={miembro.isCoordinador}
+          delay={index * 0.1}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .comite-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, var(--white) 0%, #f8f9fa 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Header de sección */
+  .section-header {
+    text-align: center;
+    margin-block-end: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-block-end: 1rem;
+    position: relative;
+    padding-block-end: 1rem;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+    color: var(--text-color);
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  /* Introducción */
+  .section-intro {
+    text-align: center;
+    max-width: 900px;
+    margin-inline: auto;
+    margin-block-end: 4rem;
+  }
+
+  .section-intro p {
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--text-color);
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+
+  /* Grid de miembros */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .members-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .comite-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      margin-block-end: 1.5rem;
+    }
+
+    .section-intro {
+      margin-block-end: 3rem;
+      padding-inline: 1rem;
+    }
+
+    .members-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 450px;
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .comite-section {
+      padding: 3rem 1rem;
+    }
+
+    .section-intro {
+      margin-block-end: 2.5rem;
+      padding-inline: 0;
+    }
+
+    .members-grid {
+      max-width: 100%;
+    }
+  }
+                <div class="miembro-card">
+                    <div class="miembro-img">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Mtro. Daniel">
+                    </div>
+                    <div class="miembro-info">
+                        <h3 class="miembro-nombre">Mtro. Juan Daniel Llanes García</h3>
+                        <p class="miembro-cargo">Sistema Universitario en Linea del CUH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
