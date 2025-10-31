@@ -1,0 +1,328 @@
+---
+// Componente reutilizable para mostrar talleristas
+export interface Props {
+  nombre: string;
+  especialidad: string;
+  tituloTaller: string;
+  descripcion: string;
+  horario: string;
+  imagen: string;
+  email?: string;
+  instagram?: string;
+  delay?: number;
+}
+
+const { 
+  nombre, 
+  especialidad, 
+  tituloTaller,
+  descripcion, 
+  horario,
+  imagen, 
+  email, 
+  instagram,
+  delay = 0 
+} = Astro.props;
+---
+
+<article class="tallerista-card" style={`animation-delay: ${delay}s`}>
+  <div class="tallerista-image">
+    <img 
+      src={imagen} 
+      alt={`Fotografía de ${nombre} - ${especialidad}`}
+      loading="lazy"
+    />
+    <div class="image-overlay"></div>
+  </div>
+  
+  <div class="tallerista-content">
+    <header class="tallerista-header">
+      <h3 class="tallerista-nombre">{nombre}</h3>
+      <span class="tallerista-especialidad">{especialidad}</span>
+    </header>
+    
+    <h4 class="taller-titulo">{tituloTaller}</h4>
+    
+    <p class="tallerista-descripcion">{descripcion}</p>
+    
+    <div class="taller-horario">
+      <i class="far fa-clock" aria-hidden="true"></i>
+      <span>{horario}</span>
+    </div>
+    
+    {(email || instagram) && (
+      <footer class="tallerista-social">
+        {email && (
+          <a 
+            href={`mailto:${email}`}
+            aria-label={`Correo de ${nombre}`}
+          >
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+        )}
+        {instagram && (
+          <a 
+            href={instagram} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label={`Instagram de ${nombre}`}
+          >
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+        )}
+      </footer>
+    )}
+  </div>
+</article>
+
+<style>
+  .tallerista-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.6s ease-out backwards;
+  }
+
+  .tallerista-card::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+  .tallerista-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .tallerista-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Imagen del tallerista */
+  .tallerista-image {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  }
+
+  .tallerista-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      transparent 0%, 
+      rgba(1, 51, 103, 0.4) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .tallerista-card:hover .tallerista-image img {
+    transform: scale(1.05);
+  }
+
+  .tallerista-card:hover .image-overlay {
+    opacity: 1;
+  }
+
+  /* Contenido */
+  .tallerista-content {
+    padding: 1.75rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Header */
+  .tallerista-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tallerista-nombre {
+    font-size: clamp(1.25rem, 2.5vw, 1.4rem);
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .tallerista-especialidad {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    padding-block-end: 0.75rem;
+    position: relative;
+  }
+
+  .tallerista-especialidad::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 1px;
+  }
+
+  /* Título del taller */
+  .taller-titulo {
+    font-size: clamp(1.05rem, 2.2vw, 1.15rem);
+    color: var(--primary-color);
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+    text-wrap: pretty;
+  }
+
+  /* Descripción */
+  .tallerista-descripcion {
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+    flex-grow: 1;
+    text-wrap: pretty;
+  }
+
+  /* Horario */
+  .taller-horario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background: linear-gradient(135deg, rgba(1, 51, 103, 0.08), rgba(0, 86, 179, 0.12));
+    border: 1.5px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+  }
+
+  .taller-horario i {
+    font-size: 1rem;
+  }
+
+  /* Redes sociales */
+  .tallerista-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block-start: 0.5rem;
+    margin-block-start: auto;
+  }
+
+  .tallerista-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--white);
+  }
+
+  .tallerista-social a:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    transform: translateY(-3px) scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.3);
+  }
+
+  .tallerista-social i {
+    font-size: 1.1rem;
+  }
+
+  /* Animación de entrada */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .tallerista-image {
+      height: 240px;
+    }
+
+    .tallerista-content {
+      padding: 1.5rem;
+    }
+
+    .tallerista-social a {
+      width: 38px;
+      height: 38px;
+    }
+
+    .tallerista-social i {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tallerista-image {
+      height: 220px;
+    }
+
+    .tallerista-content {
+      padding: 1.25rem;
+      gap: 0.875rem;
+    }
+
+    .taller-horario {
+      padding: 0.5rem 1rem;
+    }
+
+    .tallerista-social a {
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>

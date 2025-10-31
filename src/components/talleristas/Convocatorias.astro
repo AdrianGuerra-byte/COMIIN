@@ -1,0 +1,766 @@
+---
+// Correo codificado en Base64 para protección contra scrapers
+const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
+---
+<section class="convocatoria-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Convocatoria para Impartir Talleres</h2>
+      <p class="section-subtitle">
+        Comparte tu experiencia y conocimientos con la comunidad académica
+      </p>
+    </header>
+
+    <div class="convocatoria-content">
+      <div class="intro-text">
+        <p>
+          Si eres experto en alguna de las <strong>áreas disciplinares del congreso</strong>, 
+          ¡te invitamos a enviar tu propuesta para impartir un taller! Los talleres deben ser 
+          <strong>presenciales</strong> y representar una oportunidad de formación práctica 
+          para los participantes.
+        </p>
+      </div>
+
+      <div class="main-grid">
+        <article class="requisitos-card">
+          <header class="card-header">
+            <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+            <h3>Requisitos de la Propuesta</h3>
+          </header>
+          <ul class="requisitos-lista" role="list">
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Propuesta temática clara y relevante</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Perfil del instructor (CV resumido)</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Objetivos del taller y metodología</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Perfil de los participantes (¿a quién va dirigido?)</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Duración (máximo 1 hora y 30 minutos)</span>
+            </li>
+            <li>
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span>Logística requerida (equipos, materiales, etc.)</span>
+            </li>
+          </ul>
+        </article>
+
+        <div class="action-column">
+          <div class="deadline-box">
+            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+            <div class="deadline-content">
+              <strong>Fecha límite</strong>
+              <time datetime="2025-12-31" class="deadline-date">31 de diciembre de 2025</time>
+            </div>
+          </div>
+
+          <div class="cta-container">
+            <!-- Descargar Plantilla - Enlace directo a Drive -->
+            <a 
+              href="https://drive.google.com/drive/folders/1o8Fo9ns-Q3fjk2gzpaqeCqQq4Yc7tv4K"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-button cta-primary"
+              aria-label="Descargar plantillas desde Google Drive"
+            >
+              <i class="fas fa-download" aria-hidden="true"></i>
+              <span>Descargar Plantillas</span>
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+
+            <!-- Enviar Propuesta con información desplegable -->
+            <div class="dropdown-wrapper">
+              <button 
+                class="cta-button cta-secondary dropdown-toggle"
+                aria-label="Ver información para enviar propuesta"
+                aria-expanded="false"
+              >
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                <span>Enviar Propuesta</span>
+                <i class="fas fa-chevron-down chevron-icon" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu info-menu">
+                <div class="info-content">
+                  <h4>
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    Instrucciones de Envío
+                  </h4>
+                  
+                  <!-- Correo Seguro -->
+                  <div class="info-item">
+                    <strong>Correo electrónico:</strong>
+                    <div class="email-wrapper">
+                      <div id="correo-revelado" class="email-revealed">
+                        <span id="texto-correo" class="email-text"></span>
+                        <button id="btn-copiar-correo" type="button" class="btn-copy-email" title="Copiar al portapapeles">
+                          <i class="fas fa-copy" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="info-item">
+                    <strong>Asunto:</strong>
+                    <span class="subject-text">Propuesta Taller COMIIN 2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ correoBase64 }}>
+  // Funcionalidad del dropdown de envío
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.dropdown-wrapper');
+    const spanCorreo = document.getElementById('texto-correo');
+    const btnCopiar = document.getElementById('btn-copiar-correo');
+
+    if (!dropdown) return;
+
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const chevron = toggle?.querySelector('.chevron-icon');
+
+    // Función para decodificar Base64
+    const decodificar = (str) => {
+      try {
+        return atob(str);
+      } catch (e) {
+        console.error('Error al decodificar el correo:', e);
+        return 'correo-invalido';
+      }
+    };
+
+    let emailDecodificado = '';
+    let correoRevelado = false;
+
+    // Función para revelar el correo
+    const revelarCorreo = () => {
+      if (correoRevelado) return;
+      
+      emailDecodificado = decodificar(correoBase64);
+      
+      // Mostrar correo como texto simple (sin mailto)
+      if (spanCorreo) {
+        spanCorreo.textContent = emailDecodificado;
+      }
+
+      correoRevelado = true;
+    };
+    
+    // Toggle del dropdown
+    if (toggle && menu) {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isOpen = menu.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', isOpen.toString());
+        chevron?.classList.toggle('rotated');
+
+        // Revelar el correo al abrir
+        if (isOpen) {
+          revelarCorreo();
+        }
+      });
+    }
+    
+    // Cerrar dropdown al hacer click fuera
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && target.closest && !target.closest('.dropdown-wrapper')) {
+        menu?.classList.remove('show');
+        toggle?.setAttribute('aria-expanded', 'false');
+        chevron?.classList.remove('rotated');
+      }
+    });
+
+    // Acción de Copiar con mensaje
+    btnCopiar?.addEventListener('click', async () => {
+      const email = emailDecodificado || spanCorreo?.textContent || '';
+      try {
+        await navigator.clipboard.writeText(email);
+        
+        // Cambiar el texto del botón
+        const textoOriginal = btnCopiar.innerHTML;
+        
+        btnCopiar.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> <span class="copied-text">Copiado</span>';
+        btnCopiar.classList.add('copied');
+        
+        setTimeout(() => {
+          btnCopiar.innerHTML = textoOriginal;
+          btnCopiar.classList.remove('copied');
+        }, 2000);
+      } catch (err) {
+        console.error('Error al copiar:', err);
+        alert('No se pudo copiar el correo. Por favor, cópialo manualmente.');
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Convocatoria Section */
+  .convocatoria-section {
+    padding: 4rem 2rem 3.5rem;
+    background: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-block-end: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-block-end: 0.75rem;
+    font-weight: 700;
+    position: relative;
+    padding-block-end: 0.85rem;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    max-width: 600px;
+    margin-inline: auto;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* Content */
+  .convocatoria-content {
+    max-width: 1100px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .intro-text p {
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    line-height: 1.7;
+    color: var(--text-color);
+    text-align: center;
+    text-wrap: pretty;
+    padding: 1.5rem 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .intro-text strong {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  /* Main Grid */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Requisitos Card */
+  .requisitos-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid transparent;
+    background-image: 
+      linear-gradient(var(--white), var(--white)),
+      linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+  }
+
+  .requisitos-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-block-end: 1.5rem;
+    padding-block-end: 1rem;
+    border-bottom: 2px solid #f8f9fa;
+  }
+
+  .card-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .card-header h3 {
+    font-size: clamp(1.2rem, 3vw, 1.45rem);
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* Lista de Requisitos */
+  .requisitos-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .requisitos-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2vw, 0.98rem);
+    line-height: 1.6;
+    padding: 0.5rem 0.65rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  .requisitos-lista li:hover {
+    background-color: #f8f9fa;
+  }
+
+  .requisitos-lista li i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-block-start: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  .requisitos-lista li span {
+    flex: 1;
+    text-wrap: pretty;
+  }
+
+  /* Action Column */
+  .action-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+  }
+
+  /* Deadline Box */
+  .deadline-box {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(1, 51, 103, 0.2);
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+  }
+
+  .deadline-box i {
+    font-size: 2.25rem;
+    opacity: 0.95;
+    flex-shrink: 0;
+  }
+
+  .deadline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .deadline-content strong {
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .deadline-date {
+    font-size: clamp(1.15rem, 3vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* CTA Container */
+  .cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  /* Dropdown Wrapper */
+  .dropdown-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.95rem 1.5rem;
+    font-size: clamp(0.9rem, 2vw, 0.98rem);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid;
+    letter-spacing: 0.02em;
+    text-align: center;
+    width: 100%;
+    background: none;
+    cursor: pointer;
+  }
+
+  .cta-button i {
+    font-size: 1rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cta-button i.fa-external-link-alt {
+    font-size: 0.85rem;
+    margin-left: auto;
+  }
+
+  .chevron-icon {
+    margin-left: auto;
+    font-size: 0.85rem !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .chevron-icon.rotated {
+    transform: rotate(180deg);
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(1, 51, 103, 0.3);
+  }
+
+  .cta-primary:hover i:not(.fa-external-link-alt) {
+    transform: translateY(-2px);
+  }
+
+  .cta-primary:hover i.fa-external-link-alt {
+    transform: translateX(3px);
+  }
+
+  .cta-secondary {
+    background: var(--white);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .cta-secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(1, 51, 103, 0.2);
+  }
+
+  .cta-secondary:hover i:not(.chevron-icon) {
+    transform: translateX(4px);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+  }
+
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Info Menu (Enviar Propuesta) */
+  .info-menu {
+    padding: 0;
+  }
+
+  .info-content {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .info-content h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    color: var(--primary-color);
+    font-weight: 700;
+    padding-bottom: 0.65rem;
+    border-bottom: 2px solid #f8f9fa;
+  }
+
+  .info-content h4 i {
+    font-size: 1.1rem;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .info-item strong {
+    color: var(--primary-color);
+    font-size: clamp(0.85rem, 2vw, 0.92rem);
+    font-weight: 600;
+  }
+
+  /* Email Seguro */
+  .email-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .email-revealed {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    background: #f8f9fa;
+    padding: 0.6rem 0.85rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--secondary-color);
+  }
+
+  .email-text {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.8rem, 2vw, 0.88rem);
+    word-break: break-all;
+    color: var(--text-color);
+    font-weight: 600;
+  }
+
+  .btn-copy-email {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--white);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    font-size: clamp(0.8rem, 2vw, 0.85rem);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .btn-copy-email:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(1, 51, 103, 0.2);
+  }
+
+  .btn-copy-email.copied {
+    background: #28a745;
+    border-color: #28a745;
+    color: var(--white);
+  }
+
+  .btn-copy-email i {
+    font-size: 0.85rem;
+  }
+
+  .copied-text {
+    font-size: clamp(0.75rem, 2vw, 0.82rem);
+  }
+
+  .subject-text {
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+    background: #f8f9fa;
+    padding: 0.4rem 0.65rem;
+    border-radius: 4px;
+    font-size: clamp(0.8rem, 2vw, 0.88rem);
+    border-left: 3px solid var(--primary-color);
+    display: block;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .action-column {
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .convocatoria-section {
+      padding: 3.5rem 1.5rem 3rem;
+    }
+
+    .section-header {
+      margin-block-end: 1.75rem;
+    }
+
+    .convocatoria-content {
+      gap: 1.75rem;
+    }
+
+    .intro-text p {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .requisitos-card {
+      padding: 1.75rem 1.5rem;
+    }
+
+    .card-header {
+      gap: 0.75rem;
+      margin-block-end: 1.25rem;
+    }
+
+    .deadline-box {
+      padding: 1.5rem 1.25rem;
+      gap: 1rem;
+    }
+
+    .deadline-box i {
+      font-size: 2rem;
+    }
+
+    .cta-button {
+      padding: 0.9rem 1.35rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .convocatoria-section {
+      padding: 3rem 1rem 2.5rem;
+    }
+
+    .intro-text p,
+    .requisitos-card {
+      padding: 1.25rem;
+    }
+
+    .requisitos-lista {
+      gap: 0.75rem;
+    }
+
+    .requisitos-lista li {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .deadline-box {
+      padding: 1.35rem 1rem;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .cta-button {
+      padding: 0.85rem 1.25rem;
+    }
+
+    .info-content {
+      padding: 0.85rem 1rem;
+      gap: 0.75rem;
+    }
+
+    .email-revealed {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+
+    .btn-copy-email {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

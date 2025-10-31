@@ -1,0 +1,274 @@
+---
+
+---
+
+<!-- Beneficios para Talleristas -->
+<section class="beneficios-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Beneficios para Talleristas</h2>
+      <p class="section-subtitle">
+        Reconocimiento, crecimiento profesional y oportunidades de colaboración
+      </p>
+    </header>
+
+    <div class="beneficios-grid">
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-certificate" aria-hidden="true"></i>
+        </div>
+        <h3>Constancia Oficial</h3>
+        <p>Recibe una constancia con valor curricular por tu participación como tallerista.</p>
+      </article>
+
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-users" aria-hidden="true"></i>
+        </div>
+        <h3>Networking</h3>
+        <p>Conecta con académicos, investigadores y profesionales de tu área y de otras disciplinas.</p>
+      </article>
+
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-book" aria-hidden="true"></i>
+        </div>
+        <h3>Difusión</h3>
+        <p>Tu taller será promocionado en nuestras redes sociales, página web y materiales impresos del congreso.</p>
+      </article>
+
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-gift" aria-hidden="true"></i>
+        </div>
+        <h3>Kit de Tallerista</h3>
+        <p>Acceso gratuito a todas las actividades del congreso, kit especial y reconocimiento público.</p>
+      </article>
+
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-file-alt" aria-hidden="true"></i>
+        </div>
+        <h3>Publicación</h3>
+        <p>Oportunidad de publicar los resultados o memorias de tu taller en la revista Codex Sapientia.</p>
+      </article>
+
+      <article class="beneficio-card">
+        <div class="icon-wrapper">
+          <i class="fas fa-lightbulb" aria-hidden="true"></i>
+        </div>
+        <h3>Impacto</h3>
+        <p>Contribuye al desarrollo profesional de los participantes y genera colaboraciones futuras.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Beneficios Section */
+  .beneficios-section {
+    padding: 4rem 2rem 3.5rem;
+    background: linear-gradient(180deg, #dee2e6 0%, #e9ecef 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-block-end: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-block-end: 0.75rem;
+    font-weight: 700;
+    position: relative;
+    padding-block-end: 0.85rem;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    max-width: 650px;
+    margin-inline: auto;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  /* Beneficios Grid */
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Beneficio Card */
+  .beneficio-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.25rem 2rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    border-top: 4px solid transparent;
+    background-image: 
+      linear-gradient(var(--white), var(--white)),
+      linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  }
+
+  .beneficio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Icon Wrapper */
+  .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin-inline: auto;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+  }
+
+  .beneficio-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .icon-wrapper i {
+    font-size: 2rem;
+    color: var(--white);
+  }
+
+  /* Card Content */
+  .beneficio-card h3 {
+    color: var(--primary-color);
+    font-size: clamp(1.15rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .beneficio-card p {
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2vw, 0.98rem);
+    line-height: 1.7;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* Staggered Animation */
+  .beneficio-card:nth-child(1) { animation-delay: 0.1s; }
+  .beneficio-card:nth-child(2) { animation-delay: 0.15s; }
+  .beneficio-card:nth-child(3) { animation-delay: 0.2s; }
+  .beneficio-card:nth-child(4) { animation-delay: 0.25s; }
+  .beneficio-card:nth-child(5) { animation-delay: 0.3s; }
+  .beneficio-card:nth-child(6) { animation-delay: 0.35s; }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .beneficios-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .beneficios-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .beneficios-section {
+      padding: 3.5rem 1.5rem 3rem;
+    }
+
+    .section-header {
+      margin-block-end: 2.5rem;
+    }
+
+    .beneficios-grid {
+      gap: 1.5rem;
+    }
+
+    .beneficio-card {
+      padding: 2rem 1.75rem;
+    }
+
+    .icon-wrapper {
+      width: 70px;
+      height: 70px;
+    }
+
+    .icon-wrapper i {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .beneficios-section {
+      padding: 3rem 1rem 2.5rem;
+    }
+
+    .beneficios-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .beneficio-card {
+      padding: 1.75rem 1.5rem;
+    }
+
+    .icon-wrapper {
+      width: 65px;
+      height: 65px;
+    }
+
+    .icon-wrapper i {
+      font-size: 1.6rem;
+    }
+  }
+</style>

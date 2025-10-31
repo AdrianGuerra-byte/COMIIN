@@ -1,0 +1,296 @@
+---
+// Componente reutilizable para mostrar conferencistas magistrales
+export interface Props {
+  nombre: string;
+  especialidad: string;
+  descripcion: string;
+  imagen: string;
+  linkedin?: string;
+  twitter?: string;
+  website?: string;
+  delay?: number;
+}
+
+const { 
+  nombre, 
+  especialidad, 
+  descripcion, 
+  imagen, 
+  linkedin, 
+  twitter, 
+  website,
+  delay = 0 
+} = Astro.props;
+---
+
+<article class="conferencista-card" style={`animation-delay: ${delay}s`}>
+  <div class="conferencista-image">
+    <img 
+      src={imagen} 
+      alt={`Fotografía de ${nombre} - ${especialidad}`}
+      loading="lazy"
+    />
+    <div class="image-overlay"></div>
+  </div>
+  
+  <div class="conferencista-content">
+    <header class="conferencista-header">
+      <h3 class="conferencista-nombre">{nombre}</h3>
+      <span class="conferencista-especialidad">{especialidad}</span>
+    </header>
+    
+    <p class="conferencista-descripcion">{descripcion}</p>
+    
+    {(linkedin || twitter || website) && (
+      <footer class="conferencista-social">
+        {linkedin && (
+          <a 
+            href={linkedin} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label={`LinkedIn de ${nombre}`}
+          >
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+        )}
+        {twitter && (
+          <a 
+            href={twitter} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label={`Twitter de ${nombre}`}
+          >
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+          </a>
+        )}
+        {website && (
+          <a 
+            href={website} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label={`Sitio web de ${nombre}`}
+          >
+            <i class="fas fa-globe" aria-hidden="true"></i>
+          </a>
+        )}
+      </footer>
+    )}
+  </div>
+</article>
+
+<style>
+  .conferencista-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.6s ease-out backwards;
+  }
+
+  .conferencista-card::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 2;
+  }
+
+  .conferencista-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .conferencista-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Imagen del conferencista */
+  .conferencista-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  }
+
+  .conferencista-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg, 
+      transparent 0%, 
+      rgba(1, 51, 103, 0.4) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .conferencista-card:hover .conferencista-image img {
+    transform: scale(1.05);
+  }
+
+  .conferencista-card:hover .image-overlay {
+    opacity: 1;
+  }
+
+  /* Contenido */
+  .conferencista-content {
+    padding: 1.75rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Header */
+  .conferencista-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .conferencista-nombre {
+    font-size: clamp(1.25rem, 2.5vw, 1.4rem);
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .conferencista-especialidad {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    padding-block-end: 0.75rem;
+    position: relative;
+  }
+
+  .conferencista-especialidad::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 1px;
+  }
+
+  /* Descripción */
+  .conferencista-descripcion {
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+    flex-grow: 1;
+    text-wrap: pretty;
+  }
+
+  /* Redes sociales */
+  .conferencista-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block-start: 0.5rem;
+    margin-block-start: auto;
+  }
+
+  .conferencista-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--white);
+  }
+
+  .conferencista-social a:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    transform: translateY(-3px) scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.3);
+  }
+
+  .conferencista-social i {
+    font-size: 1.1rem;
+  }
+
+  /* Animación de entrada */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .conferencista-image {
+      height: 260px;
+    }
+
+    .conferencista-content {
+      padding: 1.5rem;
+    }
+
+    .conferencista-social a {
+      width: 38px;
+      height: 38px;
+    }
+
+    .conferencista-social i {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .conferencista-image {
+      height: 240px;
+    }
+
+    .conferencista-content {
+      padding: 1.25rem;
+    }
+
+    .conferencista-social a {
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>

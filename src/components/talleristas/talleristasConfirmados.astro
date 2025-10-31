@@ -1,0 +1,190 @@
+---
+import TalleristaCard from '../common/TalleristaCard.astro';
+import { talleristas } from '../../data/talleristas';
+---
+
+<!-- Sección Introducción Talleristas -->
+<section class="talleristas-intro">
+  <div class="container">
+    <header class="section-header">
+      <h2>Talleres de Formación e Innovación</h2>
+    </header>
+    <div class="intro-content">
+      <p>
+        Los talleres del <strong>Congreso Multidisciplinario de Investigación e Innovación</strong> son espacios diseñados 
+        para la <strong>formación práctica, el intercambio de conocimientos y la aplicación de metodologías innovadoras</strong>. 
+        Dirigidos por expertos en sus áreas, estos talleres buscan fomentar habilidades específicas, desde el uso de 
+        tecnologías emergentes hasta estrategias pedagógicas y herramientas para la investigación.
+      </p>
+      <p>
+        Cada taller tiene una duración máxima de <strong>1 hora y 30 minutos</strong> y está enfocado en temas clave 
+        como inteligencia artificial, neurociencias, derechos humanos, emprendimiento y más. 
+        <strong>¡Inscríbete y lleva tu conocimiento al siguiente nivel!</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Sección Talleristas Confirmados -->
+<section class="talleristas-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Talleristas Confirmados</h2>
+      <p class="section-subtitle">
+        Profesionales expertos que compartirán sus conocimientos en talleres prácticos e interactivos.
+      </p>
+    </header>
+
+    <div class="talleristas-grid">
+      {talleristas.map((tallerista, index) => (
+        <TalleristaCard 
+          nombre={tallerista.nombre}
+          especialidad={tallerista.especialidad}
+          tituloTaller={tallerista.tituloTaller}
+          descripcion={tallerista.descripcion}
+          horario={tallerista.horario}
+          imagen={tallerista.imagen}
+          email={tallerista.email}
+          instagram={tallerista.instagram}
+          delay={index * 0.1}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Sección Introducción Talleristas */
+  .talleristas-intro {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, var(--white) 0%, #f8f9fa 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-block-end: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-block-end: 1rem;
+    font-weight: 700;
+    position: relative;
+    padding-block-end: 1rem;
+    display: inline-block;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .intro-content {
+    max-width: 1000px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .intro-content p {
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--text-color);
+    text-align: center;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+
+  .intro-content strong {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  /* Sección Talleristas */
+  .talleristas-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .talleristas-section .section-header {
+    margin-block-end: 3rem;
+  }
+
+  .section-subtitle {
+    color: var(--text-light);
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    max-width: 700px;
+    margin-inline: auto;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  /* Grid de Talleristas */
+  .talleristas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .talleristas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .talleristas-intro,
+    .talleristas-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      margin-block-end: 1.5rem;
+    }
+
+    .talleristas-section .section-header {
+      margin-block-end: 2.5rem;
+    }
+
+    .intro-content {
+      padding-inline: 1rem;
+    }
+
+    .talleristas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .talleristas-intro,
+    .talleristas-section {
+      padding: 3rem 1rem;
+    }
+
+    .intro-content {
+      padding-inline: 0;
+    }
+
+    .talleristas-grid {
+      gap: 1rem;
+    }
+  }
+</style>
