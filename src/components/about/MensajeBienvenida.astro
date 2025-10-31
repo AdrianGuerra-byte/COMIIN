@@ -1,0 +1,243 @@
+---
+// Mensaje de Bienvenida del Director General
+---
+
+<section class="mensaje-section" id="mensaje">
+  <div class="container">
+    <header class="section-header">
+      <h2>Mensaje de Bienvenida</h2>
+      <p>Palabras del Director General del Centro Universitario Hidalguense</p>
+    </header>
+    
+    <div class="mensaje-grid">
+      <article class="mensaje-texto">
+        <p class="saludo"><strong>Buenos días a todos,</strong></p>
+        
+        <p>
+          Hoy damos un paso adelante con el lanzamiento del
+          <strong>Congreso Multidisciplinario de Investigación e Innovación CUH 2026</strong>, 
+          un espacio para conectar ideas, disciplinas y soluciones.
+        </p>
+        
+        <p>
+          En un mundo que exige respuestas integrales, este congreso será un
+          puente entre el saber académico y los desafíos reales. Aquí, la
+          tecnología, las ciencias sociales, el derecho, la educación y la
+          psicología se encontrarán para generar innovación con impacto social.
+        </p>
+        
+        <p>
+          Invitamos a investigadores, estudiantes, profesionales y sociedad a
+          sumarse: presenten sus proyectos, compartan sus hallazgos y colaboren
+          en mesas de trabajo que impulsen el desarrollo de Hidalgo y de México.
+          Queremos que el <strong>CUH 2026</strong> sea un punto de partida para 
+          iniciativas que transformen nuestra realidad.
+        </p>
+        
+        <p>
+          La convocatoria ya está abierta. Participen, innoven y sean parte de
+          este esfuerzo colectivo. Juntos, demostremos que el conocimiento es la
+          mejor herramienta para construir el futuro.
+        </p>
+        
+        <footer class="mensaje-firma">
+          <p class="firma-nombre"><strong>Ing. Santiago Meda Cancino</strong></p>
+          <p class="firma-cargo">Director General del Centro Universitario Hidalguense</p>
+        </footer>
+      </article>
+      
+      <aside class="mensaje-imagen">
+        <div class="imagen-wrapper">
+          <img
+            src="/fotos/IngMeda.avif"
+            alt="Ing. Santiago Meda Cancino - Director General del Centro Universitario Hidalguense"
+            loading="lazy"
+          />
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mensaje-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, var(--white) 0%, #f8f9fa 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Header de la sección */
+  .section-header {
+    text-align: center;
+    margin-block-end: 3.5rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-block-end: 0.75rem;
+    position: relative;
+    display: inline-block;
+    padding-block-end: 1rem;
+  }
+
+  .section-header h2::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .section-header p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-block-start: 1rem;
+  }
+
+  /* Grid del mensaje */
+  .mensaje-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Texto del mensaje */
+  .mensaje-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mensaje-texto p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color);
+    line-height: 1.8;
+    text-wrap: pretty;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .mensaje-texto p strong {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .saludo {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+  }
+
+  /* Firma */
+  .mensaje-firma {
+    margin-block-start: 2rem;
+    padding-block-start: 1.5rem;
+    border-block-start: 2px solid rgba(1, 51, 103, 0.2);
+    text-align: right;
+  }
+
+  .firma-nombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-block-end: 0.25rem;
+  }
+
+  .firma-cargo {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  /* Imagen del director */
+  .mensaje-imagen {
+    position: sticky;
+    top: calc(var(--navbar-height) + 2rem);
+  }
+
+  .imagen-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(1, 51, 103, 0.1);
+  }
+
+  .imagen-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .imagen-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .mensaje-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      margin-block-end: 2.5rem;
+    }
+
+    .mensaje-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .mensaje-imagen {
+      position: static;
+      order: -1;
+    }
+
+    .imagen-wrapper {
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    .mensaje-texto p {
+      text-align: left;
+    }
+
+    .mensaje-firma {
+      text-align: center;
+      margin-block-start: 1.5rem;
+      padding-block-start: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mensaje-section {
+      padding: 3rem 1rem;
+    }
+
+    .section-header h2::after {
+      width: 60px;
+      height: 3px;
+    }
+
+    .mensaje-texto {
+      gap: 1rem;
+    }
+
+    .imagen-wrapper {
+      max-width: 100%;
+    }
+  }
+</style>

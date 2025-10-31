@@ -1,0 +1,147 @@
+---
+import type { InfoCard } from '../../data/infoCards';
+
+interface Props {
+  card: InfoCard;
+  isActive?: boolean;
+}
+
+const { card, isActive = false } = Astro.props;
+---
+
+<div 
+  class:list={["card", { active: isActive }]} 
+  data-category={card.category}
+>
+  <img src={card.image} alt={card.imageAlt} class="card-img" />
+  <div class="card-content">
+    <h3>{card.title}</h3>
+    <div class="date">
+      <i class={card.icon}></i> {card.date}
+    </div>
+    <p>{card.description}</p>
+    <a href={card.linkUrl} class="read-more">{card.linkText}</a>
+  </div>
+</div>
+
+<style>
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    display: none;
+    border: 1px solid rgba(1, 51, 103, 0.08);
+  }
+
+  .card.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-lg);
+    border-color: rgba(1, 51, 103, 0.15);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: var(--transition);
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.75rem;
+  }
+
+  .card-content h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.35rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .date i {
+    color: var(--secondary-color);
+    font-size: 1rem;
+  }
+
+  .card-content p {
+    color: var(--text-color);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(0, 86, 179, 0.05);
+  }
+
+  .read-more::after {
+    content: '→';
+    transition: var(--transition-fast);
+  }
+
+  .read-more:hover {
+    color: var(--primary-color);
+    background: rgba(1, 51, 103, 0.1);
+    transform: translateX(4px);
+  }
+
+  .read-more:hover::after {
+    transform: translateX(4px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-content {
+      padding: 1.25rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+    }
+
+    .card-img {
+      height: 180px;
+    }
+  }
+</style>

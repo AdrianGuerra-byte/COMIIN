@@ -1,0 +1,175 @@
+---
+import InfoCard from './InfoCard.astro';
+import { infoCards, categories } from '../../data/infoCards';
+---
+<!-- TODO: Prototipo BENTO GRID -->
+
+<section class="info-cards" id="informacion">
+  <div class="section-title">
+    <h2>Información del Evento</h2>
+  </div>
+  
+  <div class="card-categories">
+    {categories.map((category, index) => (
+      <button 
+        class:list={["category-btn", { active: index === 0 }]} 
+        data-category={category.id}
+      >
+        {category.label}
+      </button>
+    ))}
+  </div>
+  
+  <div class="cards-container">
+    {infoCards.map((card) => (
+      <InfoCard 
+        card={card} 
+        isActive={card.category === 'general'} 
+      />
+    ))}
+  </div>
+</section>
+
+<script>
+  // Función para inicializar el filtrado de categorías
+  function initInfoCards() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const cards = document.querySelectorAll('.card');
+
+    // Limpiar event listeners clonando los botones
+    categoryButtons.forEach(button => {
+      if (button.parentNode) {
+        const newButton = button.cloneNode(true) as HTMLElement;
+        button.parentNode.replaceChild(newButton, button);
+      }
+    });
+
+    // Obtener los botones actualizados después del clonado
+    const updatedButtons = document.querySelectorAll('.category-btn');
+
+    updatedButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Actualizar botones activos
+        updatedButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filtrar tarjetas
+        cards.forEach(card => {
+          if (card.getAttribute('data-category') === category) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // Inicializar en la carga inicial
+  document.addEventListener('DOMContentLoaded', initInfoCards);
+  
+  // Reinicializar después de cada navegación de Astro
+  document.addEventListener('astro:page-load', initInfoCards);
+</script>
+
+<style>
+  .info-cards {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+  }
+
+  .section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .card-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .category-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: var(--white);
+    color: var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(1, 51, 103, 0.1);
+  }
+
+  .category-btn:hover {
+    background: var(--light-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+  }
+
+  .category-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.3);
+  }
+
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .info-cards {
+      padding: 2rem 1rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+    }
+
+    .card-categories {
+      gap: 0.5rem;
+    }
+
+    .category-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .cards-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

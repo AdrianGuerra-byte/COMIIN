@@ -1,0 +1,708 @@
+---
+
+---
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a href="/">
+        <img src="/logos/LOGO-BLANCO.avif" alt="Logo CUH COMIIN 2026" class="logo" />
+      </a>
+    </div>
+    
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/" class="nav-link">Inicio</a>
+        </li>
+        
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            El Congreso
+            <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#acerca-de">¿Qué es COMIIN?</a></li>
+            <li><a href="#mision-vision">Misión y Visión</a></li>
+            <li><a href="#comite">Comité Organizador</a></li>
+            <li><a href="#memorias">Memorias Anteriores</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Participantes
+            <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#conferencia">Conferencia Magistral</a></li>
+            <li><a href="#talleristas">Talleristas</a></li>
+            <li><a href="#convocatoria">Convocatoria</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#programa-general" class="nav-link">Programa</a>
+        </li>
+        
+        <li class="nav-item has-dropdown">
+          <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Registro
+            <i class="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-right">
+            <li><a href="#registro-ponente">Como Ponente</a></li>
+            <li><a href="#registro-asistente">Como Asistente</a></li>
+          </ul>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#sedes" class="nav-link">Sedes</a>
+        </li>
+        
+        <!-- Logo de fondo para móvil -->
+        <li class="mobile-menu-logo" aria-hidden="true">
+          <img src="/logos/marcacuh.avif" alt="" />
+        </li>
+      </ul>
+      
+      <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Función para inicializar el navbar
+  function initNavbar() {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const header = document.querySelector('.main-header');
+    const body = document.body;
+    
+    // Limpiar clases previas si existen
+    menuToggle?.classList.remove('active');
+    navMenu?.classList.remove('active');
+    body.classList.remove('menu-open');
+    
+    // Limpiar todos los dropdowns
+    const allDropdowns = document.querySelectorAll('.has-dropdown');
+    allDropdowns.forEach((item: Element) => {
+      item.classList.remove('dropdown-open');
+      const trigger = item.querySelector('.dropdown-trigger');
+      trigger?.setAttribute('aria-expanded', 'false');
+    });
+    
+    // Remover event listeners previos clonando el botón de menú
+    if (menuToggle && menuToggle.parentNode) {
+      const newMenuToggle = menuToggle.cloneNode(true) as HTMLElement;
+      menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+    }
+    
+    // Remover event listeners previos de los dropdown triggers clonándolos
+    const oldDropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    oldDropdownTriggers.forEach(oldTrigger => {
+      if (oldTrigger.parentNode) {
+        const newTrigger = oldTrigger.cloneNode(true) as HTMLElement;
+        oldTrigger.parentNode.replaceChild(newTrigger, oldTrigger);
+      }
+    });
+    
+    const updatedMenuToggle = document.querySelector('.mobile-menu-toggle');
+    
+    // Toggle menú móvil
+    updatedMenuToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updatedMenuToggle.classList.toggle('active');
+      navMenu?.classList.toggle('active');
+      body.classList.toggle('menu-open');
+    });
+
+    // Manejar clicks en dropdowns
+    const hasDropdownItems = document.querySelectorAll('.has-dropdown');
+    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    
+    dropdownTriggers.forEach(trigger => {
+      const parentItem = trigger.closest('.has-dropdown');
+      
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // En desktop y mobile
+        const isOpen = parentItem?.classList.contains('dropdown-open');
+        
+        // Cerrar otros dropdowns
+        hasDropdownItems.forEach((item: Element) => {
+          if (item !== parentItem) {
+            item.classList.remove('dropdown-open');
+            const itemTrigger = item.querySelector('.dropdown-trigger');
+            itemTrigger?.setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle el dropdown actual
+        if (parentItem) {
+          parentItem.classList.toggle('dropdown-open');
+          trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        }
+      });
+    });
+
+    // Cerrar menú solo cuando se hace click en links del dropdown o links sin dropdown
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Cerrar el menú móvil
+        updatedMenuToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
+        body.classList.remove('menu-open');
+        
+        // Cerrar todos los dropdowns
+        hasDropdownItems.forEach((item: Element) => {
+          item.classList.remove('dropdown-open');
+          const itemTrigger = item.querySelector('.dropdown-trigger');
+          itemTrigger?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
+
+    // Click en links sin dropdown (como "Inicio")
+    const simpleLinks = document.querySelectorAll('.nav-item:not(.has-dropdown) .nav-link');
+    simpleLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        updatedMenuToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
+        body.classList.remove('menu-open');
+      });
+    });
+
+    // Cerrar menú al hacer click en el logo
+    const logoLink = document.querySelector('.logo-container a');
+    logoLink?.addEventListener('click', () => {
+      updatedMenuToggle?.classList.remove('active');
+      navMenu?.classList.remove('active');
+      body.classList.remove('menu-open');
+      
+      // Cerrar todos los dropdowns
+      hasDropdownItems.forEach((item: Element) => {
+        item.classList.remove('dropdown-open');
+        const itemTrigger = item.querySelector('.dropdown-trigger');
+        itemTrigger?.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.main-nav') && navMenu?.classList.contains('active')) {
+        updatedMenuToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
+        body.classList.remove('menu-open');
+        
+        // Cerrar todos los dropdowns
+        hasDropdownItems.forEach((item: Element) => {
+          item.classList.remove('dropdown-open');
+          const itemTrigger = item.querySelector('.dropdown-trigger');
+          itemTrigger?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+  
+  // Inicializar en carga inicial
+  document.addEventListener('DOMContentLoaded', initNavbar);
+  
+  // Reinicializar después de navegaciones de Astro (View Transitions)
+  document.addEventListener('astro:page-load', initNavbar);
+</script>
+
+<style>
+  .main-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #01447a 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-header.scrolled {
+    background: rgba(1, 51, 103, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--navbar-height);
+  }
+
+  /* Logo */
+  .logo-container {
+    flex-shrink: 0;
+    z-index: 1001;
+  }
+
+  .logo-container a {
+    display: block;
+    line-height: 0;
+  }
+
+  .logo {
+    height: 95px;
+    width: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
+  }
+
+  /* Navegación */
+  .main-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  /* Ocultar logo móvil en desktop */
+  .mobile-menu-logo {
+    display: none;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: var(--transition);
+    border-radius: 8px;
+    position: relative;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--white), transparent);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::before {
+    width: 80%;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background: linear-gradient(135deg, rgba(1, 51, 103, 0.98) 0%, rgba(1, 68, 122, 0.98) 100%);
+    backdrop-filter: blur(10px);
+    list-style: none;
+    min-width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-right {
+    left: auto;
+    right: 0;
+  }
+
+  /* Dropdown abierto (por click o hover) */
+  .has-dropdown.dropdown-open .dropdown-menu,
+  .has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .has-dropdown.dropdown-open .dropdown-icon,
+  .has-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu li {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Animaciones para desktop (hover) */
+  @media (min-width: 769px) {
+    .has-dropdown:hover .dropdown-menu li {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .has-dropdown:hover .dropdown-menu li:nth-child(1) { transition-delay: 0.05s; }
+    .has-dropdown:hover .dropdown-menu li:nth-child(2) { transition-delay: 0.1s; }
+    .has-dropdown:hover .dropdown-menu li:nth-child(3) { transition-delay: 0.15s; }
+    .has-dropdown:hover .dropdown-menu li:nth-child(4) { transition-delay: 0.2s; }
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.9rem 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dropdown-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--accent-color);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-menu a:hover::before {
+    transform: scaleY(1);
+  }
+
+  .dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    padding-left: 2rem;
+    color: var(--white);
+  }
+
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 2.5px;
+    background: var(--white);
+    border-radius: 3px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    position: absolute;
+  }
+
+  .hamburger-line:nth-child(1) {
+    top: 8px;
+  }
+
+  .hamburger-line:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger-line:nth-child(3) {
+    bottom: 8px;
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+
+  /* ===================================
+     RESPONSIVE DESIGN
+     =================================== */
+  
+  @media (max-width: 1024px) {
+    .nav-link {
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 1.5rem;
+      height: 70px;
+    }
+
+    .logo {
+      height: 55px;
+    }
+
+    .mobile-menu-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, var(--primary-color) 0%, #011d33 100%);
+      flex-direction: column;
+      gap: 0;
+      padding: 1rem 0 2rem 0;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu.active {
+      transform: translateX(0);
+    }
+
+    .nav-item {
+      width: 100%;
+    }
+
+    /* Logo de fondo en móvil */
+    .mobile-menu-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      pointer-events: none;
+    }
+
+    .mobile-menu-logo img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      opacity: 0.15;
+      filter: brightness(1.2);
+      transition: opacity 0.4s ease;
+    }
+
+    .nav-menu.active .mobile-menu-logo img {
+      opacity: 0.2;
+    }
+
+    /* Estilos para botones principales */
+    .nav-link {
+      width: 100%;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::before {
+      display: none;
+    }
+
+    /* Hover/Active states para móvil */
+    .nav-link:active,
+    .has-dropdown.dropdown-open > .nav-link {
+      background: rgba(255, 255, 255, 0.12);
+      transform: none;
+    }
+
+    /* Estilos del icono dropdown en móvil */
+    .dropdown-icon {
+      font-size: 0.75rem;
+      margin-left: auto;
+    }
+
+    /* Dropdown en móvil */
+    .dropdown-menu {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      background: rgba(0, 0, 0, 0.25);
+      box-shadow: none;
+      border-radius: 0;
+      border: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Abrir dropdown cuando tiene la clase dropdown-open */
+    .has-dropdown.dropdown-open .dropdown-menu {
+      max-height: 400px;
+    }
+
+    /* Rotar el icono cuando el dropdown está abierto */
+    .has-dropdown.dropdown-open .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu li {
+      transform: none;
+      opacity: 1;
+      transition: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dropdown-menu li:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a {
+      padding: 0.85rem 1.5rem 0.85rem 2.5rem;
+      font-size: 0.9rem;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-menu a::before {
+      content: '→';
+      position: static;
+      width: auto;
+      height: auto;
+      background: none;
+      transform: none;
+      margin-right: 0.75rem;
+      opacity: 0.7;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:active,
+    .dropdown-menu a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-left-color: var(--accent-color);
+      padding-left: 2.75rem;
+    }
+
+    .dropdown-menu a:active::before,
+    .dropdown-menu a:hover::before {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    /* Bloquear scroll del body cuando el menú está abierto */
+    :global(body.menu-open) {
+      overflow: hidden;
+    }
+
+    /* Scroll suave en el menú */
+    .nav-menu::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .nav-menu::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+    }
+
+    .nav-menu::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-container {
+      padding: 0 1rem;
+    }
+
+    .logo {
+      height: 48px;
+    }
+
+    .nav-link {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-menu a {
+      padding: 0.75rem 1.25rem 0.75rem 2.25rem;
+      font-size: 0.875rem;
+    }
+
+    .dropdown-menu a:active,
+    .dropdown-menu a:hover {
+      padding-left: 2.5rem;
+    }
+  }
+</style>

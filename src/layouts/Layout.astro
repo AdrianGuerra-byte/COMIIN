@@ -1,22 +1,188 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import { ClientRouter } from "astro:transitions";
+import FloatingButtons from "../components/common/FloatingButtons.astro";
+---
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título y descripción -->
+    <title>COMIIN 2026 - Congreso Multidisciplinario de Investigación e Innovación | CUH</title>
+    <meta name="description" content="Segundo Congreso CUH - COMIIN 2026. Evento académico con talleres, conferencias magistrales y oportunidades en Centro Universitario Hidalguense. 28-30 de Mayo, 2026.">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="COMIIN" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Fuentes y recursos externos -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Astro Client Router -->
+	<ClientRouter />
+</head>
+<body>
+	<FloatingButtons />
+	<slot />
+</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	/* ===================================
+	   ESTILOS GLOBALES - Variables y Base
+	   =================================== */
+	
+	:root {
+		--primary-color: #013367;
+		--secondary-color: #0056b3;
+		--accent-color: #25d366;
+		--error-color: #dc3545;
+		--light-color: #f8f9fa;
+		--dark-color: #343a40;
+		--text-color: #222;
+		--text-light: #555;
+		--white: #ffffff;
+		--navbar-height: 80px;
+		--box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		--box-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+		--transition: all 0.3s ease;
+		--transition-fast: all 0.2s ease;
+	}
+
+	* {
 		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		font-family: 'Roboto', sans-serif;
+		color: var(--text-color);
+		line-height: 1.6;
+		overflow-x: hidden;
 		width: 100%;
-		height: 100%;
+		min-height: 100vh;
+		padding-top: var(--navbar-height);
+	}
+
+	/* ===================================
+	   SCROLLBAR PERSONALIZADA - DISCRETA
+	   =================================== */
+	
+	/* Para navegadores basados en Webkit (Chrome, Safari, Edge) */
+	::-webkit-scrollbar {
+		width: 1px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: rgba(1, 51, 103, 0.15);
+		border-radius: 10px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: rgba(1, 51, 103, 0.3);
+	}
+
+	::-webkit-scrollbar-thumb:active {
+		background: rgba(1, 51, 103, 0.4);
+	}
+
+	/* Para Firefox */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(1, 51, 103, 0.15) transparent;
+	}
+
+	/* Ajuste para móvil */
+	@media (max-width: 768px) {
+		body {
+			padding-top: 70px;
+		}
+
+		/* Scrollbar casi invisible en móvil */
+		::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: rgba(1, 51, 103, 0.1);
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: rgba(1, 51, 103, 0.2);
+		}
+	}
+
+	/* Utilidades globales */
+	.section-title {
+		text-align: center;
+		margin: 3rem 0;
+		position: relative;
+	}
+
+	.section-title h2 {
+		font-size: 2.2rem;
+		color: var(--primary-color);
+		display: inline-block;
+		padding-bottom: 0.5rem;
+	}
+
+	.section-title h2::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80px;
+		height: 3px;
+		background-color: var(--primary-color);
+	}
+
+	/* Animaciones globales */
+	@keyframes fadeIn {
+		from { 
+			opacity: 0; 
+			transform: translateY(20px); 
+		}
+		to { 
+			opacity: 1; 
+			transform: translateY(0); 
+		}
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Estilos para links y botones generales */
+	a {
+		transition: var(--transition);
+	}
+
+	button {
+		font-family: inherit;
 	}
 </style>

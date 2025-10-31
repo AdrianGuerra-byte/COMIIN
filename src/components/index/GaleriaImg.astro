@@ -1,0 +1,442 @@
+---
+// Galería de imágenes del evento anterior
+const galleryImages = [
+  {
+    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    alt: "Conferencia magistral COMIIN 2024",
+    caption: "Conferencia magistral durante el CINCISOH 2024"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    alt: "Presentación de proyectos",
+    caption: "Presentación de proyectos de investigación"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    alt: "Carteles científicos",
+    caption: "Exposición de carteles científicos"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    alt: "Talleres prácticos",
+    caption: "Talleres prácticos especializados"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+    alt: "Ceremonia de clausura",
+    caption: "Ceremonia de clausura y entrega de reconocimientos"
+  }
+];
+---
+
+<section class="gallery-section" id="galeria">
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-header">
+        <h2>Galería de Imágenes</h2>
+        <p>Momentos destacados del CINCISOH 2024</p>
+      </div>
+
+      <div class="gallery-carousel-wrapper">
+        <div class="gallery-carousel">
+          {galleryImages.map((image, index) => (
+            <div 
+              class:list={["gallery-slide", { active: index === 0 }]}
+              data-index={index}
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+              <div class="slide-caption">
+                <p>{image.caption}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button class="carousel-nav prev-btn" aria-label="Imagen anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-nav next-btn" aria-label="Siguiente imagen">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-indicators">
+      {galleryImages.map((_, index) => (
+        <button 
+          class:list={["indicator", { active: index === 0 }]}
+          data-index={index}
+          aria-label={`Ir a imagen ${index + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initGalleryCarousel() {
+    const carousel = document.querySelector('.gallery-carousel');
+    const slides = document.querySelectorAll('.gallery-slide');
+    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (!carousel || !slides.length) return;
+    
+    let currentIndex = 0;
+    let autoplayInterval: number;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const updateCarousel = (newIndex: number) => {
+      // Remover clase active de todos
+      slides[currentIndex]?.classList.remove('active');
+      indicators[currentIndex]?.classList.remove('active');
+      
+      // Actualizar índice
+      currentIndex = (newIndex + slides.length) % slides.length;
+      
+      // Agregar clase active a los nuevos
+      slides[currentIndex]?.classList.add('active');
+      indicators[currentIndex]?.classList.add('active');
+    };
+
+    const nextSlide = () => updateCarousel(currentIndex + 1);
+    const prevSlide = () => updateCarousel(currentIndex - 1);
+
+    const startAutoplay = () => {
+      if (motionQuery.matches) return;
+      stopAutoplay();
+      autoplayInterval = window.setInterval(nextSlide, 5000);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    };
+
+    // Event listeners
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      stopAutoplay();
+      startAutoplay();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      stopAutoplay();
+      startAutoplay();
+    });
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        updateCarousel(index);
+        stopAutoplay();
+        startAutoplay();
+      });
+    });
+
+    // Pausar en hover
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    // Iniciar autoplay
+    startAutoplay();
+
+    // Responder a cambios de preferencias de movimiento
+    motionQuery.addEventListener('change', () => {
+      if (motionQuery.matches) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+  }
+
+  // Inicializar en carga y navegaciones
+  document.addEventListener('DOMContentLoaded', initGalleryCarousel);
+  document.addEventListener('astro:page-load', initGalleryCarousel);
+</script>
+
+<style>
+  .gallery-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-header {
+    text-align: left;
+  }
+
+  .gallery-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+  }
+
+  .gallery-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+  }
+
+  .gallery-header p {
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  .gallery-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow-lg);
+    background: var(--dark-color);
+  }
+
+  .gallery-carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+  }
+
+  .gallery-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+
+  .gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(1, 51, 103, 0.95), rgba(1, 51, 103, 0.7));
+    padding: 1.5rem 2rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-out;
+  }
+
+  .gallery-slide.active .slide-caption {
+    transform: translateY(0);
+  }
+
+  .slide-caption p {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(1, 51, 103, 0.7);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel-nav:hover {
+    background: var(--primary-color);
+    border-color: var(--white);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.4);
+  }
+
+  .carousel-nav:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .prev-btn {
+    left: 1.5rem;
+  }
+
+  .next-btn {
+    right: 1.5rem;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(1, 51, 103, 0.3);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0;
+  }
+
+  .indicator:hover {
+    background: rgba(1, 51, 103, 0.5);
+    transform: scale(1.2);
+  }
+
+  .indicator.active {
+    background: var(--primary-color);
+    border-color: var(--secondary-color);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(1, 51, 103, 0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .gallery-section {
+      padding: 3rem 1rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+    }
+
+    .gallery-header h2 {
+      font-size: 2rem;
+    }
+
+    .gallery-header h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gallery-header p {
+      font-size: 1rem;
+    }
+
+    .gallery-carousel {
+      aspect-ratio: 4 / 3;
+    }
+
+    .slide-caption p {
+      font-size: 0.95rem;
+    }
+
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .prev-btn {
+      left: 0.75rem;
+    }
+
+    .next-btn {
+      right: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-carousel {
+      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+    }
+
+    .gallery-carousel-wrapper {
+      border-radius: 12px;
+    }
+
+    .slide-caption {
+      padding: 1rem;
+    }
+
+    .slide-caption p {
+      font-size: 0.85rem;
+    }
+
+    .carousel-nav {
+      width: 35px;
+      height: 35px;
+      font-size: 0.9rem;
+    }
+
+    .indicator {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  /* Respetar preferencias de movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-slide {
+      transition: none;
+    }
+
+    .slide-caption {
+      transition: none;
+      transform: translateY(0);
+    }
+
+    .carousel-nav,
+    .indicator {
+      transition: none;
+    }
+  }
+</style>
