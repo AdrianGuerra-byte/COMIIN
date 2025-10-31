@@ -2,6 +2,8 @@
 
 Sitio web oficial del Congreso Internacional Multidisciplinario de Innovación e Investigación (COMIIN) 2026, organizado por el Centro Universitario Hidalguense.
 
+Beta en vivo: [https://comiin.cuh.edu.mx](https://comiin.cuh.edu.mx)
+
 ## Tabla de Contenidos
 
 - [Descripción General](#descripción-general)
