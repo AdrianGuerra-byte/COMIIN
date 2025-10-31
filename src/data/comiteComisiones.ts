@@ -70,6 +70,12 @@ export const comiteComisiones: ComiteMember[] = [
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
+    id: 'com-16',
+    nombre: 'Ing. Angel Adrian Guerra Avila',
+    cargo: 'Comisión de Infraestructura Tecnológica',
+    imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
+  },
+  {
     id: 'com-11',
     nombre: 'Ing. Leonardo Morales Reyes',
     cargo: 'Comisión de Infraestructura Tecnológica',
@@ -97,6 +103,12 @@ export const comiteComisiones: ComiteMember[] = [
     id: 'com-15',
     nombre: 'C. Fernanda Badillo Lazcano',
     cargo: 'Comisión de Comunicación',
+    imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    id: 'com-16',
+    nombre: 'C. Yamina García Orozco',
+    cargo: 'Enlace Institucional',
     imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   }
 ];

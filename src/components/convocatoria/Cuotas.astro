@@ -48,23 +48,19 @@
                 </div>
             </article>
 
-            <!-- Cuota Asistente Con Kit - DESTACADA -->
-            <article class="cuota-card destacada">
-                <div class="cuota-badge">
-                    <i class="fas fa-star"></i>
-                    <span>Recomendado</span>
-                </div>
-                <div class="cuota-ribbon ribbon-destacada">
+            <!-- Cuota Asistente Con Kit -->
+            <article class="cuota-card">
+                <div class="cuota-ribbon">
                     <i class="fas fa-box"></i>
                 </div>
-                <div class="cuota-header header-destacada">
-                    <div class="cuota-icon-wrapper icon-destacada">
+                <div class="cuota-header">
+                    <div class="cuota-icon-wrapper">
                         <i class="fas fa-gift" aria-hidden="true"></i>
                     </div>
                     <h3>Asistente con Kit</h3>
                     <p class="cuota-description">Experiencia completa con materiales incluidos</p>
                 </div>
-                <div class="cuota-precio-container precio-destacada">
+                <div class="cuota-precio-container">
                     <div class="precio-wrapper">
                         <span class="precio-simbolo">$</span>
                         <span class="precio-cantidad">200</span>
@@ -247,48 +243,6 @@
         border-color: var(--primary-color);
     }
 
-    /* Card Destacada */
-    .cuota-card.destacada {
-        border: 3px solid var(--primary-color);
-        transform: scale(1.05);
-    }
-
-    .cuota-card.destacada:hover {
-        transform: scale(1.05) translateY(-10px);
-        box-shadow: 0 25px 50px rgba(1, 51, 103, 0.2);
-    }
-
-    /* Badge Recomendado */
-    .cuota-badge {
-        position: absolute;
-        top: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, #FFD700, #FFA500);
-        color: #fff;
-        padding: 0.5rem 1.5rem;
-        border-radius: 25px;
-        font-size: clamp(0.8rem, 2vw, 0.9rem);
-        font-weight: 700;
-        box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        z-index: 2;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
-
-    .cuota-badge i {
-        font-size: 0.85rem;
-        animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-    }
-
     /* Ribbon Lateral */
     .cuota-ribbon {
         position: absolute;
@@ -303,20 +257,12 @@
         z-index: 1;
     }
 
-    .ribbon-destacada {
-        background: linear-gradient(135deg, #FFD700, #FFA500);
-    }
-
     /* Header de Cuota */
     .cuota-header {
         padding: 2.5rem 2rem 1.5rem;
         text-align: center;
         background: linear-gradient(135deg, rgba(1, 51, 103, 0.03), rgba(0, 86, 179, 0.03));
         border-bottom: 2px solid #f8f9fa;
-    }
-
-    .header-destacada {
-        background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
     }
 
     .cuota-icon-wrapper {
@@ -332,10 +278,6 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .icon-destacada {
-        background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
-    }
-
     .cuota-card:hover .cuota-icon-wrapper {
         transform: scale(1.1) rotate(5deg);
     }
@@ -343,10 +285,6 @@
     .cuota-icon-wrapper i {
         font-size: 2.2rem;
         color: var(--primary-color);
-    }
-
-    .icon-destacada i {
-        color: #FFA500;
     }
 
     .cuota-header h3 {
@@ -371,10 +309,6 @@
         text-align: center;
         background: var(--white);
         border-bottom: 2px solid #f8f9fa;
-    }
-
-    .precio-destacada {
-        background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 165, 0, 0.05));
     }
 
     .precio-wrapper {
@@ -523,14 +457,6 @@
         .cuotas-grid {
             grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
         }
-
-        .cuota-card.destacada {
-            transform: scale(1.02);
-        }
-
-        .cuota-card.destacada:hover {
-            transform: scale(1.02) translateY(-10px);
-        }
     }
 
     @media (max-width: 992px) {
@@ -538,14 +464,6 @@
             grid-template-columns: 1fr;
             max-width: 550px;
             margin-inline: auto;
-        }
-
-        .cuota-card.destacada {
-            transform: none;
-        }
-
-        .cuota-card.destacada:hover {
-            transform: translateY(-10px);
         }
     }
 
@@ -613,11 +531,6 @@
 
         .cuotas-grid {
             gap: 1.75rem;
-        }
-
-        .cuota-badge {
-            font-size: 0.75rem;
-            padding: 0.4rem 1.2rem;
         }
 
         .cuota-header {
