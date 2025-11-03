@@ -35,7 +35,7 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
 
 <style>
   .comite-section {
-    padding: 5rem 2rem;
+    padding: clamp(3.5rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
     background: linear-gradient(180deg, var(--white) 0%, #f8f9fa 100%);
   }
 
@@ -47,16 +47,17 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
   /* Header de sección */
   .section-header {
     text-align: center;
-    margin-block-end: 2rem;
+    margin-block-end: clamp(2.5rem, 6vw, 3.5rem);
   }
 
   .section-header h2 {
-    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
     color: var(--primary-color);
     line-height: 1.2;
-    margin-block-end: 1rem;
+    margin-block-end: 0.75rem;
+    font-weight: 700;
     position: relative;
-    padding-block-end: 1rem;
+    padding-block-end: 0.85rem;
     display: inline-block;
   }
 
@@ -73,10 +74,10 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
   }
 
   .section-subtitle {
-    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
-    color: var(--text-color);
-    opacity: 0.9;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    color: var(--text-light);
     margin: 0;
+    line-height: 1.5;
   }
 
   /* Introducción */
@@ -84,12 +85,12 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
     text-align: center;
     max-width: 900px;
     margin-inline: auto;
-    margin-block-end: 4rem;
+    margin-block-end: clamp(2rem, 5vw, 3rem);
   }
 
   .section-intro p {
-    font-size: clamp(1rem, 2.2vw, 1.1rem);
-    line-height: 1.8;
+    font-size: clamp(0.9rem, 2vw, 0.98rem);
+    line-height: 1.7;
     color: var(--text-color);
     text-wrap: pretty;
     hyphens: auto;
@@ -98,15 +99,14 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
   /* Grid de miembros */
   .members-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: clamp(1.5rem, 4vw, 2rem);
   }
 
   /* Responsive */
   @media (max-width: 1200px) {
     .members-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
     }
   }
 
@@ -118,16 +118,15 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
 
   @media (max-width: 768px) {
     .comite-section {
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem;
     }
 
     .section-header {
-      margin-block-end: 1.5rem;
+      margin-block-end: 2.5rem;
     }
 
     .section-intro {
-      margin-block-end: 3rem;
-      padding-inline: 1rem;
+      margin-block-end: 2.5rem;
     }
 
     .members-grid {
@@ -143,9 +142,12 @@ import { comiteOrganizador } from '../../data/comiteOrganizador';
       padding: 3rem 1rem;
     }
 
+    .section-header {
+      margin-block-end: 2rem;
+    }
+
     .section-intro {
-      margin-block-end: 2.5rem;
-      padding-inline: 0;
+      margin-block-end: 2rem;
     }
 
     .members-grid {

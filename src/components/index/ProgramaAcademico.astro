@@ -1,23 +1,33 @@
 ---
-// Programa académico del evento
+// Programa académico del evento - Componente reutilizable
+export interface Props {
+  variant?: 'compacto' | 'completo';
+  showHeader?: boolean;
+}
+
+const { variant = 'completo', showHeader = true } = Astro.props;
+
 interface ScheduleEvent {
   time: string;
   period: "AM" | "PM";
   title: string;
   speaker: string;
   location: string;
+  isHighlight?: boolean; // Para marcar eventos destacados
 }
 
 interface ProgramDay {
   id: string;
   label: string;
+  date: string;
   events: ScheduleEvent[];
 }
 
 const programDays: ProgramDay[] = [
   {
     id: "day1",
-    label: "Día 1 - Conferencias",
+    label: "Día 1",
+    date: "Conferencias Magistrales",
     events: [
       {
         time: "09:00",
@@ -25,6 +35,7 @@ const programDays: ProgramDay[] = [
         title: "Registro y Acreditación",
         speaker: "Comité Organizador",
         location: "Edificio Principal CUH",
+        isHighlight: true, // Evento destacado
       },
       {
         time: "10:00",
@@ -32,72 +43,155 @@ const programDays: ProgramDay[] = [
         title: "Ceremonia de Inauguración",
         speaker: "Director General CUH y Comité Organizador",
         location: "Edificio Principal CUH",
+        isHighlight: true, // Evento destacado
       },
       {
         time: "11:30",
         period: "AM",
         title: "Conferencia Magistral: Innovación Educativa",
         speaker: "Mtra. Maria Isabel Jarillo - Universidad CUH",
-        location: "Usos Multiples, 3er Piso Edificio Principal CUH",
+        location: "Usos Múltiples, 3er Piso Edificio Principal CUH",
+        isHighlight: true, // Evento destacado
+      },
+      {
+        time: "01:00",
+        period: "PM",
+        title: "Receso - Comida",
+        speaker: "Comité Organizador",
+        location: "Área de Alimentos",
+        isHighlight: false,
+      },
+      {
+        time: "02:30",
+        period: "PM",
+        title: "Mesa de Trabajo: Educación y Pedagogía",
+        speaker: "Dr. Carlos Mendoza - UAEH",
+        location: "Aula 301",
+        isHighlight: false,
+      },
+      {
+        time: "04:00",
+        period: "PM",
+        title: "Presentación de Ponencias - Sesión 1",
+        speaker: "Ponentes Seleccionados",
+        location: "Aulas 201-205",
+        isHighlight: false,
       },
     ],
   },
   {
     id: "day2",
-    label: "Día 2 - Talleres",
+    label: "Día 2",
+    date: "Talleres y Mesas de Trabajo",
     events: [
       {
         time: "09:00",
         period: "AM",
-        title: "Taller: Metodologías Activas",
+        title: "Taller: Metodologías Activas de Aprendizaje",
         speaker: "Dr. Javier Martínez - CUH",
         location: "Aula 201",
+        isHighlight: true, // Evento destacado
       },
       {
         time: "11:00",
         period: "AM",
-        title: "Taller: Investigación Cuantitativa",
+        title: "Taller: Investigación Cuantitativa Aplicada",
         speaker: "Dra. Laura Sánchez - UNAM",
         location: "Aula 203",
+        isHighlight: false,
+      },
+      {
+        time: "01:00",
+        period: "PM",
+        title: "Receso - Comida",
+        speaker: "Comité Organizador",
+        location: "Área de Alimentos",
+        isHighlight: false,
+      },
+      {
+        time: "02:30",
+        period: "PM",
+        title: "Mesa de Trabajo: Tecnología e Innovación",
+        speaker: "Ing. Roberto García - IPN",
+        location: "Laboratorio de Cómputo",
+        isHighlight: false,
+      },
+      {
+        time: "04:00",
+        period: "PM",
+        title: "Presentación de Ponencias - Sesión 2",
+        speaker: "Ponentes Seleccionados",
+        location: "Aulas 301-305",
+        isHighlight: true, // Evento destacado
       },
     ],
   },
   {
     id: "day3",
-    label: "Día 3 - Conclusiones",
+    label: "Día 3",
+    date: "Panel y Clausura",
     events: [
+      {
+        time: "09:00",
+        period: "AM",
+        title: "Presentación de Ponencias - Sesión Final",
+        speaker: "Ponentes Seleccionados",
+        location: "Aulas 201-205",
+        isHighlight: false,
+      },
       {
         time: "10:00",
         period: "AM",
-        title: "Panel de Conclusiones",
+        title: "Panel de Conclusiones y Perspectivas",
         speaker: "Comité Académico",
         location: "Auditorio Principal",
+        isHighlight: true, // Evento destacado
+      },
+      {
+        time: "11:30",
+        period: "AM",
+        title: "Entrega de Reconocimientos",
+        speaker: "Autoridades CUH",
+        location: "Auditorio Principal",
+        isHighlight: false,
       },
       {
         time: "12:00",
         period: "PM",
         title: "Ceremonia de Clausura",
-        speaker: "Autoridades CUH",
+        speaker: "Director General CUH",
         location: "Auditorio Principal",
+        isHighlight: true, // Evento destacado
       },
     ],
   },
 ];
+
+// Filtrar eventos según el variant
+const daysToShow = variant === 'compacto'
+  ? programDays.map(day => ({
+      ...day,
+      events: day.events.filter(event => event.isHighlight)
+    })).filter(day => day.events.length > 0) // Solo mostrar días con eventos destacados
+  : programDays;
 ---
 
 <section class="programa-section" id="programa">
   <div class="programa-container">
-    <header class="programa-header">
-      <h2>Programa Académico</h2>
-      <p>
-        Descubre todas las actividades, conferencias y talleres planeados para
-        esta experiencia académica
-      </p>
-    </header>
+    {showHeader && (
+      <header class="programa-header">
+        <h2>Programa Académico</h2>
+        <p>
+          {variant === 'compacto' 
+            ? 'Conoce los eventos más destacados del congreso' 
+            : 'Descubre todas las actividades, conferencias y talleres planeados para esta experiencia académica'}
+        </p>
+      </header>
+    )}
 
     <nav class="programa-tabs" role="tablist" aria-label="Días del programa">
       {
-        programDays.map((day, index) => (
+        daysToShow.map((day, index) => (
           <button
             class:list={["tab-button", { active: index === 0 }]}
             role="tab"
@@ -105,7 +199,8 @@ const programDays: ProgramDay[] = [
             aria-controls={`panel-${day.id}`}
             data-day={day.id}
           >
-            {day.label}
+            <span class="tab-day">{day.label}</span>
+            <span class="tab-date">{day.date}</span>
           </button>
         ))
       }
@@ -113,7 +208,7 @@ const programDays: ProgramDay[] = [
 
     <div class="programa-content">
       {
-        programDays.map((day, index) => (
+        daysToShow.map((day, index) => (
           <article
             class:list={["day-panel", { active: index === 0 }]}
             id={`panel-${day.id}`}
@@ -132,11 +227,11 @@ const programDays: ProgramDay[] = [
                   <div class="event-card">
                     <h3 class="event-title">{event.title}</h3>
                     <p class="event-speaker">
-                      <i class="fas fa-user" />
+                      <i class="fas fa-user" aria-hidden="true"></i>
                       {event.speaker}
                     </p>
                     <p class="event-location">
-                      <i class="fas fa-map-marker-alt" />
+                      <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                       {event.location}
                     </p>
                   </div>
@@ -147,6 +242,15 @@ const programDays: ProgramDay[] = [
         ))
       }
     </div>
+
+    {variant === 'compacto' && (
+      <div class="programa-cta">
+        <a href="/programa" class="btn-ver-completo">
+          <span>Ver Programa Completo</span>
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    )}
   </div>
 </section>
 
@@ -209,7 +313,7 @@ const programDays: ProgramDay[] = [
 
 <style>
   .programa-section {
-    padding: 3.5rem 2rem;
+    padding: clamp(3.5rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
     background: linear-gradient(180deg, #dee2e6 0%, var(--white) 100%);
   }
 
@@ -220,24 +324,24 @@ const programDays: ProgramDay[] = [
 
   .programa-header {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-block-end: clamp(2.5rem, 6vw, 3.5rem);
   }
 
   .programa-header h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
     font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    margin-block-end: 0.75rem;
     position: relative;
     display: inline-block;
-    padding-bottom: 1rem;
+    padding-block-end: 0.85rem;
   }
 
   .programa-header h2::after {
     content: "";
     position: absolute;
-    bottom: 0;
-    left: 50%;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
@@ -251,32 +355,46 @@ const programDays: ProgramDay[] = [
 
   .programa-header p {
     color: var(--text-light);
-    font-size: 1rem;
-    margin-top: 0.75rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    margin-block-start: 1.25rem;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
+    line-height: 1.5;
   }
 
   /* Tabs */
   .programa-tabs {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
+    gap: clamp(0.75rem, 2vw, 1rem);
+    margin-block-end: clamp(2rem, 5vw, 2.5rem);
     flex-wrap: wrap;
   }
 
   .tab-button {
-    padding: 0.75rem 1.75rem;
+    padding: clamp(0.65rem, 2vw, 0.75rem) clamp(1.25rem, 3vw, 1.75rem);
     background: var(--white);
     border: 2px solid rgba(1, 51, 103, 0.2);
     border-radius: 50px;
     color: var(--text-color);
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .tab-day {
+    font-weight: 700;
+  }
+
+  .tab-date {
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    font-weight: 500;
+    opacity: 0.8;
   }
 
   .tab-button:hover {
@@ -296,6 +414,10 @@ const programDays: ProgramDay[] = [
     box-shadow: 0 4px 15px rgba(1, 51, 103, 0.3);
   }
 
+  .tab-button.active .tab-date {
+    opacity: 1;
+  }
+
   /* Content */
   .programa-content {
     position: relative;
@@ -313,20 +435,20 @@ const programDays: ProgramDay[] = [
   .schedule-timeline {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: clamp(1rem, 3vw, 1.25rem);
   }
 
   .schedule-item {
     display: grid;
     grid-template-columns: 110px 1fr;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vw, 1.5rem);
     align-items: start;
   }
 
   /* Time */
   .event-time {
     position: sticky;
-    top: calc(var(--navbar-height) + 1.5rem);
+    top: calc(var(--navbar-height, 80px) + 1.5rem);
   }
 
   .event-time time {
@@ -341,19 +463,20 @@ const programDays: ProgramDay[] = [
     );
     color: var(--white);
     border-radius: 12px;
-    padding: 1rem 0.75rem;
-    box-shadow: var(--box-shadow);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(0.5rem, 1.5vw, 0.75rem);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .time-number {
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 3vw, 1.35rem);
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
   }
 
   .time-period {
-    font-size: 0.8rem;
+    font-size: clamp(0.75rem, 1.8vw, 0.8rem);
     font-weight: 500;
     opacity: 0.9;
   }
@@ -363,18 +486,19 @@ const programDays: ProgramDay[] = [
     background: var(--white);
     border: 1px solid rgba(1, 51, 103, 0.1);
     border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    overflow: hidden;
   }
 
   .event-card::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inset-block-end: 0;
     width: 4px;
     background: linear-gradient(
       180deg,
@@ -386,16 +510,17 @@ const programDays: ProgramDay[] = [
 
   .event-card:hover {
     transform: translateX(6px);
-    box-shadow: var(--box-shadow-lg);
+    box-shadow: 0 8px 24px rgba(1, 51, 103, 0.15);
     border-color: rgba(1, 51, 103, 0.2);
   }
 
   .event-title {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
     font-weight: 700;
-    margin-bottom: 0.875rem;
+    margin-block-end: clamp(0.65rem, 2vw, 0.875rem);
     line-height: 1.4;
+    text-wrap: pretty;
   }
 
   .event-speaker,
@@ -404,36 +529,68 @@ const programDays: ProgramDay[] = [
     align-items: center;
     gap: 0.65rem;
     color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    margin-block-end: 0.5rem;
     line-height: 1.5;
   }
 
   .event-speaker i,
   .event-location i {
     color: var(--secondary-color);
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     width: 18px;
     text-align: center;
     flex-shrink: 0;
   }
 
   .event-location {
-    margin-bottom: 0;
+    margin-block-end: 0;
+  }
+
+  /* CTA Button */
+  .programa-cta {
+    text-align: center;
+    margin-block-start: clamp(2rem, 5vw, 3rem);
+    padding-block-start: clamp(2rem, 5vw, 2.5rem);
+    border-top: 2px solid rgba(1, 51, 103, 0.1);
+  }
+
+  .btn-ver-completo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: clamp(0.85rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    border-radius: 50px;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.3);
+  }
+
+  .btn-ver-completo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(1, 51, 103, 0.4);
+  }
+
+  .btn-ver-completo i {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-ver-completo:hover i {
+    transform: translateX(4px);
   }
 
   /* Responsive */
   @media (max-width: 768px) {
     .programa-section {
-      padding: 3rem 1rem;
+      padding: 3.5rem 1.5rem;
     }
 
-    .programa-header h2 {
-      font-size: 2rem;
-    }
-
-    .programa-header p {
-      font-size: 1rem;
+    .programa-header {
+      margin-block-end: 2.5rem;
     }
 
     .programa-tabs {
@@ -443,7 +600,13 @@ const programDays: ProgramDay[] = [
 
     .tab-button {
       width: 100%;
-      padding: 0.75rem 1.5rem;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .tab-date::before {
+      content: '- ';
     }
 
     .schedule-item {
@@ -459,24 +622,33 @@ const programDays: ProgramDay[] = [
       flex-direction: row;
       gap: 0.5rem;
       padding: 0.75rem 1rem;
+      width: fit-content;
     }
 
     .time-number {
-      font-size: 1.25rem;
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     .event-card {
       padding: 1.25rem;
     }
+  }
 
-    .event-title {
-      font-size: 1.1rem;
+  @media (max-width: 480px) {
+    .programa-section {
+      padding: 3rem 1rem;
     }
 
-    .event-speaker,
-    .event-location {
-      font-size: 0.875rem;
+    .programa-header {
+      margin-block-end: 2rem;
+    }
+
+    .programa-tabs {
+      gap: 0.65rem;
+    }
+
+    .event-card {
+      padding: 1rem;
     }
   }
 
@@ -496,7 +668,8 @@ const programDays: ProgramDay[] = [
   @media (prefers-reduced-motion: reduce) {
     .day-panel,
     .event-card,
-    .tab-button {
+    .tab-button,
+    .btn-ver-completo {
       animation: none;
       transition: none;
     }

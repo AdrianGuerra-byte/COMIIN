@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Navbar from "../components/common/Navbar.astro"
+import Footer from "../components/common/Footer.astro"
+import ProgramaAcademico from "../components/index/ProgramaAcademico.astro"
+---
+<Layout>
+    <Navbar />
+    
+    <!-- Hero Section para página de programa -->
+    <section class="programa-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Programa Completo</h1>
+                <p>Explora todas las actividades, conferencias magistrales, talleres y eventos del COMIIN 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programa en modo completo - todos los eventos -->
+    <ProgramaAcademico variant="completo" showHeader={false} />
+    
+    <Footer />
+</Layout>
+
+<style>
+    .programa-hero {
+        padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .programa-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin-inline: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-content {
+        text-align: center;
+        color: var(--white);
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.25rem, 6vw, 3rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-block-end: 1rem;
+        text-wrap: pretty;
+    }
+
+    .hero-content p {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        line-height: 1.6;
+        max-width: 700px;
+        margin-inline: auto;
+        opacity: 0.95;
+        text-wrap: pretty;
+    }
+
+    @media (max-width: 768px) {
+        .programa-hero {
+            padding: 4rem 1.5rem 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .programa-hero {
+            padding: 3.5rem 1rem 1.5rem;
+        }
+    }
+</style>
