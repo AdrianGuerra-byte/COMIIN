@@ -32,12 +32,29 @@ import Analytics from '@vercel/analytics/astro'
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="COMIIN 2026" />
     <meta property="og:locale" content="es_MX" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	
+	<!-- Font Awesome con preload y display swap para carga optimizada -->
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;">
+	<noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	</noscript>
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="COMIIN 2026 - Congreso Multidisciplinario | CUH">
     <meta name="twitter:description" content="Participa en el congreso de investigación e innovación del Centro Universitario Hidalguense. 28-30 de Mayo.">
     <meta name="twitter:image" content="https://comiin.cuh.edu.mx/social-share.jpg">
+    
+    <!-- Critical CSS inline para prevenir FOUC -->
+    <style>
+        html{background-color:#f8f9fa}
+        body{margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif;padding-top:80px;opacity:1}
+        *{box-sizing:border-box}
+        /* Navbar critical styles para evitar flickering */
+        .main-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:#013367;height:80px}
+    </style>
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -78,8 +95,12 @@ import Analytics from '@vercel/analytics/astro'
       }
     }
     </script>
-    <Analytics/>
+    
+    <!-- Client Router para navegación suave -->
     <ClientRouter />
+    
+    <!-- Analytics -->
+    <Analytics/>
 </head>
 <body>
 	<FloatingButtons />
@@ -88,6 +109,20 @@ import Analytics from '@vercel/analytics/astro'
 </html>
 
 <style is:global>
+	/* ===================================
+	   PREVENCIÓN DE FOUC (Flash of Unstyled Content)
+	   =================================== */
+	
+	/* Asegurar que el body tenga estilos base inmediatamente */
+	html {
+		background-color: #f8f9fa;
+	}
+
+	body {
+		opacity: 1;
+		transition: opacity 0.15s ease-in;
+	}
+
 	/* ===================================
 	   ESTILOS GLOBALES - Variables y Base
 	   =================================== */
