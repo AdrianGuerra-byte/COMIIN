@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import FloatingButtons from "../components/common/FloatingButtons.astro";
+import Analytics from '@vercel/analytics/astro'
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -77,7 +78,7 @@ import FloatingButtons from "../components/common/FloatingButtons.astro";
       }
     }
     </script>
-    
+    <Analytics/>
     <ClientRouter />
 </head>
 <body>

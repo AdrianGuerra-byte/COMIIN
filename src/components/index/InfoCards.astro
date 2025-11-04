@@ -55,14 +55,26 @@ import { infoCards, categories } from '../../data/infoCards';
         updatedButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         
-        // Filtrar tarjetas
+        // Primero: Fade out todas las tarjetas actuales
         cards.forEach(card => {
-          if (card.getAttribute('data-category') === category) {
-            card.classList.add('active');
-          } else {
-            card.classList.remove('active');
-          }
+          card.classList.add('fade-out');
         });
+
+        // Después de 300ms: Cambiar las tarjetas activas y hacer fade in
+        setTimeout(() => {
+          cards.forEach((card, index) => {
+            card.classList.remove('fade-out');
+            
+            if (card.getAttribute('data-category') === category) {
+              card.classList.add('active');
+              // Añadir delay escalonado para efecto cascada
+              (card as HTMLElement).style.transitionDelay = `${index * 0.05}s`;
+            } else {
+              card.classList.remove('active');
+              (card as HTMLElement).style.transitionDelay = '0s';
+            }
+          });
+        }, 300);
       });
     });
   }

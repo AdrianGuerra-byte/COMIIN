@@ -11,9 +11,9 @@
 
     <!-- Links del footer -->
     <nav class="footer-links" aria-label="Enlaces del footer">
-      <a href="/aviso-privacidad">Aviso de Privacidad</a>
-      <a href="/terminos-condiciones">Términos y Condiciones</a>
-      <a href="/preguntas-frecuentes">Preguntas Frecuentes</a>
+      <a href="/privacidad">Aviso de Privacidad</a>
+      <a href="/terminos">Términos y Condiciones</a>
+      <a href="/faqs">Preguntas Frecuentes</a>
       <a href="/contacto">Contacto</a>
     </nav>
 
@@ -58,12 +58,17 @@
     width: auto;
     object-fit: contain;
     filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1));
-    transition: var(--transition);
+    transition: transform 0.3s ease;
     opacity: 0.9;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .footer-logo:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px) scale(1.05) translateZ(0);
     filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
     opacity: 1;
   }
@@ -151,11 +156,14 @@
 
     .footer-links {
       gap: 1rem;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 400px;
     }
 
     .footer-links a {
       font-size: 0.85rem;
+      text-align: center;
     }
 
     .copyright p {

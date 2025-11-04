@@ -1,5 +1,4 @@
 ---
-// Programa académico del evento - Componente reutilizable
 export interface Props {
   variant?: 'compacto' | 'completo';
   showHeader?: boolean;
@@ -272,12 +271,30 @@ const daysToShow = variant === 'compacto'
         btn.setAttribute("aria-selected", String(isSelected));
       });
 
-      // Actualizar paneles
-      panels.forEach((panel) => {
-        const panelId = panel.getAttribute("id");
-        const isActive = panelId === `panel-${targetDay}`;
-        panel.classList.toggle("active", isActive);
-      });
+      // Fade out panel actual
+      const currentPanel = document.querySelector('.day-panel.active');
+      if (currentPanel) {
+        currentPanel.classList.add('fade-out');
+      }
+
+      // Después de la animación de fade out, cambiar el panel
+      setTimeout(() => {
+        panels.forEach((panel) => {
+          const panelId = panel.getAttribute("id");
+          const isActive = panelId === `panel-${targetDay}`;
+          
+          panel.classList.remove('fade-out');
+          panel.classList.toggle("active", isActive);
+          
+          // Si es el panel activo, animar los items
+          if (isActive) {
+            const scheduleItems = panel.querySelectorAll('.schedule-item');
+            scheduleItems.forEach((item, index) => {
+              (item as HTMLElement).style.animationDelay = `${index * 0.1}s`;
+            });
+          }
+        });
+      }, 300);
     };
 
     // Event listeners
@@ -421,15 +438,26 @@ const daysToShow = variant === 'compacto'
   /* Content */
   .programa-content {
     position: relative;
+    min-height: 400px;
   }
 
   .day-panel {
     display: none;
-    animation: fadeInUp 0.4s ease-out;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   .day-panel.active {
     display: block;
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .day-panel.fade-out {
+    opacity: 0;
+    transform: translateX(-30px);
   }
 
   .schedule-timeline {
@@ -443,6 +471,9 @@ const daysToShow = variant === 'compacto'
     grid-template-columns: 110px 1fr;
     gap: clamp(1rem, 3vw, 1.5rem);
     align-items: start;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   /* Time */
@@ -465,7 +496,34 @@ const daysToShow = variant === 'compacto'
     border-radius: 12px;
     padding: clamp(0.75rem, 2vw, 1rem) clamp(0.5rem, 1.5vw, 0.75rem);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-time time::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .schedule-item:hover .event-time time {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(1, 51, 103, 0.3);
+  }
+
+  .schedule-item:hover .event-time time::before {
+    left: 100%;
   }
 
   .time-number {
@@ -488,7 +546,7 @@ const daysToShow = variant === 'compacto'
     border-radius: 12px;
     padding: clamp(1.25rem, 3vw, 1.5rem);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
   }
@@ -506,12 +564,38 @@ const daysToShow = variant === 'compacto'
       var(--secondary-color)
     );
     border-radius: 12px 0 0 12px;
+    transition: width 0.3s ease;
+  }
+
+  .event-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(1, 51, 103, 0.03),
+      rgba(0, 86, 179, 0.03)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
   .event-card:hover {
-    transform: translateX(6px);
-    box-shadow: 0 8px 24px rgba(1, 51, 103, 0.15);
+    transform: translateX(8px) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(1, 51, 103, 0.2);
     border-color: rgba(1, 51, 103, 0.2);
+  }
+
+  .event-card:hover::before {
+    width: 6px;
+  }
+
+  .event-card:hover::after {
+    opacity: 1;
   }
 
   .event-title {
@@ -652,26 +736,48 @@ const daysToShow = variant === 'compacto'
     }
   }
 
-  /* Animación */
-  @keyframes fadeInUp {
+  /* Animaciones */
+  @keyframes slideInRight {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateX(30px);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
   /* Accesibilidad */
   @media (prefers-reduced-motion: reduce) {
     .day-panel,
+    .schedule-item,
     .event-card,
+    .event-time time,
     .tab-button,
     .btn-ver-completo {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .schedule-item {
+      opacity: 1;
+      transform: none;
+    }
+
+    .day-panel.active {
       animation: none;
-      transition: none;
     }
   }
 </style>

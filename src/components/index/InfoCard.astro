@@ -30,18 +30,26 @@ const { card, isActive = false } = Astro.props;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: none;
     border: 1px solid rgba(1, 51, 103, 0.08);
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
   }
 
   .card.active {
     display: block;
-    animation: fadeIn 0.5s ease;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .card.fade-out {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
   }
 
   .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) scale(1);
     box-shadow: var(--box-shadow-lg);
     border-color: rgba(1, 51, 103, 0.15);
   }
@@ -50,7 +58,7 @@ const { card, isActive = false } = Astro.props;
     width: 100%;
     height: 220px;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .card:hover .card-img {
@@ -120,17 +128,6 @@ const { card, isActive = false } = Astro.props;
     transform: translateX(4px);
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   @media (max-width: 768px) {
     .card-content {
       padding: 1.25rem;
@@ -142,6 +139,20 @@ const { card, isActive = false } = Astro.props;
 
     .card-img {
       height: 180px;
+    }
+  }
+
+  /* Accesibilidad - Reducir movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card-img,
+    .read-more {
+      transition: none;
+      animation: none;
+    }
+    
+    .card.active {
+      transform: none;
     }
   }
 </style>
