@@ -1,6 +1,4 @@
 ---
-// Correo codificado en Base64 para protección contra scrapers
-const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
 ---
 <section class="convocatoria-section">
   <div class="container">
@@ -96,14 +94,15 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
                     Instrucciones de Envío
                   </h4>
                   
-                  <!-- Correo Seguro -->
+                  <!-- Correo Visible -->
                   <div class="info-item">
                     <strong>Correo electrónico:</strong>
                     <div class="email-wrapper">
-                      <div id="correo-revelado" class="email-revealed">
-                        <span id="texto-correo" class="email-text"></span>
+                      <div class="email-revealed">
+                        <span class="email-text">congresocuh@posgradocuh.edu.mx</span>
                         <button id="btn-copiar-correo" type="button" class="btn-copy-email" title="Copiar al portapapeles">
                           <i class="fas fa-copy" aria-hidden="true"></i>
+                          <span>Copiar</span>
                         </button>
                       </div>
                     </div>
@@ -123,11 +122,10 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
   </div>
 </section>
 
-<script define:vars={{ correoBase64 }}>
+<script>
   // Funcionalidad del dropdown de envío
   document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown-wrapper');
-    const spanCorreo = document.getElementById('texto-correo');
     const btnCopiar = document.getElementById('btn-copiar-correo');
 
     if (!dropdown) return;
@@ -135,33 +133,6 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
     const toggle = dropdown.querySelector('.dropdown-toggle');
     const menu = dropdown.querySelector('.dropdown-menu');
     const chevron = toggle?.querySelector('.chevron-icon');
-
-    // Función para decodificar Base64
-    const decodificar = (str) => {
-      try {
-        return atob(str);
-      } catch (e) {
-        console.error('Error al decodificar el correo:', e);
-        return 'correo-invalido';
-      }
-    };
-
-    let emailDecodificado = '';
-    let correoRevelado = false;
-
-    // Función para revelar el correo
-    const revelarCorreo = () => {
-      if (correoRevelado) return;
-      
-      emailDecodificado = decodificar(correoBase64);
-      
-      // Mostrar correo como texto simple (sin mailto)
-      if (spanCorreo) {
-        spanCorreo.textContent = emailDecodificado;
-      }
-
-      correoRevelado = true;
-    };
     
     // Toggle del dropdown
     if (toggle && menu) {
@@ -172,18 +143,13 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
         const isOpen = menu.classList.toggle('show');
         toggle.setAttribute('aria-expanded', isOpen.toString());
         chevron?.classList.toggle('rotated');
-
-        // Revelar el correo al abrir
-        if (isOpen) {
-          revelarCorreo();
-        }
       });
     }
     
     // Cerrar dropdown al hacer click fuera
     document.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target && target.closest && !target.closest('.dropdown-wrapper')) {
+      const target = e.target as HTMLElement;
+      if (target && !target.closest('.dropdown-wrapper')) {
         menu?.classList.remove('show');
         toggle?.setAttribute('aria-expanded', 'false');
         chevron?.classList.remove('rotated');
@@ -192,9 +158,9 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
 
     // Acción de Copiar con mensaje
     btnCopiar?.addEventListener('click', async () => {
-      const email = emailDecodificado || spanCorreo?.textContent || '';
+      const emailText = document.querySelector('.email-text')?.textContent || '';
       try {
-        await navigator.clipboard.writeText(email);
+        await navigator.clipboard.writeText(emailText);
         
         // Cambiar el texto del botón
         const textoOriginal = btnCopiar.innerHTML;
@@ -577,7 +543,7 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
     font-weight: 600;
   }
 
-  /* Email Seguro */
+  /* Email Wrapper */
   .email-wrapper {
     display: flex;
     flex-direction: column;
@@ -609,7 +575,7 @@ const correoBase64 = 'Y29uZ3Jlc29jdWhAcG9zZ3JhZG9jdWguZWR1Lm14';
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    padding: 0.4rem 0.75rem;
+    padding: 0.5rem 0.85rem;
     background: var(--white);
     border: 2px solid var(--primary-color);
     border-radius: 5px;
