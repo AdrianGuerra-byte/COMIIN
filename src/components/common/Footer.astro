@@ -57,8 +57,7 @@
     height: 100px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1));
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
     opacity: 0.9;
     will-change: transform;
     backface-visibility: hidden;
@@ -69,7 +68,6 @@
 
   .footer-logo:hover {
     transform: translateY(-3px) scale(1.05) translateZ(0);
-    filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3));
     opacity: 1;
   }
 
@@ -151,7 +149,7 @@
     }
 
     .footer-logo {
-      height: 45px;
+      height: 60px;
     }
 
     .footer-links {
