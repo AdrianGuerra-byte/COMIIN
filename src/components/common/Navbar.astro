@@ -221,9 +221,12 @@
   document.addEventListener('astro:page-load', initNavbar);
 </script>
 
+
+<!-- Colores aplicados del diseño -->
+
 <style>
   .main-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #01447a 100%);
+    background: #1F407F;
     position: fixed;
     top: 0;
     left: 0;
@@ -234,7 +237,7 @@
   }
 
   .main-header.scrolled {
-    background: rgba(1, 51, 103, 0.98);
+    background: rgba(31, 64, 127, 0.98);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   }
@@ -423,7 +426,7 @@
     top: 0;
     height: 100%;
     width: 3px;
-    background: var(--accent-color);
+    background: #58C2DC;
     transform: scaleY(0);
     transition: transform 0.3s ease;
   }
@@ -656,7 +659,7 @@
     .dropdown-menu a:active,
     .dropdown-menu a:hover {
       background: rgba(255, 255, 255, 0.1);
-      border-left-color: var(--accent-color);
+      border-left-color: #58C2DC;
       padding-left: 2.75rem;
     }
 
