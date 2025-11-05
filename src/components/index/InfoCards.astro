@@ -85,9 +85,10 @@ import { infoCards, categories } from '../../data/infoCards';
   // Reinicializar después de cada navegación de Astro
   document.addEventListener('astro:page-load', initInfoCards);
 </script>
-<!-- TODO: Selector Info Card: #F6542A , bordes #FCA434 -->
-<!-- TODO: Selector Titulos: azul CUH-->
-<!-- TODO: Botones Hipervinculos e Iconos: #58C2DC -->
+<!-- Nueva paleta de colores aplicada -->
+<!-- Selector Info Card: #F6542A (naranja), bordes #FCA434 (naranja claro) -->
+<!-- Títulos: #1F407F (azul CUH) -->
+<!-- Botones e Iconos: #2291C6 (azul más oscuro) -->
 <style>
   .info-cards {
     padding: 4rem 2rem;
@@ -101,7 +102,7 @@ import { infoCards, categories } from '../../data/infoCards';
 
   .section-title h2 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: #1F407F;
     margin: 0;
     font-weight: 700;
     position: relative;
@@ -117,7 +118,7 @@ import { infoCards, categories } from '../../data/infoCards';
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #2291C6;
     border-radius: 2px;
   }
 
@@ -131,28 +132,29 @@ import { infoCards, categories } from '../../data/infoCards';
 
   .category-btn {
     padding: 0.75rem 1.5rem;
-    border: 2px solid var(--primary-color);
+    border: 2px solid #FCA434;
     background: var(--white);
-    color: var(--primary-color);
+    color: #F6542A;
     border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
     font-size: 0.95rem;
-    box-shadow: 0 2px 8px rgba(1, 51, 103, 0.1);
+    box-shadow: 0 2px 8px rgba(246, 84, 42, 0.15);
   }
 
   .category-btn:hover {
-    background: var(--light-color);
+    background: rgba(252, 164, 52, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(246, 84, 42, 0.25);
+    border-color: #F6542A;
   }
 
   .category-btn.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #F6542A;
     color: var(--white);
-    border-color: var(--secondary-color);
-    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.3);
+    border-color: #F6542A;
+    box-shadow: 0 4px 15px rgba(246, 84, 42, 0.35);
   }
 
   .cards-container {

@@ -181,7 +181,7 @@
 
     .section-header h2 {
         font-size: clamp(1.85rem, 5vw, 2.5rem);
-        color: var(--primary-color);
+        color: #1F407F;
         line-height: 1.2;
         margin-block-end: 0.75rem;
         font-weight: 700;
@@ -198,7 +198,7 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        background: #1F407F;
         border-radius: 2px;
     }
 
@@ -240,7 +240,7 @@
     .cuota-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        border-color: var(--primary-color);
+        border-color: #1F407F;
     }
 
     /* Ribbon Lateral */
@@ -248,7 +248,7 @@
         position: absolute;
         top: 20px;
         right: -8px;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        background: #1F407F;
         color: var(--white);
         padding: 0.6rem 1rem;
         font-size: 1.2rem;
@@ -271,7 +271,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, rgba(1, 51, 103, 0.1), rgba(0, 86, 179, 0.1));
+        background: rgba(31, 64, 127, 0.12);
         border-radius: 50%;
         margin-inline: auto;
         margin-block-end: 1.25rem;
@@ -280,16 +280,22 @@
 
     .cuota-card:hover .cuota-icon-wrapper {
         transform: scale(1.1) rotate(5deg);
+        background: #1F407F;
     }
 
     .cuota-icon-wrapper i {
         font-size: 2.2rem;
-        color: var(--primary-color);
+        color: #1F407F;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cuota-card:hover .cuota-icon-wrapper i {
+        color: var(--white);
     }
 
     .cuota-header h3 {
         font-size: clamp(1.4rem, 3vw, 1.7rem);
-        color: var(--primary-color);
+        color: #1F407F;
         font-weight: 700;
         margin: 0 0 0.65rem 0;
         letter-spacing: 0.02em;
@@ -330,14 +336,14 @@
 
     .precio-simbolo {
         font-size: clamp(1.5rem, 3vw, 1.8rem);
-        color: var(--primary-color);
+        color: #1F407F;
         font-weight: 700;
         margin-block-start: 0.3rem;
     }
 
     .precio-cantidad {
         font-size: clamp(2.5rem, 6vw, 3.5rem);
-        color: var(--primary-color);
+        color: #1F407F;
         font-weight: 800;
         line-height: 1;
         letter-spacing: -0.02em;
@@ -409,8 +415,8 @@
         max-width: 100%;
         margin-inline: auto;
         margin-block-start: clamp(2.5rem, 6vw, 3.5rem);
-        background: linear-gradient(135deg, rgba(1, 51, 103, 0.05), rgba(0, 86, 179, 0.05));
-        border-left: 4px solid var(--secondary-color);
+        background: rgba(31, 64, 127, 0.05);
+        border-left: 4px solid #1F407F;
         border-radius: 8px;
         padding: 1.5rem 2rem;
         display: flex;
@@ -421,7 +427,7 @@
     }
 
     .cuotas-nota i {
-        color: var(--secondary-color);
+        color: #1F407F;
         font-size: 1.5rem;
         flex-shrink: 0;
         margin-block-start: 0.15rem;
@@ -436,7 +442,7 @@
     }
 
     .cuotas-nota strong {
-        color: var(--primary-color);
+        color: #1F407F;
         font-weight: 700;
     }
 

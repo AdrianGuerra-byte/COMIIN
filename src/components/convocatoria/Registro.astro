@@ -56,7 +56,7 @@
 
 .section-title h2 {
     font-size: clamp(1.85rem, 5vw, 2.5rem);
-    color: var(--primary-color);
+    color: #1F407F;
     line-height: 1.2;
     margin-block-end: 0.75rem;
     font-weight: 700;
@@ -73,7 +73,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
 }
 
@@ -102,12 +102,7 @@
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-top: 4px solid transparent;
-    background-image: 
-        linear-gradient(var(--white), var(--white)),
-        linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border-top: 4px solid #1F407F;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,7 +128,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.1), rgba(0, 86, 179, 0.1));
+    background: rgba(31, 64, 127, 0.12);
     border-radius: 50%;
     margin-block-end: 1.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,16 +136,21 @@
 
 .registro-icon i {
     font-size: clamp(2rem, 5vw, 2.5rem);
-    color: var(--primary-color);
+    color: #1F407F;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .registro-card:hover .registro-icon {
     transform: scale(1.1) rotate(5deg);
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.15), rgba(0, 86, 179, 0.15));
+    background: #1F407F;
+}
+
+.registro-card:hover .registro-icon i {
+    color: var(--white);
 }
 
 .registro-card h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     margin-block-end: 1rem;
     font-size: clamp(1.35rem, 3.5vw, 1.6rem);
     font-weight: 700;
@@ -171,7 +171,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     padding: clamp(0.85rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.5rem);
     border-radius: 8px;
@@ -182,16 +182,16 @@
     border: 2px solid transparent;
     width: 100%;
     max-width: 280px;
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.25);
     letter-spacing: 0.02em;
 }
 
 .registro-btn:hover {
     background: var(--white);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    color: #1F407F;
+    border-color: #1F407F;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(1, 51, 103, 0.3);
+    box-shadow: 0 8px 20px rgba(31, 64, 127, 0.35);
 }
 
 .registro-btn i {

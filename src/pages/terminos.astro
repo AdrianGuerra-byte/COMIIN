@@ -353,7 +353,7 @@ import Footer from '../components/common/Footer.astro';
   .section-header h1 {
     font-size: clamp(1.85rem, 5vw, 2.5rem);
     font-weight: 700;
-    color: var(--primary-color);
+    color: #1F407F;
     margin-block-end: 1.5rem;
     position: relative;
     display: inline-block;
@@ -368,7 +368,7 @@ import Footer from '../components/common/Footer.astro';
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
   }
 
@@ -376,17 +376,17 @@ import Footer from '../components/common/Footer.astro';
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.06), rgba(0, 86, 179, 0.08));
+    background: rgba(34, 145, 198, 0.08);
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
     margin-block-end: 1.25rem;
     font-size: clamp(0.9rem, 1.8vw, 0.95rem);
     color: var(--text-color);
-    border: 1px solid rgba(1, 51, 103, 0.1);
+    border: 1px solid rgba(34, 145, 198, 0.2);
   }
 
   .update-info i {
-    color: var(--secondary-color);
+    color: #2291C6;
   }
 
   .intro-text {
@@ -418,7 +418,7 @@ import Footer from '../components/common/Footer.astro';
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: calc(var(--navbar-height, 80px) + 2rem);
-    border-top: 4px solid var(--primary-color);
+    border-top: 4px solid #1F407F;
     max-height: calc(100vh - var(--navbar-height, 80px) - 4rem);
     overflow-y: auto;
   }
@@ -429,17 +429,17 @@ import Footer from '../components/common/Footer.astro';
     gap: 0.75rem;
     margin-block-end: 1.5rem;
     padding-block-end: 1rem;
-    border-bottom: 2px solid rgba(1, 51, 103, 0.1);
+    border-bottom: 2px solid rgba(31, 64, 127, 0.1);
   }
 
   .toc-header i {
-    color: var(--secondary-color);
+    color: #2291C6;
     font-size: 1.25rem;
   }
 
   .toc-header h2 {
     font-size: clamp(1.15rem, 2.5vw, 1.3rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     margin: 0;
   }
@@ -478,8 +478,8 @@ import Footer from '../components/common/Footer.astro';
     justify-content: center;
     width: 24px;
     height: 24px;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.08), rgba(0, 86, 179, 0.1));
-    color: var(--primary-color);
+    background: rgba(31, 64, 127, 0.12);
+    color: #1F407F;
     border-radius: 50%;
     font-weight: 700;
     font-size: 0.75rem;
@@ -487,20 +487,20 @@ import Footer from '../components/common/Footer.astro';
   }
 
   .toc-link:hover {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.04), rgba(0, 86, 179, 0.06));
+    background: rgba(31, 64, 127, 0.06);
     transform: translateX(4px);
-    border-left-color: var(--secondary-color);
+    border-left-color: #2291C6;
   }
 
   .toc-link.active {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.1), rgba(0, 86, 179, 0.12));
-    color: var(--primary-color);
-    border-left-color: var(--secondary-color);
+    background: rgba(31, 64, 127, 0.1);
+    color: #1F407F;
+    border-left-color: #2291C6;
     font-weight: 600;
   }
 
   .toc-link.active::before {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
   }
 
@@ -509,7 +509,7 @@ import Footer from '../components/common/Footer.astro';
     padding: clamp(2rem, 4vw, 3rem);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-top: 4px solid var(--secondary-color);
+    border-top: 4px solid #2291C6;
   }
 
   .content-section {
@@ -528,7 +528,7 @@ import Footer from '../components/common/Footer.astro';
 
   .content-section header h2 {
     font-size: clamp(1.4rem, 3vw, 1.75rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     margin-block-end: 1.5rem;
     display: flex;
@@ -542,13 +542,13 @@ import Footer from '../components/common/Footer.astro';
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     border-radius: 10px;
     font-weight: 700;
     font-size: 1.1rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.2);
   }
 
   .content-section p {
@@ -565,20 +565,20 @@ import Footer from '../components/common/Footer.astro';
   }
 
   .info-box {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.04), rgba(0, 86, 179, 0.06));
+    background: rgba(34, 145, 198, 0.08);
     padding: clamp(1.25rem, 2.5vw, 1.5rem);
     border-radius: 12px;
-    border-inline-start: 4px solid var(--secondary-color);
+    border-inline-start: 4px solid #2291C6;
     margin: 1.5rem 0;
   }
 
   .info-box.important {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(255, 152, 0, 0.1));
+    background: rgba(255, 193, 7, 0.08);
     border-inline-start-color: #ff9800;
   }
 
   .info-box.warning {
-    background: linear-gradient(135deg, rgba(244, 67, 54, 0.06), rgba(239, 83, 80, 0.08));
+    background: rgba(244, 67, 54, 0.06);
     border-inline-start-color: #ef5350;
   }
 
@@ -591,7 +591,7 @@ import Footer from '../components/common/Footer.astro';
 
   .info-box-header i {
     font-size: 1.25rem;
-    color: var(--secondary-color);
+    color: #2291C6;
   }
 
   .info-box.important .info-box-header i {
@@ -604,7 +604,7 @@ import Footer from '../components/common/Footer.astro';
 
   .info-box-header h3 {
     font-size: clamp(1rem, 2.2vw, 1.1rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 600;
     margin: 0;
   }
@@ -651,7 +651,7 @@ import Footer from '../components/common/Footer.astro';
   }
 
   .feature-list li {
-    border-left-color: var(--secondary-color);
+    border-left-color: #2291C6;
   }
 
   .prohibited-list li {
@@ -660,12 +660,12 @@ import Footer from '../components/common/Footer.astro';
 
   .feature-list li:hover,
   .prohibited-list li:hover {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.06), rgba(0, 86, 179, 0.08));
+    background: rgba(31, 64, 127, 0.06);
     transform: translateX(4px);
   }
 
   .feature-list i {
-    color: var(--secondary-color);
+    color: #2291C6;
     font-size: 1.25rem;
     flex-shrink: 0;
     margin-top: 0.15rem;
@@ -681,9 +681,9 @@ import Footer from '../components/common/Footer.astro';
   .contact-box {
     margin-block-start: clamp(2.5rem, 5vw, 3.5rem);
     padding: clamp(1.75rem, 3vw, 2.25rem);
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.06), rgba(0, 86, 179, 0.08));
+    background: rgba(34, 145, 198, 0.08);
     border-radius: 16px;
-    border: 2px solid rgba(1, 51, 103, 0.15);
+    border: 2px solid rgba(34, 145, 198, 0.25);
   }
 
   .contact-box-header {
@@ -695,12 +695,12 @@ import Footer from '../components/common/Footer.astro';
 
   .contact-box-header i {
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: #2291C6;
   }
 
   .contact-box-header h3 {
     font-size: clamp(1.15rem, 2.5vw, 1.35rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     margin: 0;
   }
@@ -723,20 +723,20 @@ import Footer from '../components/common/Footer.astro';
     gap: 0.75rem;
     padding: 0.75rem 1.25rem;
     background: var(--white);
-    color: var(--primary-color);
+    color: #1F407F;
     text-decoration: none;
     border-radius: 50px;
     font-weight: 600;
     font-size: clamp(0.9rem, 1.8vw, 0.95rem);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--primary-color);
+    border: 2px solid #1F407F;
   }
 
   .contact-method:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(1, 51, 103, 0.25);
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.25);
   }
 
   .contact-method i {
@@ -778,12 +778,12 @@ import Footer from '../components/common/Footer.astro';
   }
 
   .table-of-contents::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 10px;
   }
 
   .table-of-contents::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-color);
+    background: #1F407F;
   }
 
   @media (max-width: 1024px) {
@@ -854,7 +854,7 @@ import Footer from '../components/common/Footer.astro';
 
   .toc-link:focus-visible,
   .contact-method:focus-visible {
-    outline: 3px solid var(--secondary-color);
+    outline: 3px solid #2291C6;
     outline-offset: 3px;
   }
 

@@ -166,7 +166,7 @@
 
   .section-header h2 {
     font-size: clamp(1.85rem, 5vw, 2.5rem);
-    color: var(--primary-color);
+    color: #1F407F;
     line-height: 1.2;
     margin-block-end: 0.75rem;
     font-weight: 700;
@@ -183,7 +183,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
   }
 
@@ -209,12 +209,7 @@
     border-radius: 12px;
     padding: 2.25rem 2rem;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-    border-top: 4px solid transparent;
-    background-image: 
-      linear-gradient(var(--white), var(--white)),
-      linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border-top: 4px solid #1F407F;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -229,18 +224,109 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   }
 
+  /* Colores por categoría - Áreas Temáticas */
+  /* Card 1: Sistemas y Tecnología - Ciencias Exactas */
+  .areas-grid .area-card:nth-child(1) {
+    border-top-color: #26408F;
+  }
+
+  .areas-grid .area-card:nth-child(1) .icon-wrapper {
+    background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
+    box-shadow: 0 4px 12px rgba(38, 64, 143, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(1) h3,
+  .areas-grid .area-card:nth-child(1) li i {
+    color: #26408F;
+  }
+
+  /* Card 2: Psicología y Neurociencias - Ciencias de la Salud */
+  .areas-grid .area-card:nth-child(2) {
+    border-top-color: #2291C6;
+  }
+
+  .areas-grid .area-card:nth-child(2) .icon-wrapper {
+    background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
+    box-shadow: 0 4px 12px rgba(34, 145, 198, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(2) h3,
+  .areas-grid .area-card:nth-child(2) li i {
+    color: #2291C6;
+  }
+
+  /* Card 3: Derecho y Justicia Social - Ciencias Sociales */
+  .areas-grid .area-card:nth-child(3) {
+    border-top-color: #FA7C2C;
+  }
+
+  .areas-grid .area-card:nth-child(3) .icon-wrapper {
+    background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
+    box-shadow: 0 4px 12px rgba(250, 124, 44, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(3) h3,
+  .areas-grid .area-card:nth-child(3) li i {
+    color: #FA7C2C;
+  }
+
+  /* Card 4: Administración y Negocios - Económico Administrativas */
+  .areas-grid .area-card:nth-child(4) {
+    border-top-color: #EC4464;
+  }
+
+  .areas-grid .area-card:nth-child(4) .icon-wrapper {
+    background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
+    box-shadow: 0 4px 12px rgba(236, 68, 100, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(4) h3,
+  .areas-grid .area-card:nth-child(4) li i {
+    color: #EC4464;
+  }
+
+  /* Card 5: Educación y Pedagogía - Ciencias Sociales */
+  .areas-grid .area-card:nth-child(5) {
+    border-top-color: #FCA434;
+  }
+
+  .areas-grid .area-card:nth-child(5) .icon-wrapper {
+    background: linear-gradient(135deg, #FCA434 0%, #FA7C2C 100%);
+    box-shadow: 0 4px 12px rgba(252, 164, 52, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(5) h3,
+  .areas-grid .area-card:nth-child(5) li i {
+    color: #FCA434;
+  }
+
+  /* Card 6: Ciencias Sociales - Ciencias Sociales */
+  .areas-grid .area-card:nth-child(6) {
+    border-top-color: #F45429;
+  }
+
+  .areas-grid .area-card:nth-child(6) .icon-wrapper {
+    background: linear-gradient(135deg, #F45429 0%, #FA7C2C 100%);
+    box-shadow: 0 4px 12px rgba(244, 84, 41, 0.25);
+  }
+
+  .areas-grid .area-card:nth-child(6) h3,
+  .areas-grid .area-card:nth-child(6) li i {
+    color: #F45429;
+  }
+
   /* Icon Wrapper */
   .icon-wrapper {
     width: 80px;
     height: 80px;
     margin-inline: auto;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.25);
   }
 
   .area-card:hover .icon-wrapper {
@@ -254,7 +340,7 @@
 
   /* Card Title */
   .area-card h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     font-size: clamp(1.15rem, 2.5vw, 1.3rem);
     font-weight: 700;
     margin: 0;
@@ -285,11 +371,10 @@
 
   .area-card li:hover {
     transform: translateX(4px);
-    color: var(--primary-color);
   }
 
   .area-card li i {
-    color: var(--primary-color);
+    color: #1F407F;
     font-size: 0.75rem;
     margin-block-start: 0.3rem;
     flex-shrink: 0;

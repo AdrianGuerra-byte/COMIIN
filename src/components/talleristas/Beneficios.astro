@@ -84,7 +84,7 @@
 
   .section-header h2 {
     font-size: clamp(1.85rem, 5vw, 2.5rem);
-    color: var(--primary-color);
+    color: #1F407F;
     line-height: 1.2;
     margin-block-end: 0.75rem;
     font-weight: 700;
@@ -101,7 +101,7 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
   }
 
@@ -128,12 +128,7 @@
     padding: 2.25rem 2rem;
     text-align: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-    border-top: 4px solid transparent;
-    background-image: 
-      linear-gradient(var(--white), var(--white)),
-      linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+    border-top: 4px solid #1F407F;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
@@ -147,18 +142,103 @@
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   }
 
+  /* Colores por tipo de beneficio */
+  /* Card 1: Constancia Oficial - Ciencias Exactas */
+  .beneficios-grid .beneficio-card:nth-child(1) {
+    border-top-color: #26408F;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(1) .icon-wrapper {
+    background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
+    box-shadow: 0 4px 12px rgba(38, 64, 143, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(1) h3 {
+    color: #26408F;
+  }
+
+  /* Card 2: Networking - Ciencias Sociales */
+  .beneficios-grid .beneficio-card:nth-child(2) {
+    border-top-color: #FA7C2C;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(2) .icon-wrapper {
+    background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
+    box-shadow: 0 4px 12px rgba(250, 124, 44, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(2) h3 {
+    color: #FA7C2C;
+  }
+
+  /* Card 3: Difusión - Ciencias de la Salud */
+  .beneficios-grid .beneficio-card:nth-child(3) {
+    border-top-color: #2291C6;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(3) .icon-wrapper {
+    background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
+    box-shadow: 0 4px 12px rgba(34, 145, 198, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(3) h3 {
+    color: #2291C6;
+  }
+
+  /* Card 4: Kit de Tallerista - Económico Administrativas */
+  .beneficios-grid .beneficio-card:nth-child(4) {
+    border-top-color: #EC4464;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(4) .icon-wrapper {
+    background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
+    box-shadow: 0 4px 12px rgba(236, 68, 100, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(4) h3 {
+    color: #EC4464;
+  }
+
+  /* Card 5: Publicación - Ciencias Sociales */
+  .beneficios-grid .beneficio-card:nth-child(5) {
+    border-top-color: #FCA434;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(5) .icon-wrapper {
+    background: linear-gradient(135deg, #FCA434 0%, #FA7C2C 100%);
+    box-shadow: 0 4px 12px rgba(252, 164, 52, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(5) h3 {
+    color: #FCA434;
+  }
+
+  /* Card 6: Impacto - Ciencias de la Salud */
+  .beneficios-grid .beneficio-card:nth-child(6) {
+    border-top-color: #33A8D2;
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(6) .icon-wrapper {
+    background: linear-gradient(135deg, #33A8D2 0%, #2291C6 100%);
+    box-shadow: 0 4px 12px rgba(51, 168, 210, 0.25);
+  }
+
+  .beneficios-grid .beneficio-card:nth-child(6) h3 {
+    color: #33A8D2;
+  }
+
   /* Icon Wrapper */
   .icon-wrapper {
     width: 80px;
     height: 80px;
     margin-inline: auto;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.25);
   }
 
   .beneficio-card:hover .icon-wrapper {
@@ -172,7 +252,7 @@
 
   /* Card Content */
   .beneficio-card h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     font-size: clamp(1.15rem, 2.5vw, 1.3rem);
     font-weight: 700;
     margin: 0;

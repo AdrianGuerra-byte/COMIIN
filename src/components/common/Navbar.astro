@@ -222,7 +222,9 @@
 </script>
 
 
-<!-- Colores aplicados del diseño -->
+<!-- Paleta de colores actualizada -->
+<!-- Color Navbar: #1F407F -->
+<!-- Color Selector/Hover: #58C2DC -->
 
 <style>
   .main-header {
@@ -325,7 +327,7 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--white), transparent);
+    background: linear-gradient(90deg, transparent, #58C2DC, transparent);
     transition: width 0.3s ease;
   }
 
@@ -334,7 +336,7 @@
   }
 
   .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(88, 194, 220, 0.1);
     color: var(--white);
     transform: translateY(-2px);
   }
@@ -349,7 +351,7 @@
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.98) 0%, rgba(1, 68, 122, 0.98) 100%);
+    background: linear-gradient(135deg, rgba(31, 64, 127, 0.98) 0%, rgba(31, 64, 127, 0.98) 100%);
     backdrop-filter: blur(10px);
     list-style: none;
     min-width: 240px;
@@ -360,7 +362,7 @@
     transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(88, 194, 220, 0.2);
   }
 
   .dropdown-right {
@@ -436,7 +438,7 @@
   }
 
   .dropdown-menu a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(88, 194, 220, 0.15);
     padding-left: 2rem;
     color: var(--white);
   }
@@ -528,7 +530,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, var(--primary-color) 0%, #011d33 100%);
+      background: linear-gradient(180deg, #1F407F 0%, #0d1f3d 100%);
       flex-direction: column;
       gap: 0;
       padding: 1rem 0 2rem 0;
@@ -587,7 +589,7 @@
     /* Hover/Active states para móvil */
     .nav-link:active,
     .has-dropdown.dropdown-open > .nav-link {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(88, 194, 220, 0.12);
       transform: none;
     }
 
@@ -658,7 +660,7 @@
 
     .dropdown-menu a:active,
     .dropdown-menu a:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(88, 194, 220, 0.1);
       border-left-color: #58C2DC;
       padding-left: 2.75rem;
     }

@@ -1,7 +1,7 @@
 ---
 // Video Resumen CINCISOH 2024
 ---
-<!-- TODO: Checks verdes a Azul #58C2DC -->
+
 <section class="video-section">
   <div class="container">
     <div class="video-layout">
@@ -57,10 +57,6 @@
           ></iframe>
           <div class="video-overlay"></div>
         </div>
-        <div class="video-badge">
-          <i class="fas fa-play-circle" aria-hidden="true"></i>
-          <span>Ver video resumen</span>
-        </div>
       </article>
     </div>
   </div>
@@ -80,10 +76,10 @@
     position: absolute;
     inset: 0;
     background-image: 
-      linear-gradient(45deg, rgba(1, 51, 103, 0.02) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(1, 51, 103, 0.02) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(1, 51, 103, 0.02) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(1, 51, 103, 0.02) 75%);
+      linear-gradient(45deg, rgba(31, 64, 127, 0.02) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(31, 64, 127, 0.02) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(31, 64, 127, 0.02) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(31, 64, 127, 0.02) 75%);
     background-size: 60px 60px;
     background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
     pointer-events: none;
@@ -121,12 +117,8 @@
   .highlight {
     font-size: clamp(2.5rem, 6vw, 3.5rem);
     font-weight: 800;
-    color: var(--primary-color);
+    color: #1F407F;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
 
   .subtitle {
@@ -167,7 +159,7 @@
   }
 
   .video-highlights i {
-    color: var(--accent-color);
+    color: #2291C6;
     font-size: 1.25rem;
     flex-shrink: 0;
   }
@@ -184,7 +176,7 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(1, 51, 103, 0.1);
+    border: 2px solid #1F407F;
     background: var(--primary-color);
   }
 
@@ -202,8 +194,8 @@
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(1, 51, 103, 0.1) 0%,
-      rgba(0, 86, 179, 0.05) 100%
+      rgba(31, 64, 127, 0.1) 0%,
+      rgba(34, 145, 198, 0.05) 100%
     );
     pointer-events: none;
     opacity: 0;
@@ -212,40 +204,6 @@
 
   .video-wrapper:hover .video-overlay {
     opacity: 1;
-  }
-
-  /* Badge del video */
-  .video-badge {
-    position: absolute;
-    inset-block-end: -1.25rem;
-    inset-inline-start: 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    box-shadow: 0 8px 24px rgba(1, 51, 103, 0.3);
-    z-index: 2;
-  }
-
-  .video-badge i {
-    font-size: 1.25rem;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.1);
-    }
   }
 
   /* Responsive */
@@ -271,11 +229,6 @@
     .video-highlights li {
       text-align: left;
     }
-
-    .video-badge {
-      inset-inline-start: 50%;
-      transform: translateX(-50%);
-    }
   }
 
   @media (max-width: 768px) {
@@ -297,12 +250,6 @@
 
     .video-wrapper {
       border-radius: 12px;
-    }
-
-    .video-badge {
-      padding: 0.625rem 1.25rem;
-      font-size: 0.875rem;
-      inset-block-end: -1rem;
     }
   }
 
@@ -333,14 +280,6 @@
 
     .video-highlights i {
       font-size: 1.1rem;
-    }
-
-    .video-badge {
-      position: static;
-      transform: none;
-      margin-block-start: 1.5rem;
-      margin-inline: auto;
-      width: fit-content;
     }
   }
 </style>

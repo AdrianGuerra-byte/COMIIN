@@ -185,7 +185,7 @@
 
     .section-header h2 {
         font-size: clamp(1.85rem, 5vw, 2.5rem);
-        color: var(--primary-color);
+        color: #1F407F;
         line-height: 1.2;
         margin-block-end: 0.75rem;
         font-weight: 700;
@@ -202,7 +202,7 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        background: #1F407F;
         border-radius: 2px;
     }
 
@@ -230,16 +230,30 @@
         padding: clamp(1.75rem, 4vw, 2.25rem);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-top: 4px solid transparent;
-        background-image: 
-            linear-gradient(var(--white), var(--white)),
-            linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        background-origin: border-box;
-        background-clip: padding-box, border-box;
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
         animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+        position: relative;
+        overflow: hidden;
+        border-top: 4px solid transparent;
+    }
+
+    .eje-card::before {
+        content: '';
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    .eje-card:hover::before {
+        transform: scaleX(1);
     }
 
     .eje-card:nth-child(1) { animation-delay: 0.1s; }
@@ -254,6 +268,169 @@
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
     }
 
+    /* Colores por categoría - Ejes Temáticos */
+    /* Card 1: Educación y Pedagogía - Ciencias Sociales */
+    .ejes-grid .eje-card:nth-child(1) .eje-icon-wrapper {
+        background: rgba(252, 164, 52, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(1) .eje-icon-wrapper i {
+        color: #FCA434;
+    }
+
+    .ejes-grid .eje-card:nth-child(1) h3,
+    .ejes-grid .eje-card:nth-child(1) .temas-lista li i {
+        color: #FCA434;
+    }
+
+    .ejes-grid .eje-card:nth-child(1):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #FCA434 0%, #FA7C2C 100%);
+        box-shadow: 0 4px 12px rgba(252, 164, 52, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(1):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(1):hover::before {
+        background: #FCA434;
+    }
+
+    /* Card 2: Psicología - Ciencias de la Salud */
+    .ejes-grid .eje-card:nth-child(2) .eje-icon-wrapper {
+        background: rgba(34, 145, 198, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(2) .eje-icon-wrapper i {
+        color: #2291C6;
+    }
+
+    .ejes-grid .eje-card:nth-child(2) h3,
+    .ejes-grid .eje-card:nth-child(2) .temas-lista li i {
+        color: #2291C6;
+    }
+
+    .ejes-grid .eje-card:nth-child(2):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
+        box-shadow: 0 4px 12px rgba(34, 145, 198, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(2):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(2):hover::before {
+        background: #2291C6;
+    }
+
+    /* Card 3: Derecho - Ciencias Sociales */
+    .ejes-grid .eje-card:nth-child(3) .eje-icon-wrapper {
+        background: rgba(250, 124, 44, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(3) .eje-icon-wrapper i {
+        color: #FA7C2C;
+    }
+
+    .ejes-grid .eje-card:nth-child(3) h3,
+    .ejes-grid .eje-card:nth-child(3) .temas-lista li i {
+        color: #FA7C2C;
+    }
+
+    .ejes-grid .eje-card:nth-child(3):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
+        box-shadow: 0 4px 12px rgba(250, 124, 44, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(3):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(3):hover::before {
+        background: #FA7C2C;
+    }
+
+    /* Card 4: Administración y Contaduría - Económico Administrativas */
+    .ejes-grid .eje-card:nth-child(4) .eje-icon-wrapper {
+        background: rgba(236, 68, 100, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(4) .eje-icon-wrapper i {
+        color: #EC4464;
+    }
+
+    .ejes-grid .eje-card:nth-child(4) h3,
+    .ejes-grid .eje-card:nth-child(4) .temas-lista li i {
+        color: #EC4464;
+    }
+
+    .ejes-grid .eje-card:nth-child(4):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
+        box-shadow: 0 4px 12px rgba(236, 68, 100, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(4):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(4):hover::before {
+        background: #EC4464;
+    }
+
+    /* Card 5: Sistemas y Tecnología - Ciencias Exactas */
+    .ejes-grid .eje-card:nth-child(5) .eje-icon-wrapper {
+        background: rgba(38, 64, 143, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(5) .eje-icon-wrapper i {
+        color: #26408F;
+    }
+
+    .ejes-grid .eje-card:nth-child(5) h3,
+    .ejes-grid .eje-card:nth-child(5) .temas-lista li i {
+        color: #26408F;
+    }
+
+    .ejes-grid .eje-card:nth-child(5):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
+        box-shadow: 0 4px 12px rgba(38, 64, 143, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(5):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(5):hover::before {
+        background: #26408F;
+    }
+
+    /* Card 6: Ciencias Sociales - Ciencias Sociales */
+    .ejes-grid .eje-card:nth-child(6) .eje-icon-wrapper {
+        background: rgba(244, 84, 41, 0.12);
+    }
+
+    .ejes-grid .eje-card:nth-child(6) .eje-icon-wrapper i {
+        color: #F45429;
+    }
+
+    .ejes-grid .eje-card:nth-child(6) h3,
+    .ejes-grid .eje-card:nth-child(6) .temas-lista li i {
+        color: #F45429;
+    }
+
+    .ejes-grid .eje-card:nth-child(6):hover .eje-icon-wrapper {
+        background: linear-gradient(135deg, #F45429 0%, #FA7C2C 100%);
+        box-shadow: 0 4px 12px rgba(244, 84, 41, 0.25);
+    }
+
+    .ejes-grid .eje-card:nth-child(6):hover .eje-icon-wrapper i {
+        color: var(--white);
+    }
+
+    .ejes-grid .eje-card:nth-child(6):hover::before {
+        background: #F45429;
+    }
+
     /* Icon Wrapper */
     .eje-icon-wrapper {
         width: 80px;
@@ -261,7 +438,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, rgba(1, 51, 103, 0.1), rgba(0, 86, 179, 0.1));
+        background: rgba(31, 64, 127, 0.12);
         border-radius: 50%;
         margin-inline: auto;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -269,12 +446,11 @@
 
     .eje-icon-wrapper i {
         font-size: clamp(2rem, 5vw, 2.5rem);
-        color: var(--primary-color);
+        color: #1F407F;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .eje-card:hover .eje-icon-wrapper {
-        background: linear-gradient(135deg, rgba(1, 51, 103, 0.15), rgba(0, 86, 179, 0.15));
         transform: scale(1.05);
     }
 
@@ -284,7 +460,7 @@
 
     /* Título */
     .eje-card h3 {
-        color: var(--primary-color);
+        color: #1F407F;
         font-size: clamp(1.25rem, 3vw, 1.5rem);
         font-weight: 700;
         text-align: center;
@@ -321,7 +497,7 @@
     }
 
     .temas-lista li i {
-        color: var(--primary-color);
+        color: #1F407F;
         font-size: 0.75rem;
         margin-block-start: 0.35rem;
         flex-shrink: 0;
@@ -330,7 +506,6 @@
 
     .temas-lista li:hover i {
         transform: translateX(3px);
-        color: var(--secondary-color);
     }
 
     .temas-lista li span {

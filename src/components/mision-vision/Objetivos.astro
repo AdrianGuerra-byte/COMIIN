@@ -1,8 +1,6 @@
 ---
 // Objetivos y Valores COMIIN 2026
 ---
-<!-- TODO: TITUlos Azul CUH -->
-<!-- TODO: Fondo container azul #58C2DC -->
 
 <!-- Sección Objetivos -->
 <section class="objetivos-section">
@@ -187,7 +185,7 @@
 
   .section-header h2 {
     font-size: clamp(2rem, 5vw, 2.75rem);
-    color: var(--primary-color);
+    color: #1F407F;
     line-height: 1.2;
     margin-block-end: 1rem;
     position: relative;
@@ -203,18 +201,18 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
   }
 
   /* Objetivo General */
   .objetivo-general {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.04), rgba(0, 86, 179, 0.06));
+    background: rgba(34, 145, 198, 0.08);
     padding: 2.5rem;
     border-radius: 16px;
     margin-block-end: 4rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    border-inline-start: 5px solid var(--secondary-color);
+    border-inline-start: 5px solid #2291C6;
     position: relative;
     overflow: hidden;
   }
@@ -226,12 +224,12 @@
     inset-inline-end: 0;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, rgba(0, 86, 179, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(34, 145, 198, 0.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .objetivo-general h3 {
-    color: var(--secondary-color);
+    color: #2291C6;
     margin-block-end: 1.5rem;
     font-size: clamp(1.5rem, 4vw, 1.8rem);
     text-align: center;
@@ -256,7 +254,7 @@
   }
 
   .objetivos-particulares h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     margin-block-end: 2.5rem;
     font-size: clamp(1.75rem, 4vw, 2rem);
     text-align: center;
@@ -309,7 +307,7 @@
     height: 70px;
     margin-inline: auto;
     margin-block-end: 1.5rem;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.08), rgba(0, 86, 179, 0.12));
+    background: rgba(31, 64, 127, 0.08);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -317,14 +315,124 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Category-specific colors for Objetivos Particulares */
+  /* Card 1: Socialización del Conocimiento - Ciencias Sociales */
+  .objetivos-particulares .objetivo-card:nth-child(1) .icono-wrapper {
+    background: rgba(250, 124, 44, 0.12);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(1) .icono-wrapper i {
+    color: #FA7C2C;
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(1):hover .icono-wrapper {
+    background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
+    box-shadow: 0 8px 20px rgba(250, 124, 44, 0.25);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(1):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(1):hover::before {
+    background: #FA7C2C;
+  }
+
+  /* Card 2: Fortalecimiento de Habilidades - Ciencias de la Salud */
+  .objetivos-particulares .objetivo-card:nth-child(2) .icono-wrapper {
+    background: rgba(34, 145, 198, 0.12);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(2) .icono-wrapper i {
+    color: #2291C6;
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(2):hover .icono-wrapper {
+    background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
+    box-shadow: 0 8px 20px rgba(34, 145, 198, 0.25);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(2):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(2):hover::before {
+    background: #2291C6;
+  }
+
+  /* Card 3: Integración Multidisciplinaria - Ciencias Exactas */
+  .objetivos-particulares .objetivo-card:nth-child(3) .icono-wrapper {
+    background: rgba(38, 64, 143, 0.12);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(3) .icono-wrapper i {
+    color: #26408F;
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(3):hover .icono-wrapper {
+    background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
+    box-shadow: 0 8px 20px rgba(38, 64, 143, 0.25);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(3):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(3):hover::before {
+    background: #26408F;
+  }
+
+  /* Card 4: Redes de Colaboración - Ciencias Sociales */
+  .objetivos-particulares .objetivo-card:nth-child(4) .icono-wrapper {
+    background: rgba(252, 164, 52, 0.12);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(4) .icono-wrapper i {
+    color: #FCA434;
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(4):hover .icono-wrapper {
+    background: linear-gradient(135deg, #FCA434 0%, #FA7C2C 100%);
+    box-shadow: 0 8px 20px rgba(252, 164, 52, 0.25);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(4):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(4):hover::before {
+    background: #FCA434;
+  }
+
+  /* Card 5: Vinculación Académica - Económico Administrativas */
+  .objetivos-particulares .objetivo-card:nth-child(5) .icono-wrapper {
+    background: rgba(236, 68, 100, 0.12);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(5) .icono-wrapper i {
+    color: #EC4464;
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(5):hover .icono-wrapper {
+    background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
+    box-shadow: 0 8px 20px rgba(236, 68, 100, 0.25);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(5):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .objetivos-particulares .objetivo-card:nth-child(5):hover::before {
+    background: #EC4464;
+  }
+
   .objetivo-card:hover .icono-wrapper {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     transform: scale(1.1) rotate(5deg);
   }
 
   .icono-wrapper i {
     font-size: 2rem;
-    color: var(--secondary-color);
+    color: #1F407F;
     transition: color 0.3s ease;
   }
 
@@ -335,14 +443,14 @@
   .objetivo-card h4 {
     margin-block-end: 1rem;
     font-size: clamp(1.15rem, 2.5vw, 1.3rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     transition: color 0.3s ease;
     line-height: 1.3;
   }
 
   .objetivo-card:hover h4 {
-    color: var(--secondary-color);
+    color: #1F407F;
   }
 
   .objetivo-card p {
@@ -356,6 +464,14 @@
   .valores-section {
     padding: 5rem 2rem;
     background: linear-gradient(180deg, #dee2e6 0%, var(--white) 100%);
+  }
+
+  .valores-section .section-header h2 {
+    color: #1F407F;
+  }
+
+  .valores-section .section-header h2::after {
+    background: #1F407F;
   }
 
   .valores-grid {
@@ -404,7 +520,7 @@
     height: 80px;
     margin-inline: auto;
     margin-block-end: 1.5rem;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.08), rgba(0, 86, 179, 0.12));
+    background: rgba(31, 64, 127, 0.08);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -412,14 +528,146 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* Category-specific colors for Valores */
+  /* Valor 1: Excelencia Académica - Ciencias Exactas */
+  .valores-grid .valor-card:nth-child(1) .icono-wrapper {
+    background: rgba(38, 64, 143, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(1) .icono-wrapper i {
+    color: #26408F;
+  }
+
+  .valores-grid .valor-card:nth-child(1):hover .icono-wrapper {
+    background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
+    box-shadow: 0 8px 20px rgba(38, 64, 143, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(1):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(1):hover::before {
+    background: #26408F;
+  }
+
+  /* Valor 2: Colaboración - Ciencias Sociales */
+  .valores-grid .valor-card:nth-child(2) .icono-wrapper {
+    background: rgba(250, 124, 44, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(2) .icono-wrapper i {
+    color: #FA7C2C;
+  }
+
+  .valores-grid .valor-card:nth-child(2):hover .icono-wrapper {
+    background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
+    box-shadow: 0 8px 20px rgba(250, 124, 44, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(2):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(2):hover::before {
+    background: #FA7C2C;
+  }
+
+  /* Valor 3: Innovación - Ciencias de la Salud */
+  .valores-grid .valor-card:nth-child(3) .icono-wrapper {
+    background: rgba(34, 145, 198, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(3) .icono-wrapper i {
+    color: #2291C6;
+  }
+
+  .valores-grid .valor-card:nth-child(3):hover .icono-wrapper {
+    background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
+    box-shadow: 0 8px 20px rgba(34, 145, 198, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(3):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(3):hover::before {
+    background: #2291C6;
+  }
+
+  /* Valor 4: Inclusión - Económico Administrativas */
+  .valores-grid .valor-card:nth-child(4) .icono-wrapper {
+    background: rgba(236, 68, 100, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(4) .icono-wrapper i {
+    color: #EC4464;
+  }
+
+  .valores-grid .valor-card:nth-child(4):hover .icono-wrapper {
+    background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
+    box-shadow: 0 8px 20px rgba(236, 68, 100, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(4):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(4):hover::before {
+    background: #EC4464;
+  }
+
+  /* Valor 5: Sostenibilidad - Ciencias de la Salud */
+  .valores-grid .valor-card:nth-child(5) .icono-wrapper {
+    background: rgba(51, 168, 210, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(5) .icono-wrapper i {
+    color: #33A8D2;
+  }
+
+  .valores-grid .valor-card:nth-child(5):hover .icono-wrapper {
+    background: linear-gradient(135deg, #33A8D2 0%, #2291C6 100%);
+    box-shadow: 0 8px 20px rgba(51, 168, 210, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(5):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(5):hover::before {
+    background: #33A8D2;
+  }
+
+  /* Valor 6: Ética - Ciencias Exactas */
+  .valores-grid .valor-card:nth-child(6) .icono-wrapper {
+    background: rgba(31, 54, 122, 0.12);
+  }
+
+  .valores-grid .valor-card:nth-child(6) .icono-wrapper i {
+    color: #1F367A;
+  }
+
+  .valores-grid .valor-card:nth-child(6):hover .icono-wrapper {
+    background: linear-gradient(135deg, #1F367A 0%, #16285C 100%);
+    box-shadow: 0 8px 20px rgba(31, 54, 122, 0.25);
+  }
+
+  .valores-grid .valor-card:nth-child(6):hover .icono-wrapper i {
+    color: var(--white);
+  }
+
+  .valores-grid .valor-card:nth-child(6):hover::before {
+    background: #1F367A;
+  }
+
   .valor-card:hover .icono-wrapper {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     transform: scale(1.1) rotate(-5deg);
   }
 
   .valor-card .icono-wrapper i {
     font-size: 2.25rem;
-    color: var(--secondary-color);
+    color: #1F407F;
     transition: color 0.3s ease;
   }
 
@@ -430,14 +678,14 @@
   .valor-card h3 {
     margin-block-end: 1rem;
     font-size: clamp(1.2rem, 2.5vw, 1.4rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     transition: color 0.3s ease;
     line-height: 1.3;
   }
 
   .valor-card:hover h3 {
-    color: var(--secondary-color);
+    color: #1F407F;
   }
 
   .valor-card p {

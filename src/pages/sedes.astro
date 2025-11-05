@@ -228,7 +228,7 @@ import Footer from "../components/common/Footer.astro"
 .section-header h1 {
     font-size: clamp(1.85rem, 5vw, 2.5rem);
     font-weight: 700;
-    color: var(--primary-color);
+    color: #1F407F;
     margin-block-end: 0.75rem;
     position: relative;
     display: inline-block;
@@ -243,7 +243,7 @@ import Footer from "../components/common/Footer.astro"
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 2px;
 }
 
@@ -280,14 +280,14 @@ import Footer from "../components/common/Footer.astro"
     padding: clamp(1.75rem, 4vw, 2.5rem);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-top: 4px solid var(--primary-color);
+    border-top: 4px solid #1F407F;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .info-section:hover,
 .contact-section:hover,
 .facilities-section:hover {
-    box-shadow: 0 8px 30px rgba(1, 51, 103, 0.15);
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     transform: translateY(-4px);
 }
 
@@ -297,7 +297,7 @@ import Footer from "../components/common/Footer.astro"
 
 .subsection-title h2 {
     font-size: clamp(1.35rem, 3.5vw, 1.6rem);
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     margin-block-end: 0.5rem;
 }
@@ -329,8 +329,8 @@ import Footer from "../components/common/Footer.astro"
 
 .detail-item:hover {
     transform: translateX(8px);
-    box-shadow: 0 6px 20px rgba(1, 51, 103, 0.12);
-    border-color: rgba(1, 51, 103, 0.15);
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.12);
+    border-color: rgba(31, 64, 127, 0.15);
 }
 
 .icon-wrapper {
@@ -340,16 +340,16 @@ import Footer from "../components/common/Footer.astro"
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     border-radius: 12px;
     font-size: 1.25rem;
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.2);
 }
 
 .detail-content h3 {
     margin-block-end: 0.75rem;
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 600;
     font-size: clamp(1rem, 2.2vw, 1.1rem);
 }
@@ -362,10 +362,10 @@ import Footer from "../components/common/Footer.astro"
 }
 
 .address-box {
-    background: var(--white);
+    background: rgba(34, 145, 198, 0.08);
     padding: clamp(1rem, 2.5vw, 1.25rem);
     border-radius: 10px;
-    border-inline-start: 4px solid var(--secondary-color);
+    border-inline-start: 4px solid #2291C6;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     font-style: normal;
     color: var(--text-color);
@@ -394,28 +394,29 @@ import Footer from "../components/common/Footer.astro"
 }
 
 .contact-link:hover {
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.06), rgba(0, 86, 179, 0.08));
-    color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(31, 64, 127, 0.06), rgba(34, 145, 198, 0.08));
+    color: #1F407F;
     transform: translateX(8px);
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.12);
+    border-color: #1F407F;
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.12);
 }
 
 .contact-link i:first-child {
-    color: var(--primary-color);
+    color: #1F407F;
     font-size: 1.2rem;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.08), rgba(0, 86, 179, 0.1));
+    background: rgba(31, 64, 127, 0.12);
     border-radius: 10px;
     flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
 .contact-link:hover i:first-child {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     transform: scale(1.1);
 }
@@ -451,7 +452,7 @@ import Footer from "../components/common/Footer.astro"
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -459,8 +460,8 @@ import Footer from "../components/common/Footer.astro"
 
 .facility-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(1, 51, 103, 0.18);
-    border-color: var(--primary-color);
+    box-shadow: 0 12px 30px rgba(31, 64, 127, 0.18);
+    border-color: #1F407F;
 }
 
 .facility-item:hover::before {
@@ -476,19 +477,19 @@ import Footer from "../components/common/Footer.astro"
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     border-radius: 50%;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.25);
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.25);
 }
 
 .facility-item:hover i {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 6px 20px rgba(1, 51, 103, 0.35);
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.35);
 }
 
 .facility-item h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     margin-block-end: 0.65rem;
     font-weight: 600;
     font-size: clamp(1rem, 2.2vw, 1.1rem);
@@ -510,7 +511,7 @@ import Footer from "../components/common/Footer.astro"
     height: fit-content;
     position: sticky;
     top: calc(var(--navbar-height, 80px) + 2rem);
-    border-top: 4px solid var(--secondary-color);
+    border-top: 4px solid #2291C6;
 }
 
 .sede-map {
@@ -518,13 +519,13 @@ import Footer from "../components/common/Footer.astro"
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     margin-block-end: clamp(1.5rem, 3vw, 2rem);
-    border: 3px solid rgba(1, 51, 103, 0.08);
+    border: 3px solid rgba(31, 64, 127, 0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sede-map:hover {
-    box-shadow: 0 8px 30px rgba(1, 51, 103, 0.15);
-    border-color: var(--primary-color);
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    border-color: #1F407F;
 }
 
 .sede-map iframe {
@@ -540,7 +541,7 @@ import Footer from "../components/common/Footer.astro"
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: #1F407F;
     color: var(--white);
     padding: clamp(0.85rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
     border-radius: 50px;
@@ -548,7 +549,7 @@ import Footer from "../components/common/Footer.astro"
     font-weight: 600;
     font-size: clamp(0.95rem, 2vw, 1.05rem);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(1, 51, 103, 0.3);
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.3);
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
@@ -568,7 +569,7 @@ import Footer from "../components/common/Footer.astro"
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(1, 51, 103, 0.4);
+    box-shadow: 0 8px 25px rgba(31, 64, 127, 0.4);
 }
 
 .btn-primary:hover::before {
@@ -588,9 +589,9 @@ import Footer from "../components/common/Footer.astro"
 .map-section .info-box {
     margin-block-start: clamp(1.5rem, 3vw, 2rem);
     padding: clamp(1.25rem, 2.5vw, 1.5rem);
-    background: linear-gradient(135deg, rgba(1, 51, 103, 0.04), rgba(0, 86, 179, 0.06));
+    background: rgba(34, 145, 198, 0.08);
     border-radius: 12px;
-    border-inline-start: 4px solid var(--secondary-color);
+    border-inline-start: 4px solid #2291C6;
 }
 
 .info-box-header {
@@ -601,12 +602,12 @@ import Footer from "../components/common/Footer.astro"
 }
 
 .info-box-header i {
-    color: var(--secondary-color);
+    color: #2291C6;
     font-size: 1.25rem;
 }
 
 .info-box-header h3 {
-    color: var(--primary-color);
+    color: #1F407F;
     font-size: clamp(1rem, 2.2vw, 1.1rem);
     font-weight: 600;
     margin: 0;
@@ -620,7 +621,7 @@ import Footer from "../components/common/Footer.astro"
 }
 
 .map-section .info-box strong {
-    color: var(--primary-color);
+    color: #1F407F;
 }
 
 /* ===== ANIMACIONES ===== */
@@ -719,7 +720,7 @@ import Footer from "../components/common/Footer.astro"
 /* Focus visible para accesibilidad */
 .btn-primary:focus-visible,
 .contact-link:focus-visible {
-    outline: 3px solid var(--secondary-color);
+    outline: 3px solid #2291C6;
     outline-offset: 3px;
 }
 

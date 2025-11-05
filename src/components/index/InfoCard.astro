@@ -32,7 +32,7 @@ const { card, isActive = false } = Astro.props;
     box-shadow: var(--box-shadow);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: none;
-    border: 1px solid rgba(1, 51, 103, 0.08);
+    border: 1px solid rgba(252, 164, 52, 0.15);
     opacity: 0;
     transform: translateY(20px) scale(0.95);
   }
@@ -51,7 +51,7 @@ const { card, isActive = false } = Astro.props;
   .card:hover {
     transform: translateY(-8px) scale(1);
     box-shadow: var(--box-shadow-lg);
-    border-color: rgba(1, 51, 103, 0.15);
+    border-color: #FCA434;
   }
 
   .card-img {
@@ -72,7 +72,7 @@ const { card, isActive = false } = Astro.props;
   .card-content h3 {
     margin: 0 0 1rem 0;
     font-size: 1.35rem;
-    color: var(--primary-color);
+    color: #1F407F;
     font-weight: 700;
     line-height: 1.3;
   }
@@ -88,7 +88,7 @@ const { card, isActive = false } = Astro.props;
   }
 
   .date i {
-    color: var(--secondary-color);
+    color: #2291C6;
     font-size: 1rem;
   }
 
@@ -103,14 +103,14 @@ const { card, isActive = false } = Astro.props;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--secondary-color);
+    color: #2291C6;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     transition: var(--transition);
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    background: rgba(0, 86, 179, 0.05);
+    background: rgba(34, 145, 198, 0.08);
   }
 
   .read-more::after {
@@ -119,8 +119,8 @@ const { card, isActive = false } = Astro.props;
   }
 
   .read-more:hover {
-    color: var(--primary-color);
-    background: rgba(1, 51, 103, 0.1);
+    color: #1F407F;
+    background: rgba(34, 145, 198, 0.15);
     transform: translateX(4px);
   }
 

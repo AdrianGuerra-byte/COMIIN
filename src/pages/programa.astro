@@ -11,9 +11,66 @@ import ProgramaAcademico from "../components/index/ProgramaAcademico.astro"
     <section class="programa-hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Programa Completo</h1>
-                <p>Explora todas las actividades, conferencias magistrales, talleres y eventos del COMIIN 2026</p>
+                <div class="live-badge">
+                    <span class="pulse-dot"></span>
+                    <span class="live-text">
+                       
+                        Sigue los eventos en tiempo real
+                    </span>
+                </div>
+                <h1>Programa Completo COMIIN 2026</h1>
+                <p>Explora conferencias magistrales, talleres especializados y presentaciones de investigación.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">días de evento</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" data-target="50">0</span>
+                            <span class="stat-label">ponencias</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">talleres</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="hero-decoration">
+            <div class="decoration-circle circle-1"></div>
+            <div class="decoration-circle circle-2"></div>
+            <div class="decoration-circle circle-3"></div>
         </div>
     </section>
 
@@ -23,10 +80,72 @@ import ProgramaAcademico from "../components/index/ProgramaAcademico.astro"
     <Footer />
 </Layout>
 
+<script>
+    // Odometer effect for statistics
+    function animateCounter(element: HTMLElement) {
+        const target = parseInt(element.getAttribute('data-target') || '0');
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const stepDuration = duration / steps;
+        const increment = target / steps;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toString();
+        }, stepDuration);
+    }
+
+    // Intersection Observer for triggering animation when visible
+    function initCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+        
+        if (counters.length === 0) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        counters.forEach(counter => {
+            if (counter instanceof HTMLElement) {
+                observer.observe(counter);
+            }
+        });
+    }
+
+    // Initialize counters
+    function initialize() {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            initCounters();
+        }, 100);
+    }
+
+    // Run on initial load
+    initialize();
+
+    // Listen for Astro page transitions (View Transitions API)
+    document.addEventListener('astro:page-load', initialize);
+    
+    // Fallback for standard navigation
+    document.addEventListener('DOMContentLoaded', initialize);
+</script>
+
 <style>
     .programa-hero {
-        padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 3rem);
-        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        padding: clamp(4rem, 10vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2.5rem, 6vw, 4rem);
+        background: linear-gradient(135deg, #1F407F 0%, #26408F 50%, #1F367A 100%);
         position: relative;
         overflow: hidden;
     }
@@ -35,8 +154,10 @@ import ProgramaAcademico from "../components/index/ProgramaAcademico.astro"
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(34, 145, 198, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(236, 68, 100, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
         pointer-events: none;
     }
 
@@ -50,34 +171,398 @@ import ProgramaAcademico from "../components/index/ProgramaAcademico.astro"
     .hero-content {
         text-align: center;
         color: var(--white);
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* Live Badge */
+    .live-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: linear-gradient(135deg, rgba(236, 68, 100, 0.25), rgba(193, 57, 143, 0.25));
+        border: 2px solid #EC4464;
+        color: var(--white);
+        padding: 0.7rem 1.4rem;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: clamp(0.85rem, 2vw, 0.95rem);
+        margin-block-end: 1.5rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(236, 68, 100, 0.3),
+                    0 0 0 0 rgba(236, 68, 100, 0.4);
+        animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s backwards,
+                   glow-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+        0%, 100% {
+            box-shadow: 0 4px 15px rgba(236, 68, 100, 0.3),
+                        0 0 0 0 rgba(236, 68, 100, 0.4);
+        }
+        50% {
+            box-shadow: 0 4px 20px rgba(236, 68, 100, 0.4),
+                        0 0 15px 5px rgba(236, 68, 100, 0.2);
+        }
+    }
+
+    .live-text {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .live-text svg {
+        animation: rotate-clock 2s linear infinite;
+    }
+
+    @keyframes rotate-clock {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .pulse-dot {
+        width: 10px;
+        height: 10px;
+        background: #EC4464;
+        border-radius: 50%;
+        position: relative;
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .pulse-dot::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border: 2px solid #EC4464;
+        border-radius: 50%;
+        animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+    }
+
+    @keyframes pulse-ring {
+        0% {
+            transform: scale(0.8);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1.4);
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Título */
     .hero-content h1 {
-        font-size: clamp(2.25rem, 6vw, 3rem);
+        font-size: clamp(2.25rem, 6vw, 3.5rem);
         font-weight: 700;
-        line-height: 1.2;
-        margin-block-end: 1rem;
+        line-height: 1.15;
+        margin-block-end: 1.25rem;
         text-wrap: pretty;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
     }
 
+    /* Descripción */
     .hero-content p {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        font-size: clamp(1rem, 2.5vw, 1.15rem);
         line-height: 1.6;
-        max-width: 700px;
+        max-width: 750px;
         margin-inline: auto;
         opacity: 0.95;
         text-wrap: pretty;
+        margin-block-end: 2.5rem;
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+    }
+
+    /* Stats Grid */
+    .hero-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        flex-wrap: wrap;
+        margin-block-start: 2.5rem;
+        padding: clamp(1.5rem, 3vw, 2rem);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s backwards;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.7s; }
+    .stat-item:nth-child(3) { animation-delay: 0.8s; }
+    .stat-item:nth-child(5) { animation-delay: 0.9s; }
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        color: var(--white);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .stat-icon::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(236, 68, 100, 0.3), rgba(34, 145, 198, 0.3));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .stat-item:hover .stat-icon {
+        transform: scale(1.15) rotate(10deg);
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .stat-item:hover .stat-icon::before {
+        opacity: 1;
+        animation: spin 3s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .stat-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+
+    .stat-number {
+        font-size: clamp(1.3rem, 3vw, 1.6rem);
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.05em;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .stat-number::after {
+        content: '+';
+        position: absolute;
+        right: -0.6em;
+        font-size: 0.8em;
+        opacity: 0.8;
+    }
+
+    .stat-number[data-target="3"]::after {
+        content: '';
+    }
+
+    .stat-item:hover .stat-number {
+        transform: scale(1.1);
+        text-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .stat-label {
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        text-transform: lowercase;
+        letter-spacing: 0.02em;
+    }
+
+    .stat-divider {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(255, 255, 255, 0.3) 50%, 
+            transparent 100%);
+        position: relative;
+    }
+
+    .stat-divider::before,
+    .stat-divider::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateX(-50%);
+    }
+
+    .stat-divider::before {
+        top: -3px;
+    }
+
+    .stat-divider::after {
+        bottom: -3px;
+    }
+
+    /* Decorative Elements */
+    .hero-decoration {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .decoration-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+    }
+
+    .circle-1 {
+        width: 400px;
+        height: 400px;
+        top: -200px;
+        left: -100px;
+        animation-delay: 0s;
+    }
+
+    .circle-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -150px;
+        right: -50px;
+        animation-delay: 7s;
+    }
+
+    .circle-3 {
+        width: 250px;
+        height: 250px;
+        top: 50%;
+        right: 10%;
+        animation-delay: 14s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) translateX(0);
+        }
+        33% {
+            transform: translateY(-30px) translateX(20px);
+        }
+        66% {
+            transform: translateY(20px) translateX(-15px);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .hero-stats {
+            gap: 2rem;
+        }
+
+        .stat-divider {
+            display: none;
+        }
     }
 
     @media (max-width: 768px) {
         .programa-hero {
-            padding: 4rem 1.5rem 2rem;
+            padding: 4rem 1.5rem 2.5rem;
+        }
+
+        .hero-stats {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .stat-item {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .live-badge {
+            font-size: 0.85rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .decoration-circle {
+            opacity: 0.5;
         }
     }
 
     @media (max-width: 480px) {
         .programa-hero {
-            padding: 3.5rem 1rem 1.5rem;
+            padding: 3.5rem 1rem 2rem;
+        }
+
+        .hero-stats {
+            padding: 1.25rem;
+            gap: 1.25rem;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .stat-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .circle-1, .circle-2, .circle-3 {
+            opacity: 0.3;
         }
     }
 </style>
