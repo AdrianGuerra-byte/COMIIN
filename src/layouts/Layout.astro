@@ -49,11 +49,11 @@ import Analytics from '@vercel/analytics/astro'
     <!-- Critical CSS inline para prevenir FOUC -->
     <style>
         html{background-color:#f8f9fa}
-        body{margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif;opacity:1;padding-top:95px}
+        body{margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif;opacity:1}
         *{box-sizing:border-box}
         /* Navbar critical styles para evitar flickering */
-        .main-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:#1F407F;min-height:95px}
-        @media(max-width:768px){body{padding-top:70px!important}.main-header{min-height:70px}}
+        .main-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:#1F407F;height:95px}
+        @media(max-width:768px){.main-header{height:70px}}
     </style>
     
     <script type="application/ld+json">
@@ -158,7 +158,11 @@ import Analytics from '@vercel/analytics/astro'
 		overflow-x: hidden;
 		width: 100%;
 		min-height: 100vh;
-		padding-top: 95px;
+	}
+
+	/* Espacio para el navbar fijo */
+	body > :first-child {
+		margin-top: 95px;
 	}
 
 	/* ===================================
@@ -195,8 +199,8 @@ import Analytics from '@vercel/analytics/astro'
 
 	/* Ajuste para móvil */
 	@media (max-width: 768px) {
-		body {
-			padding-top: 70px;
+		body > :first-child {
+			margin-top: 70px;
 		}
 
 		:root {
