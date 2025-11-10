@@ -29,10 +29,28 @@ interface ProgramDay {
 
 const programDays: ProgramDay[] = [
   {
+    id: "day0",
+    label: "Hoy",
+    date: "10 de Noviembre 2025",
+    fullDate: "2025-11-10", // Fecha de hoy
+    events: [
+      {
+        time: "10:00",
+        period: "AM",
+        title: "Junta COMIIN",
+        speaker: "Comité Organizador",
+        location: "Sala de Juntas CUH",
+        isHighlight: true,
+        datetime: "2025-11-10T10:00:00",
+        duration: 90, // 1 hora y 30 minutos
+      },
+    ],
+  },
+  {
     id: "day1",
     label: "Día 1",
     date: "Conferencias Magistrales",
-    fullDate: "2025-11-05", // Fecha de demostración
+    fullDate: "2026-05-28", // Fecha del congreso
     events: [
       {
         time: "09:00",
@@ -41,7 +59,7 @@ const programDays: ProgramDay[] = [
         speaker: "Comité Organizador",
         location: "Edificio Principal CUH",
         isHighlight: true,
-        datetime: "2025-11-05T09:00:00",
+        datetime: "2026-05-28T09:00:00",
         duration: 60,
       },
       {
@@ -51,7 +69,7 @@ const programDays: ProgramDay[] = [
         speaker: "Director General CUH y Comité Organizador",
         location: "Edificio Principal CUH",
         isHighlight: true,
-        datetime: "2025-11-05T10:00:00",
+        datetime: "2026-05-28T10:00:00",
         duration: 90,
       },
       {
@@ -61,7 +79,7 @@ const programDays: ProgramDay[] = [
         speaker: "Mtra. Maria Isabel Jarillo - Universidad CUH",
         location: "Usos Múltiples, 3er Piso Edificio Principal CUH",
         isHighlight: true,
-        datetime: "2025-11-05T11:30:00",
+        datetime: "2026-05-28T11:30:00",
         duration: 90,
       },
       {
@@ -71,7 +89,7 @@ const programDays: ProgramDay[] = [
         speaker: "Panel de Expertos",
         location: "Auditorio Principal",
         isHighlight: true,
-        datetime: "2025-11-05T12:30:00",
+        datetime: "2026-05-28T12:30:00",
         duration: 60,
       },
       {
@@ -81,7 +99,7 @@ const programDays: ProgramDay[] = [
         speaker: "Comité Organizador",
         location: "Área de Alimentos",
         isHighlight: false,
-        datetime: "2025-11-05T13:00:00",
+        datetime: "2026-05-28T13:00:00",
         duration: 90,
       },
       {
@@ -91,7 +109,7 @@ const programDays: ProgramDay[] = [
         speaker: "Dr. Carlos Mendoza - UAEH",
         location: "Aula 301",
         isHighlight: false,
-        datetime: "2025-11-05T14:30:00",
+        datetime: "2026-05-28T14:30:00",
         duration: 90,
       },
       {
@@ -101,7 +119,7 @@ const programDays: ProgramDay[] = [
         speaker: "Ponentes Seleccionados",
         location: "Aulas 201-205",
         isHighlight: false,
-        datetime: "2025-11-05T16:00:00",
+        datetime: "2026-05-28T16:00:00",
         duration: 120,
       },
     ],
@@ -397,6 +415,7 @@ const daysToShow = variant === 'compacto'
 
       if (isLive) {
         item.classList.add('is-live');
+        console.log('Evento en vivo detectado:', item.querySelector('.event-title')?.textContent);
       } else {
         item.classList.remove('is-live');
       }

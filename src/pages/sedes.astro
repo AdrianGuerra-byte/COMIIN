@@ -1,11 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Navbar from "../components/common/Navbar.astro"
-import Footer from "../components/common/Footer.astro"
-
 ---
 <Layout>
-    <Navbar />
 <section class="sede-section" id="sede">
   <div class="container">
     <header class="section-header">
@@ -204,8 +200,9 @@ import Footer from "../components/common/Footer.astro"
   </div>
 
   <!-- Sección Hotel Emily -->
-  <div class="hotel-section-wrapper">
-    <div class="hotel-info-column">
+  <div class="container">
+    <div class="hotel-section-wrapper">
+      <div class="hotel-info-column">
       <div class="hotel-card">
         <div class="hotel-header">
           <i class="fas fa-hotel" aria-hidden="true"></i>
@@ -298,9 +295,11 @@ import Footer from "../components/common/Footer.astro"
       </div>
     </div>
   </div>
+  </div>
 
   <!-- Sección Hotel Ciros -->
-  <div class="hotel-section-wrapper">
+  <div class="container">
+    <div class="hotel-section-wrapper">
     <div class="hotel-info-column">
       <div class="hotel-card">
         <div class="hotel-header">
@@ -394,8 +393,8 @@ import Footer from "../components/common/Footer.astro"
       </div>
     </div>
   </div>
+  </div>
 </section>
-    <Footer />
 </Layout>
 
     <style>
@@ -451,7 +450,7 @@ import Footer from "../components/common/Footer.astro"
 /* ===== LAYOUT PRINCIPAL ===== */
 .sede-content {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 4vw, 3rem);
     align-items: start;
     max-width: 1200px;
@@ -469,7 +468,7 @@ import Footer from "../components/common/Footer.astro"
 .contact-section,
 .facilities-section {
     background: var(--white);
-    padding: clamp(1.75rem, 4vw, 2.5rem);
+    padding: clamp(2rem, 4vw, 2.5rem);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-top: 4px solid #1F407F;
@@ -713,12 +712,10 @@ import Footer from "../components/common/Footer.astro"
 /* Layout de Hotel con Mapa Sticky */
 .hotel-section-wrapper {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 4vw, 3rem);
     align-items: start;
-    max-width: 1200px;
-    margin: 0 auto clamp(3rem, 6vw, 4rem) auto;
-    padding: 0 clamp(1rem, 4vw, 2rem);
+    margin-bottom: clamp(3rem, 6vw, 4rem);
 }
 
 .hotel-info-column {
@@ -737,20 +734,21 @@ import Footer from "../components/common/Footer.astro"
     padding: clamp(2rem, 4vw, 2.5rem);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-top: 4px solid #2291C6;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 4px solid #1F407F;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hotel-map-card:hover {
     box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    transform: translateY(-4px);
 }
 
 .hotel-map-card .subsection-title {
-    margin-bottom: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
 .hotel-map-card .subsection-title h2 {
-    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
     color: #1F407F;
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -758,7 +756,7 @@ import Footer from "../components/common/Footer.astro"
 
 .hotel-map-card .subsection-title address {
     color: var(--text-light);
-    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     line-height: 1.5;
     font-style: normal;
 }
@@ -770,17 +768,18 @@ import Footer from "../components/common/Footer.astro"
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    height: 100%;
 }
 
 .hotel-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(31, 64, 127, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     border-color: #1F407F;
 }
 
 .hotel-header {
     background: #1F407F;
-    padding: clamp(1.25rem, 3vw, 1.5rem);
+    padding: clamp(1.5rem, 3vw, 2rem);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -794,12 +793,15 @@ import Footer from "../components/common/Footer.astro"
 
 .hotel-header h3 {
     margin: 0;
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
     font-weight: 700;
 }
 
 .hotel-content {
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .hotel-location {
@@ -810,7 +812,6 @@ import Footer from "../components/common/Footer.astro"
     background: rgba(31, 64, 127, 0.05);
     border-radius: 12px;
     border-left: 4px solid #1F407F;
-    margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .hotel-location i {
@@ -833,13 +834,13 @@ import Footer from "../components/common/Footer.astro"
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: clamp(1.25rem, 3vw, 1.5rem);
-    border: 3px solid rgba(31, 64, 127, 0.1);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    border: 3px solid rgba(31, 64, 127, 0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hotel-map:hover {
-    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.2);
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     border-color: #1F407F;
 }
 
@@ -854,14 +855,13 @@ import Footer from "../components/common/Footer.astro"
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    margin-bottom: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .contact-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: clamp(0.75rem, 2vw, 0.85rem) clamp(1rem, 2.5vw, 1.25rem);
+    padding: clamp(0.85rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem);
     background: rgba(31, 64, 127, 0.03);
     border-radius: 10px;
     border: 1px solid rgba(31, 64, 127, 0.08);
@@ -877,8 +877,8 @@ import Footer from "../components/common/Footer.astro"
 .contact-item i {
     color: #1F407F;
     font-size: 1.1rem;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -903,11 +903,10 @@ import Footer from "../components/common/Footer.astro"
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: clamp(1rem, 2.5vw, 1.25rem);
+    padding: clamp(1.25rem, 3vw, 1.5rem);
     background: linear-gradient(135deg, rgba(31, 64, 127, 0.05), rgba(34, 145, 198, 0.05));
     border-radius: 12px;
     border: 2px solid rgba(31, 64, 127, 0.1);
-    margin-top: 1rem;
 }
 
 .contact-person i {
@@ -932,7 +931,6 @@ import Footer from "../components/common/Footer.astro"
 
 /* Desplegable de Reservación */
 .reservation-details {
-    margin-bottom: clamp(1.25rem, 3vw, 1.5rem);
     border: 2px solid #1F407F;
     border-radius: 12px;
     overflow: hidden;
@@ -982,7 +980,7 @@ import Footer from "../components/common/Footer.astro"
 }
 
 .reservation-content {
-    padding: clamp(1.25rem, 3vw, 1.5rem);
+    padding: clamp(1.5rem, 3vw, 2rem);
     background: rgba(31, 64, 127, 0.02);
     animation: slideDown 0.3s ease-out;
 }
@@ -1110,40 +1108,6 @@ import Footer from "../components/common/Footer.astro"
     }
 }
 
-/* Botón de Mapa del Hotel */
-.hotel-map-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    width: 100%;
-    padding: clamp(0.85rem, 2vw, 1rem);
-    background: var(--white);
-    color: #1F407F;
-    border: 2px solid #1F407F;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: clamp(0.9rem, 2vw, 0.95rem);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hotel-map-btn:hover {
-    background: #1F407F;
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.25);
-}
-
-.hotel-map-btn i:last-child {
-    font-size: 0.75em;
-    transition: transform 0.3s ease;
-}
-
-.hotel-map-btn:hover i:last-child {
-    transform: translateX(4px);
-}
-
 /* ===== SECCIÓN MAPA ===== */
 .map-section {
     background: var(--white);
@@ -1152,8 +1116,14 @@ import Footer from "../components/common/Footer.astro"
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     height: fit-content;
     position: sticky;
-    top: calc(var(--navbar-height, 80px) + 2rem);
-    border-top: 4px solid #2291C6;
+    top: calc(var(--navbar-height, 95px) + 2rem);
+    border-top: 4px solid #1F407F;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-section:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    transform: translateY(-4px);
 }
 
 .sede-map {
@@ -1356,8 +1326,8 @@ import Footer from "../components/common/Footer.astro"
     }
 
     .hotel-section-wrapper {
-        padding: 0 1.5rem;
-        margin-bottom: clamp(2rem, 4vw, 3rem);
+        grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2rem);
     }
 
     .hotel-map iframe {
@@ -1393,10 +1363,6 @@ import Footer from "../components/common/Footer.astro"
 
     .sede-map iframe {
         height: 250px;
-    }
-
-    .hotel-section-wrapper {
-        padding: 0 1rem;
     }
 
     .hotel-map iframe {
