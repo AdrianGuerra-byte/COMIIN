@@ -5,10 +5,16 @@
   <div class="footer-container">
     <!-- Logos institucionales -->
     <div class="footer-logos">
-      <img src="/logos/marcacuh.avif" alt="Logo CUH" class="footer-logo" loading="lazy" />
-      <img src="/logos/LOGO-BLANCO.avif" alt="Logo COMIIN 2026" class="footer-logo" loading="lazy" />
-      <img src="/logos/UPNHLogo.avif" alt="Logo UPNH" class="footer-logo" loading="lazy" />
-      <img src="/logos/insupeh.avif" alt="Logo INSUPEH" class="footer-logo footer-logo-small" loading="lazy" />
+      <!-- Logos principales (arriba) -->
+      <div class="footer-logos-main">
+        <img src="/logos/marcacuh.avif" alt="Logo CUH" class="footer-logo footer-logo-main" loading="lazy" />
+        <img src="/logos/LOGO-BLANCO.avif" alt="Logo COMIIN 2026" class="footer-logo footer-logo-main" loading="lazy" />
+      </div>
+      <!-- Logos secundarios (abajo) -->
+      <div class="footer-logos-secondary">
+        <img src="/logos/UPNHLogo.avif" alt="Logo UPNH" class="footer-logo footer-logo-small" loading="lazy" />
+        <img src="/logos/insupeh.avif" alt="Logo INSUPEH" class="footer-logo footer-logo-small" loading="lazy" />
+      </div>
     </div>
 
     <!-- Links del footer -->
@@ -49,14 +55,23 @@
   /* Logos institucionales */
   .footer-logos {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .footer-logos-main,
+  .footer-logos-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
     flex-wrap: wrap;
   }
 
   .footer-logo {
-    height: 100px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -73,9 +88,14 @@
     opacity: 1;
   }
 
-  /* Logo más pequeño (INSUPEH) */
+  /* Logos principales (COMIIN y CUH) - más grandes */
+  .footer-logo-main {
+    height: 120px;
+  }
+
+  /* Logos secundarios (UPNH e INSUPEH) - más pequeños */
   .footer-logo-small {
-    height: 70px;
+    height: 50px;
   }
 
   /* Links del footer */
@@ -155,12 +175,17 @@
       gap: 1.5rem;
     }
 
-    .footer-logo {
-      height: 60px;
+    .footer-logos-main,
+    .footer-logos-secondary {
+      gap: 2rem;
+    }
+
+    .footer-logo-main {
+      height: 80px;
     }
 
     .footer-logo-small {
-      height: 45px;
+      height: 40px;
     }
 
     .footer-links {

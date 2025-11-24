@@ -239,14 +239,14 @@
     right: 0;
     z-index: 1000;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     height: var(--navbar-height);
   }
 
   .main-header.scrolled {
     background: rgba(31, 64, 127, 0.98);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
   }
 
   .header-container {
@@ -543,14 +543,15 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(180deg, #1F407F 0%, #0d1f3d 100%);
+      background: #1F407F;
       flex-direction: column;
       gap: 0;
-      padding: 0.5rem 0 2rem 0;
+      padding: 0;
+      margin: 0;
       overflow-y: auto;
       transform: translateX(100%);
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+      z-index: 999;
     }
 
     .nav-menu.active {
@@ -567,7 +568,7 @@
       align-items: center;
       justify-content: center;
       margin-top: auto;
-      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      padding: 2rem 1.5rem 2rem 1.5rem;
       pointer-events: none;
     }
 
