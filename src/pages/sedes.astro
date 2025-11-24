@@ -473,6 +473,8 @@ import Layout from "../layouts/Layout.astro"
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-top: 4px solid #1F407F;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
 }
 
 .info-section:hover,
@@ -480,6 +482,14 @@ import Layout from "../layouts/Layout.astro"
 .facilities-section:hover {
     box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+    .info-section:hover,
+    .contact-section:hover,
+    .facilities-section:hover {
+        transform: none;
+    }
 }
 
 .subsection-title {
@@ -522,6 +532,12 @@ import Layout from "../layouts/Layout.astro"
     transform: translateX(8px);
     box-shadow: 0 6px 20px rgba(31, 64, 127, 0.12);
     border-color: rgba(31, 64, 127, 0.15);
+}
+
+@media (max-width: 768px) {
+    .detail-item:hover {
+        transform: none;
+    }
 }
 
 .icon-wrapper {
@@ -590,6 +606,12 @@ import Layout from "../layouts/Layout.astro"
     transform: translateX(8px);
     border-color: #1F407F;
     box-shadow: 0 4px 15px rgba(31, 64, 127, 0.12);
+}
+
+@media (max-width: 768px) {
+    .contact-link:hover {
+        transform: none;
+    }
 }
 
 .contact-link i:first-child {
@@ -736,11 +758,18 @@ import Layout from "../layouts/Layout.astro"
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-top: 4px solid #1F407F;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
 }
 
 .hotel-map-card:hover {
     box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+    .hotel-map-card:hover {
+        transform: none;
+    }
 }
 
 .hotel-map-card .subsection-title {
@@ -769,12 +798,20 @@ import Layout from "../layouts/Layout.astro"
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .hotel-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
     border-color: #1F407F;
+}
+
+@media (max-width: 1024px) {
+    .hotel-card:hover {
+        transform: none;
+    }
 }
 
 .hotel-header {
@@ -802,6 +839,7 @@ import Layout from "../layouts/Layout.astro"
     display: flex;
     flex-direction: column;
     gap: clamp(1.25rem, 3vw, 1.5rem);
+    flex: 1;
 }
 
 .hotel-location {
@@ -872,6 +910,12 @@ import Layout from "../layouts/Layout.astro"
     background: rgba(31, 64, 127, 0.06);
     border-color: #1F407F;
     transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .contact-item:hover {
+        transform: none;
+    }
 }
 
 .contact-item i {
@@ -1126,6 +1170,12 @@ import Layout from "../layouts/Layout.astro"
     transform: translateY(-4px);
 }
 
+@media (max-width: 1024px) {
+    .map-section:hover {
+        transform: none;
+    }
+}
+
 .sede-map {
     border-radius: 12px;
     overflow: hidden;
@@ -1279,7 +1329,7 @@ import Layout from "../layouts/Layout.astro"
 @media (max-width: 1024px) {
     .sede-content {
         grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
+        gap: 2rem;
     }
 
     .map-section {
@@ -1289,7 +1339,7 @@ import Layout from "../layouts/Layout.astro"
 
     .hotel-section-wrapper {
         grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
+        gap: 2rem;
     }
 
     .hotel-map-column {
@@ -1300,25 +1350,31 @@ import Layout from "../layouts/Layout.astro"
     .hotel-map iframe {
         height: 350px;
     }
+    
+    .sede-info {
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
     .sede-section {
-        padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+        padding: 3rem 1.5rem;
     }
 
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .detail-item {
         flex-direction: column;
         text-align: center;
         align-items: center;
+        padding: 1.25rem;
     }
 
     .contact-link {
-        padding: clamp(0.85rem, 2vw, 1rem);
+        padding: 1rem;
     }
 
     .sede-map iframe {
@@ -1327,7 +1383,7 @@ import Layout from "../layouts/Layout.astro"
 
     .hotel-section-wrapper {
         grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
+        gap: 1.5rem;
     }
 
     .hotel-map iframe {
@@ -1341,24 +1397,42 @@ import Layout from "../layouts/Layout.astro"
     }
 
     .key-badge {
-        font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-        padding: clamp(0.65rem, 1.5vw, 0.85rem) clamp(1.25rem, 2.5vw, 1.5rem);
+        font-size: 1.15rem;
+        padding: 0.75rem 1.5rem;
         letter-spacing: 2px;
     }
 
     .whatsapp-btn {
-        padding: clamp(0.85rem, 2vw, 1rem);
-        font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+        padding: 0.9rem;
+        font-size: 0.95rem;
     }
 
     .whatsapp-btn i {
         font-size: 1.3rem;
     }
+    
+    .info-section,
+    .contact-section,
+    .facilities-section,
+    .map-section,
+    .hotel-card,
+    .hotel-map-card {
+        padding: 1.75rem;
+    }
+    
+    .sede-info {
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .sede-section {
+        padding: 2.5rem 1rem;
+    }
+    
     .facilities-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .sede-map iframe {
@@ -1373,6 +1447,7 @@ import Layout from "../layouts/Layout.astro"
         flex-direction: column;
         text-align: center;
         gap: 0.5rem;
+        padding: 1.5rem;
     }
 
     .hotel-location {
@@ -1385,25 +1460,44 @@ import Layout from "../layouts/Layout.astro"
         flex-direction: column;
         text-align: center;
         gap: 0.5rem;
+        padding: 0.85rem 1rem;
     }
 
     .reservation-details summary {
         flex-wrap: wrap;
         justify-content: center;
         text-align: center;
+        padding: 1rem;
     }
 
     .whatsapp-btn {
-        padding: clamp(0.75rem, 1.8vw, 0.85rem);
-        font-size: clamp(0.85rem, 1.6vw, 0.9rem);
+        padding: 0.85rem;
+        font-size: 0.9rem;
     }
 
     .whatsapp-btn i {
         font-size: 1.2rem;
     }
 
+    .info-section,
+    .contact-section,
+    .facilities-section,
+    .map-section,
+    .hotel-card,
     .hotel-map-card {
-        padding: clamp(1.5rem, 3vw, 1.75rem);
+        padding: 1.5rem;
+    }
+    
+    .hotel-content {
+        padding: 1.5rem;
+    }
+    
+    .detail-item {
+        padding: 1rem;
+    }
+    
+    .sede-info {
+        gap: 1.25rem;
     }
 }
 
