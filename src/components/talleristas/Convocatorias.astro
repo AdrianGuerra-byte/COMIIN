@@ -63,7 +63,7 @@
           </div>
 
           <div class="cta-container">
-            <!-- Descargar Plantilla - Enlace directo a Drive -->
+            <!-- Descargar Plantilla -->
             <a 
               href="https://drive.google.com/drive/folders/1o8Fo9ns-Q3fjk2gzpaqeCqQq4Yc7tv4K"
               target="_blank"
@@ -73,45 +73,27 @@
             >
               <i class="fas fa-download" aria-hidden="true"></i>
               <span>Descargar Plantillas</span>
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
             </a>
 
-            <!-- Enviar Propuesta con información desplegable -->
-            <div class="dropdown-wrapper">
-              <button 
-                class="cta-button cta-secondary dropdown-toggle"
-                aria-label="Ver información para enviar propuesta"
-                aria-expanded="false"
-              >
+            <!-- Instrucciones de Envío -->
+            <div class="card submission-card">
+              <div class="card-header">
                 <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                <span>Enviar Propuesta</span>
-                <i class="fas fa-chevron-down chevron-icon" aria-hidden="true"></i>
-              </button>
-              <div class="dropdown-menu info-menu">
-                <div class="info-content">
-                  <h4>
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    Instrucciones de Envío
-                  </h4>
-                  
-                  <!-- Correo Visible -->
-                  <div class="info-item">
-                    <strong>Correo electrónico:</strong>
-                    <div class="email-wrapper">
-                      <div class="email-revealed">
-                        <span class="email-text">congresocuh@posgradocuh.edu.mx</span>
-                        <button id="btn-copiar-correo" type="button" class="btn-copy-email" title="Copiar al portapapeles">
-                          <i class="fas fa-copy" aria-hidden="true"></i>
-                          <span>Copiar</span>
-                        </button>
-                      </div>
-                    </div>
+                <h3>Enviar Propuesta</h3>
+              </div>
+              <div class="card-body">
+                <div class="info-item">
+                  <strong>Correo electrónico:</strong>
+                  <div class="email-revealed">
+                    <span class="email-text">congresocuh@posgradocuh.edu.mx</span>
+                    <button id="btn-copiar-correo" type="button" class="btn-copy-email" title="Copiar al portapapeles">
+                      <i class="fas fa-copy" aria-hidden="true"></i>
+                    </button>
                   </div>
-
-                  <div class="info-item">
-                    <strong>Asunto:</strong>
-                    <span class="subject-text">Propuesta Taller COMIIN 2026</span>
-                  </div>
+                </div>
+                <div class="info-item">
+                  <strong>Asunto:</strong>
+                  <span class="subject-text">Propuesta Taller COMIIN 2026</span>
                 </div>
               </div>
             </div>
@@ -123,38 +105,8 @@
 </section>
 
 <script>
-  // Funcionalidad del dropdown de envío
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.querySelector('.dropdown-wrapper');
+  function setupConvocatoria() {
     const btnCopiar = document.getElementById('btn-copiar-correo');
-
-    if (!dropdown) return;
-
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-    const menu = dropdown.querySelector('.dropdown-menu');
-    const chevron = toggle?.querySelector('.chevron-icon');
-    
-    // Toggle del dropdown
-    if (toggle && menu) {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const isOpen = menu.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', isOpen.toString());
-        chevron?.classList.toggle('rotated');
-      });
-    }
-    
-    // Cerrar dropdown al hacer click fuera
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      if (target && !target.closest('.dropdown-wrapper')) {
-        menu?.classList.remove('show');
-        toggle?.setAttribute('aria-expanded', 'false');
-        chevron?.classList.remove('rotated');
-      }
-    });
 
     // Acción de Copiar con mensaje
     btnCopiar?.addEventListener('click', async () => {
@@ -162,571 +114,289 @@
       try {
         await navigator.clipboard.writeText(emailText);
         
-        // Cambiar el texto del botón
-        const textoOriginal = btnCopiar.innerHTML;
-        
-        btnCopiar.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> <span class="copied-text">Copiado</span>';
-        btnCopiar.classList.add('copied');
-        
-        setTimeout(() => {
-          btnCopiar.innerHTML = textoOriginal;
-          btnCopiar.classList.remove('copied');
-        }, 2000);
+        const icon = btnCopiar.querySelector('i');
+        if (icon) {
+          const originalClass = icon.className;
+          btnCopiar.classList.add('copied');
+          icon.className = 'fas fa-check';
+          
+          setTimeout(() => {
+            btnCopiar.classList.remove('copied');
+            icon.className = originalClass;
+          }, 2000);
+        }
       } catch (err) {
         console.error('Error al copiar:', err);
         alert('No se pudo copiar el correo. Por favor, cópialo manualmente.');
       }
     });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupConvocatoria);
+  document.addEventListener('astro:page-load', setupConvocatoria);
 </script>
 
 <style>
-  /* Convocatoria Section */
-  .convocatoria-section {
-    padding: 4rem 2rem 3.5rem;
-    background: linear-gradient(180deg, #e9ecef 0%, #dee2e6 100%);
-  }
+/* ===================================
+   BASE Y LAYOUT DE SECCIÓN
+   =================================== */
+.convocatoria-section {
+  padding: clamp(2rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+  background: var(--white);
+}
 
-  .container {
-    max-width: 1200px;
-    margin-inline: auto;
-  }
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+}
 
-  /* Section Header */
-  .section-header {
-    text-align: center;
-    margin-block-end: 2rem;
-  }
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
 
-  .section-header h2 {
-    font-size: clamp(1.85rem, 5vw, 2.5rem);
+.section-header h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  color: var(--text-light);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.intro-text {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.intro-text p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.8;
+}
+
+.intro-text strong {
     color: var(--primary-color);
-    line-height: 1.2;
-    margin-block-end: 0.75rem;
     font-weight: 700;
-    position: relative;
-    padding-block-end: 0.85rem;
-    display: inline-block;
-  }
+}
 
-  .section-header h2::after {
-    content: '';
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 2px;
-  }
+/* ===================================
+   GRID PRINCIPAL
+   =================================== */
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: flex-start;
+}
 
-  .section-subtitle {
-    color: var(--text-light);
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    max-width: 600px;
-    margin-inline: auto;
-    line-height: 1.5;
-    text-wrap: pretty;
+@media (max-width: 992px) {
+  .main-grid {
+    grid-template-columns: 1fr;
   }
+}
 
-  /* Content */
-  .convocatoria-content {
-    max-width: 1100px;
-    margin-inline: auto;
+/* ===================================
+   REQUISITOS Y ACCIONES (CARDS)
+   =================================== */
+.requisitos-card, .submission-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 30, 80, 0.05);
+    border: 1px solid #e0e8f3;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-  }
-
-  .intro-text p {
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    line-height: 1.7;
-    color: var(--text-color);
-    text-align: center;
-    text-wrap: pretty;
-    padding: 1.5rem 2rem;
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-  }
-
-  .intro-text strong {
-    color: var(--primary-color);
-    font-weight: 700;
-  }
-
-  /* Main Grid */
-  .main-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  /* Requisitos Card */
-  .requisitos-card {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-    border-top: 4px solid transparent;
-    background-image: 
-      linear-gradient(var(--white), var(--white)),
-      linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     height: 100%;
-  }
+}
 
-  .requisitos-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
+.requisitos-card:hover, .submission-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 30, 80, 0.1);
+}
 
-  .card-header {
+.card-header {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    margin-block-end: 1.5rem;
-    padding-block-end: 1rem;
-    border-bottom: 2px solid #f8f9fa;
-  }
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e8f3;
+}
 
-  .card-header i {
+.card-header i {
     font-size: 1.5rem;
     color: var(--primary-color);
-  }
+}
 
-  .card-header h3 {
-    font-size: clamp(1.2rem, 3vw, 1.45rem);
+.card-header h3 {
+    font-size: 1.35rem;
     color: var(--primary-color);
     font-weight: 700;
     margin: 0;
-  }
+}
 
-  /* Lista de Requisitos */
-  .requisitos-lista {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.card-body {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-  }
+    gap: 1.25rem;
+    flex-grow: 1;
+}
 
-  .requisitos-lista li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    color: var(--text-color);
-    font-size: clamp(0.9rem, 2vw, 0.98rem);
-    line-height: 1.6;
-    padding: 0.5rem 0.65rem;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-  }
+/* Lista de Requisitos */
+.requisitos-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-  .requisitos-lista li:hover {
-    background-color: #f8f9fa;
-  }
+.requisitos-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 
-  .requisitos-lista li i {
-    color: var(--primary-color);
-    font-size: 1rem;
-    margin-block-start: 0.15rem;
-    flex-shrink: 0;
-  }
+.requisitos-lista i {
+  color: var(--primary-color);
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
 
-  .requisitos-lista li span {
-    flex: 1;
-    text-wrap: pretty;
-  }
+/* Columna de acciones */
+.action-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-  /* Action Column */
-  .action-column {
+.deadline-box {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(1, 51, 103, 0.2);
+}
+
+.deadline-box i {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.deadline-box strong {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.deadline-date {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Botones y área de envío */
+.cta-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    height: 100%;
-  }
+}
 
-  /* Deadline Box */
-  .deadline-box {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    padding: 1.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 6px 16px rgba(1, 51, 103, 0.2);
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
-  }
+.cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-  .deadline-box i {
-    font-size: 2.25rem;
-    opacity: 0.95;
-    flex-shrink: 0;
-  }
+.cta-primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
 
-  .deadline-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+.cta-primary:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 50, 120, 0.2);
+}
 
-  .deadline-content strong {
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
+.submission-card {
+  text-align: left;
+}
 
-  .deadline-date {
-    font-size: clamp(1.15rem, 3vw, 1.35rem);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
+.submission-card .info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
 
-  /* CTA Container */
-  .cta-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex: 1;
-  }
+.info-item strong {
+  font-weight: 600;
+  color: var(--dark-color);
+}
 
-  /* Dropdown Wrapper */
-  .dropdown-wrapper {
-    position: relative;
-    width: 100%;
-  }
+.email-revealed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: #f4f7fc;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
 
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.65rem;
-    padding: 0.95rem 1.5rem;
-    font-size: clamp(0.9rem, 2vw, 0.98rem);
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid;
-    letter-spacing: 0.02em;
-    text-align: center;
-    width: 100%;
-    background: none;
-    cursor: pointer;
-  }
+.email-text {
+  font-family: monospace;
+  word-break: break-all;
+  color: var(--text-light);
+}
 
-  .cta-button i {
-    font-size: 1rem;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+.subject-text {
+  font-family: monospace;
+  background: #f4f7fc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  color: var(--text-light);
+}
 
-  .cta-button i.fa-external-link-alt {
-    font-size: 0.85rem;
-    margin-left: auto;
-  }
+.btn-copy-email {
+  background: transparent;
+  border: 1px solid #cdd7e5;
+  color: var(--text-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  .chevron-icon {
-    margin-left: auto;
-    font-size: 0.85rem !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+.btn-copy-email:hover {
+  background: #e9eef5;
+  color: var(--primary-color);
+}
 
-  .chevron-icon.rotated {
-    transform: rotate(180deg);
-  }
-
-  .cta-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    border-color: transparent;
-    box-shadow: 0 4px 12px rgba(1, 51, 103, 0.2);
-  }
-
-  .cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(1, 51, 103, 0.3);
-  }
-
-  .cta-primary:hover i:not(.fa-external-link-alt) {
-    transform: translateY(-2px);
-  }
-
-  .cta-primary:hover i.fa-external-link-alt {
-    transform: translateX(3px);
-  }
-
-  .cta-secondary {
-    background: var(--white);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-
-  .cta-secondary:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(1, 51, 103, 0.2);
-  }
-
-  .cta-secondary:hover i:not(.chevron-icon) {
-    transform: translateX(4px);
-  }
-
-  /* Dropdown Menu */
-  .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10;
-  }
-
-  .dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  /* Info Menu (Enviar Propuesta) */
-  .info-menu {
-    padding: 0;
-  }
-
-  .info-content {
-    padding: 1rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .info-content h4 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0;
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    color: var(--primary-color);
-    font-weight: 700;
-    padding-bottom: 0.65rem;
-    border-bottom: 2px solid #f8f9fa;
-  }
-
-  .info-content h4 i {
-    font-size: 1.1rem;
-  }
-
-  .info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .info-item strong {
-    color: var(--primary-color);
-    font-size: clamp(0.85rem, 2vw, 0.92rem);
-    font-weight: 600;
-  }
-
-  /* Email Wrapper */
-  .email-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .email-revealed {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.65rem;
-    background: #f8f9fa;
-    padding: 0.6rem 0.85rem;
-    border-radius: 6px;
-    border-left: 3px solid var(--secondary-color);
-  }
-
-  .email-text {
-    flex: 1;
-    font-family: 'Courier New', monospace;
-    font-size: clamp(0.8rem, 2vw, 0.88rem);
-    word-break: break-all;
-    color: var(--text-color);
-    font-weight: 600;
-  }
-
-  .btn-copy-email {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.85rem;
-    background: var(--white);
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    color: var(--primary-color);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    font-size: clamp(0.8rem, 2vw, 0.85rem);
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .btn-copy-email:hover {
-    background: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(1, 51, 103, 0.2);
-  }
-
-  .btn-copy-email.copied {
-    background: #28a745;
-    border-color: #28a745;
-    color: var(--white);
-  }
-
-  .btn-copy-email i {
-    font-size: 0.85rem;
-  }
-
-  .copied-text {
-    font-size: clamp(0.75rem, 2vw, 0.82rem);
-  }
-
-  .subject-text {
-    color: var(--text-color);
-    font-family: 'Courier New', monospace;
-    background: #f8f9fa;
-    padding: 0.4rem 0.65rem;
-    border-radius: 4px;
-    font-size: clamp(0.8rem, 2vw, 0.88rem);
-    border-left: 3px solid var(--primary-color);
-    display: block;
-  }
-
-  /* Animations */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 992px) {
-    .main-grid {
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-    }
-
-    .action-column {
-      gap: 1.25rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .convocatoria-section {
-      padding: 3.5rem 1.5rem 3rem;
-    }
-
-    .section-header {
-      margin-block-end: 1.75rem;
-    }
-
-    .convocatoria-content {
-      gap: 1.75rem;
-    }
-
-    .intro-text p {
-      padding: 1.25rem 1.5rem;
-    }
-
-    .requisitos-card {
-      padding: 1.75rem 1.5rem;
-    }
-
-    .card-header {
-      gap: 0.75rem;
-      margin-block-end: 1.25rem;
-    }
-
-    .deadline-box {
-      padding: 1.5rem 1.25rem;
-      gap: 1rem;
-    }
-
-    .deadline-box i {
-      font-size: 2rem;
-    }
-
-    .cta-button {
-      padding: 0.9rem 1.35rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .convocatoria-section {
-      padding: 3rem 1rem 2.5rem;
-    }
-
-    .intro-text p,
-    .requisitos-card {
-      padding: 1.25rem;
-    }
-
-    .requisitos-lista {
-      gap: 0.75rem;
-    }
-
-    .requisitos-lista li {
-      padding: 0.4rem 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .deadline-box {
-      padding: 1.35rem 1rem;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .cta-button {
-      padding: 0.85rem 1.25rem;
-    }
-
-    .info-content {
-      padding: 0.85rem 1rem;
-      gap: 0.75rem;
-    }
-
-    .email-revealed {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.5rem;
-    }
-
-    .btn-copy-email {
-      width: 100%;
-      justify-content: center;
-    }
-  }
+.btn-copy-email.copied {
+  background: #28a745;
+  border-color: #28a745;
+  color: var(--white);
+}
 </style>

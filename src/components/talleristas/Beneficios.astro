@@ -65,290 +65,133 @@
 </section>
 
 <style>
-  /* Beneficios Section */
-  .beneficios-section {
-    padding: 4rem 2rem 3.5rem;
-    background: linear-gradient(180deg, #dee2e6 0%, #e9ecef 100%);
-  }
+/* ===================================
+   BASE Y LAYOUT DE SECCIÓN
+   =================================== */
+.beneficios-section {
+  padding: clamp(2rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+  background: #f4f7fc;
+}
 
-  .container {
-    max-width: 1200px;
-    margin-inline: auto;
-  }
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+}
 
-  /* Section Header */
-  .section-header {
-    text-align: center;
-    margin-block-end: 3rem;
-  }
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  animation: fadeInDown 0.5s ease-out;
+}
 
-  .section-header h2 {
-    font-size: clamp(1.85rem, 5vw, 2.5rem);
-    color: #1F407F;
-    line-height: 1.2;
-    margin-block-end: 0.75rem;
-    font-weight: 700;
-    position: relative;
-    padding-block-end: 0.85rem;
-    display: inline-block;
-  }
+.section-header h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
 
-  .section-header h2::after {
-    content: '';
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: #1F407F;
-    border-radius: 2px;
-  }
+.section-subtitle {
+  color: var(--text-light);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
 
-  .section-subtitle {
-    color: var(--text-light);
-    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-    max-width: 650px;
-    margin-inline: auto;
-    line-height: 1.5;
-    text-wrap: pretty;
-  }
+/* ===================================
+   GRID DE BENEFICIOS
+   =================================== */
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
 
-  /* Beneficios Grid */
-  .beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-  }
-
-  /* Beneficio Card */
-  .beneficio-card {
+/* ===================================
+   CARD DE BENEFICIO
+   =================================== */
+.beneficio-card {
     background: var(--white);
-    border-radius: 12px;
-    padding: 2.25rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 30, 80, 0.05);
+    border: 1px solid #e0e8f3;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-    border-top: 4px solid #1F407F;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-  }
-
-  .beneficio-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Colores por tipo de beneficio */
-  /* Card 1: Constancia Oficial - Ciencias Exactas */
-  .beneficios-grid .beneficio-card:nth-child(1) {
-    border-top-color: #26408F;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(1) .icon-wrapper {
-    background: linear-gradient(135deg, #26408F 0%, #1F367A 100%);
-    box-shadow: 0 4px 12px rgba(38, 64, 143, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(1) h3 {
-    color: #26408F;
-  }
-
-  /* Card 2: Networking - Ciencias Sociales */
-  .beneficios-grid .beneficio-card:nth-child(2) {
-    border-top-color: #FA7C2C;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(2) .icon-wrapper {
-    background: linear-gradient(135deg, #FA7C2C 0%, #F45429 100%);
-    box-shadow: 0 4px 12px rgba(250, 124, 44, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(2) h3 {
-    color: #FA7C2C;
-  }
-
-  /* Card 3: Difusión - Ciencias de la Salud */
-  .beneficios-grid .beneficio-card:nth-child(3) {
-    border-top-color: #2291C6;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(3) .icon-wrapper {
-    background: linear-gradient(135deg, #2291C6 0%, #1C7AB6 100%);
-    box-shadow: 0 4px 12px rgba(34, 145, 198, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(3) h3 {
-    color: #2291C6;
-  }
-
-  /* Card 4: Kit de Tallerista - Económico Administrativas */
-  .beneficios-grid .beneficio-card:nth-child(4) {
-    border-top-color: #EC4464;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(4) .icon-wrapper {
-    background: linear-gradient(135deg, #EC4464 0%, #C1398F 100%);
-    box-shadow: 0 4px 12px rgba(236, 68, 100, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(4) h3 {
-    color: #EC4464;
-  }
-
-  /* Card 5: Publicación - Ciencias Sociales */
-  .beneficios-grid .beneficio-card:nth-child(5) {
-    border-top-color: #FCA434;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(5) .icon-wrapper {
-    background: linear-gradient(135deg, #FCA434 0%, #FA7C2C 100%);
-    box-shadow: 0 4px 12px rgba(252, 164, 52, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(5) h3 {
-    color: #FCA434;
-  }
-
-  /* Card 6: Impacto - Ciencias de la Salud */
-  .beneficios-grid .beneficio-card:nth-child(6) {
-    border-top-color: #33A8D2;
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(6) .icon-wrapper {
-    background: linear-gradient(135deg, #33A8D2 0%, #2291C6 100%);
-    box-shadow: 0 4px 12px rgba(51, 168, 210, 0.25);
-  }
-
-  .beneficios-grid .beneficio-card:nth-child(6) h3 {
-    color: #33A8D2;
-  }
-
-  /* Icon Wrapper */
-  .icon-wrapper {
-    width: 80px;
-    height: 80px;
-    margin-inline: auto;
-    background: #1F407F;
-    border-radius: 50%;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.25);
-  }
+    gap: 1rem;
+    height: 100%;
+    animation: fadeInUp 0.5s ease-out backwards;
+}
 
-  .beneficio-card:hover .icon-wrapper {
-    transform: scale(1.1) rotate(5deg);
-  }
+.beneficio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 30, 80, 0.1);
+}
 
-  .icon-wrapper i {
-    font-size: 2rem;
-    color: var(--white);
-  }
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 50, 120, 0.2);
+  transition: all 0.3s ease;
+}
 
-  /* Card Content */
-  .beneficio-card h3 {
-    color: #1F407F;
-    font-size: clamp(1.15rem, 2.5vw, 1.3rem);
-    font-weight: 700;
-    margin: 0;
-    text-wrap: pretty;
-  }
+.beneficio-card:hover .icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(0, 50, 120, 0.3);
+}
 
-  .beneficio-card p {
-    color: var(--text-color);
-    font-size: clamp(0.9rem, 2vw, 0.98rem);
-    line-height: 1.7;
-    margin: 0;
-    text-wrap: pretty;
-  }
+.beneficio-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
 
-  /* Staggered Animation */
-  .beneficio-card:nth-child(1) { animation-delay: 0.1s; }
-  .beneficio-card:nth-child(2) { animation-delay: 0.15s; }
-  .beneficio-card:nth-child(3) { animation-delay: 0.2s; }
-  .beneficio-card:nth-child(4) { animation-delay: 0.25s; }
-  .beneficio-card:nth-child(5) { animation-delay: 0.3s; }
-  .beneficio-card:nth-child(6) { animation-delay: 0.35s; }
+.beneficio-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-light);
+  margin: 0;
+  flex-grow: 1;
+}
 
-  /* Animations */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
+/* Staggered animation delays */
+.beneficios-grid .beneficio-card:nth-child(1) { animation-delay: 0.1s; }
+.beneficios-grid .beneficio-card:nth-child(2) { animation-delay: 0.15s; }
+.beneficios-grid .beneficio-card:nth-child(3) { animation-delay: 0.2s; }
+.beneficios-grid .beneficio-card:nth-child(4) { animation-delay: 0.25s; }
+.beneficios-grid .beneficio-card:nth-child(5) { animation-delay: 0.3s; }
+.beneficios-grid .beneficio-card:nth-child(6) { animation-delay: 0.35s; }
+
+/* ===================================
+   ANIMACIONES Y RESPONSIVE
+   =================================== */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 1200px) {
-    .beneficios-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (max-width: 992px) {
-    .beneficios-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .beneficios-section {
-      padding: 3.5rem 1.5rem 3rem;
-    }
-
-    .section-header {
-      margin-block-end: 2.5rem;
-    }
-
-    .beneficios-grid {
-      gap: 1.5rem;
-    }
-
-    .beneficio-card {
-      padding: 2rem 1.75rem;
-    }
-
-    .icon-wrapper {
-      width: 70px;
-      height: 70px;
-    }
-
-    .icon-wrapper i {
-      font-size: 1.75rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .beneficios-section {
-      padding: 3rem 1rem 2.5rem;
-    }
-
-    .beneficios-grid {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    .beneficio-card {
-      padding: 1.75rem 1.5rem;
-    }
-
-    .icon-wrapper {
-      width: 65px;
-      height: 65px;
-    }
-
-    .icon-wrapper i {
-      font-size: 1.6rem;
-    }
-  }
+}
 </style>
