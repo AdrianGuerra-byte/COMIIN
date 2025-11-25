@@ -1,0 +1,1531 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+<Layout>
+<section class="sede-section" id="sede">
+  <div class="container">
+    <header class="section-header">
+      <h1>Sede del Congreso</h1>
+      <p>Conoce el lugar donde se llevará a cabo este importante evento académico</p>
+    </header>
+  </div>
+  
+  <div class="sede-content">
+    <!-- Columna de Información -->
+    <aside class="sede-info" aria-label="Información de la sede">
+      
+      <!-- Sección Información Básica -->
+      <article class="info-section">
+        <header class="subsection-title">
+          <h2>Información General</h2>
+          <p>Detalles sobre la sede y el evento</p>
+        </header>
+        
+        <div class="detail-item">
+          <div class="icon-wrapper">
+            <i class="fas fa-university" aria-hidden="true"></i>
+          </div>
+          <div class="detail-content">
+            <h3>Institución</h3>
+            <p><strong>Centro Universitario Hidalguense</strong></p>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="icon-wrapper">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          </div>
+          <div class="detail-content">
+            <h3>Ubicación</h3>
+            <address class="address-box">
+              Guanajuato, Blvd. del Minero 305, Javier Rojo Gómez, 42030 Pachuca de Soto, <abbr title="Hidalgo">Hgo.</abbr>
+            </address>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="icon-wrapper">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          </div>
+          <div class="detail-content">
+            <h3>Fechas del Congreso</h3>
+            <p><strong><time datetime="2026-05-28">28</time>, <time datetime="2026-05-29">29</time> y <time datetime="2026-05-30">30</time> de Mayo 2026</strong></p>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="icon-wrapper">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+          </div>
+          <div class="detail-content">
+            <h3>Horario</h3>
+            <p><strong><time datetime="09:00">9:00 AM</time> - <time datetime="19:00">7:00 PM</time></strong></p>
+          </div>
+        </div>
+        
+        <div class="detail-item">
+          <div class="icon-wrapper">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </div>
+          <div class="detail-content">
+            <h3>Modalidad</h3>
+            <p><strong>Mixta (Presencial/Virtual)</strong></p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Sección Contacto -->
+      <article class="contact-section">
+        <header class="subsection-title">
+          <h2>Contacto</h2>
+          <p>Ponte en contacto con nosotros</p>
+        </header>
+        
+        <nav class="contact-links" aria-label="Enlaces de contacto">
+          <a href="tel:+527717195300" class="contact-link">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <span>771 719 5300</span>
+          </a>
+          <a href="tel:+527717195301" class="contact-link">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <span>771 719 5301</span>
+          </a>
+          <a href="mailto:congresocuh@posgradocuh.edu.mx" class="contact-link">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <span>congresocuh@posgradocuh.edu.mx</span>
+          </a>
+          <a href="https://cuh.edu.mx" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>cuh.edu.mx</span>
+            <i class="fas fa-external-link-alt" aria-hidden="true" style="font-size: 0.75em; margin-left: auto;"></i>
+          </a>
+        </nav>
+      </article>
+      
+      <!-- Sección Instalaciones -->
+      <article class="facilities-section">
+        <header class="subsection-title">
+          <h2>Instalaciones y Servicios</h2>
+          <p>Descubre los servicios disponibles en la sede</p>
+        </header>
+        
+        <div class="facilities-grid">
+          <div class="facility-item">
+            <i class="fas fa-wifi" aria-hidden="true"></i>
+            <h3>WiFi Gratuito</h3>
+            <p>Internet de alta velocidad</p>
+          </div>
+          
+          <div class="facility-item">
+            <i class="fas fa-utensils" aria-hidden="true"></i>
+            <h3>Cafetería</h3>
+            <p>Alimentos y bebidas</p>
+          </div>
+          
+          <div class="facility-item">
+            <i class="fas fa-parking" aria-hidden="true"></i>
+            <h3>Estacionamiento</h3>
+            <p>Área de parqueo seguro</p>
+          </div>
+          
+          <div class="facility-item">
+            <i class="fas fa-book" aria-hidden="true"></i>
+            <h3>Biblioteca</h3>
+            <p>Recursos académicos</p>
+          </div>
+          
+          <div class="facility-item">
+            <i class="fas fa-desktop" aria-hidden="true"></i>
+            <h3>Aulas Multimedia</h3>
+            <p>Tecnología educativa</p>
+          </div>
+          
+          <div class="facility-item">
+            <i class="fas fa-gavel" aria-hidden="true"></i>
+            <h3>Salas de Juicios</h3>
+            <p>Instalaciones especializadas</p>
+          </div>
+
+          <div class="facility-item">
+            <i class="fas fa-flask" aria-hidden="true"></i>
+            <h3>Laboratorios</h3>
+            <p>Espacios equipados para la experimentación científica y práctica académica</p>
+          </div>
+
+          <div class="facility-item">
+            <i class="fas fa-eye" aria-hidden="true"></i>
+            <h3>Cámara de Gesell</h3>
+            <p>Ambiente diseñado para observaciones y análisis conductuales controlados</p>
+          </div>
+        </div>
+      </article>
+    </aside>
+    
+    <!-- Columna del Mapa CUH -->
+    <section class="map-section" aria-labelledby="map-title">
+      <header class="subsection-title">
+        <h2 id="map-title">Ubicación <abbr title="Centro Universitario Hidalguense">CUH</abbr></h2>
+        <address>
+          Guanajuato, Blvd. del Minero 305, Javier Rojo Gómez, 42030 Pachuca de Soto, <abbr title="Hidalgo">Hgo.</abbr>
+        </address>
+      </header>
+      
+      <div class="sede-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30869.193521741978!2d-98.7793379!3d20.1152324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d10a032d4ddb1b%3A0xf397144c38bcb070!2sCentro%20Universitario%20Hidalguense!5e1!3m2!1ses-419!2smx!4v1759688782837!5m2!1ses-419!2smx" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa de ubicación del Centro Universitario Hidalguense"
+          aria-label="Mapa interactivo mostrando la ubicación del Centro Universitario Hidalguense en Pachuca, Hidalgo"></iframe>
+      </div>
+      
+      <a href="https://maps.app.goo.gl/XFRLHx5oapBK5eyX7" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <i class="fas fa-directions" aria-hidden="true"></i>
+        Ver en Google Maps
+        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+      </a>
+      
+      <aside class="info-box" aria-labelledby="transporte-info">
+        <div class="info-box-header">
+          <i class="fas fa-car" aria-hidden="true"></i>
+          <h3 id="transporte-info">Cómo Llegar</h3>
+        </div>
+        <p>La sede cuenta con fácil acceso desde el centro de Pachuca. Se recomienda usar el <strong>transporte público</strong> o compartir vehículos para reducir el impacto ambiental.</p>
+      </aside>
+    </section>
+  </div>
+
+  <!-- Sección Hotel Emily -->
+  <div class="container">
+    <div class="hotel-section-wrapper">
+      <div class="hotel-info-column">
+      <div class="hotel-card">
+        <div class="hotel-header">
+          <i class="fas fa-hotel" aria-hidden="true"></i>
+          <h3>Hotel Emily</h3>
+        </div>
+
+        <div class="hotel-content">
+          <div class="hotel-location">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <address>
+              Plaza Independencia s/n, Col. Centro.<br>
+              Pachuca de Soto, Hgo. CP 42000
+            </address>
+          </div>
+
+          <div class="hotel-contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:reservaciones@hotelemily.com.mx">reservaciones@hotelemily.com.mx</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <a href="tel:7717150828">771 715 0828</a>
+            </div>
+            <div class="contact-person">
+              <i class="fas fa-user-tie" aria-hidden="true"></i>
+              <div>
+                <p><strong>L.T. Jaqueline Arroyo Romo</strong></p>
+                <p class="position">Ejecutivo de Reservaciones</p>
+              </div>
+            </div>
+          </div>
+
+          <details class="reservation-details">
+            <summary>
+              <i class="fas fa-key" aria-hidden="true"></i>
+              <span>Hacer Reservación</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <div class="reservation-content">
+              <div class="reservation-key">
+                <p><strong>Clave de Reserva:</strong></p>
+                <div class="key-badge">COMIIN26</div>
+              </div>
+              <p class="reservation-instructions">
+                Contacta al hotel por correo o teléfono, o usa el botón de WhatsApp para reservar con la clave <strong>COMIIN26</strong>.
+              </p>
+            </div>
+          </details>
+
+          <a href="https://wa.me/527717474762?text=Hola,%20me%20gustar%C3%ADa%20hacer%20una%20reservaci%C3%B3n%20en%20Hotel%20Emily%20con%20la%20Clave%20COMIIN26%20para%20el%20Congreso%20de%20mayo%202026.%20%C2%BFPodr%C3%ADa%20proporcionarme%20informaci%C3%B3n%20sobre%20disponibilidad%20y%20tarifas?" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="whatsapp-btn">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotel-map-column">
+      <div class="hotel-map-card">
+        <header class="subsection-title">
+          <h2>Ubicación Hotel Emily</h2>
+          <address>Plaza Independencia s/n, Col. Centro, Pachuca de Soto, Hgo.</address>
+        </header>
+        
+        <div class="hotel-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.8447234567894!2d-98.73634588509155!3d20.128204886470987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109e8b3c1a3b9%3A0xebaa9b1f4177636f!2sHotel%20Emily!5e0!3m2!1es-419!2smx!4v1699999999999!5m2!1es-419!2smx" 
+            width="600" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación del Hotel Emily"
+            aria-label="Mapa interactivo mostrando la ubicación del Hotel Emily en Pachuca, Hidalgo"></iframe>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Hotel+Emily/data=!4m2!3m1!1s0x0:0xebaa9b1f4177636f?sa=X&ved=1t:2428&ictx=111" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn-primary">
+          <i class="fas fa-directions" aria-hidden="true"></i>
+          Ver en Google Maps
+          <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Sección Hotel Ciros -->
+  <div class="container">
+    <div class="hotel-section-wrapper">
+    <div class="hotel-info-column">
+      <div class="hotel-card">
+        <div class="hotel-header">
+          <i class="fas fa-hotel" aria-hidden="true"></i>
+          <h3>Hotel Ciros</h3>
+        </div>
+
+        <div class="hotel-content">
+          <div class="hotel-location">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <address>
+              Plaza Independencia no. 110, Col. Centro.<br>
+              Pachuca de Soto, Hgo. CP 42000
+            </address>
+          </div>
+
+          <div class="hotel-contact-info">
+            <div class="contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:reservaciones@hotelemily.com.mx">reservaciones@hotelemily.com.mx</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <a href="tel:7717150828">771 715 0828</a>
+            </div>
+            <div class="contact-person">
+              <i class="fas fa-user-tie" aria-hidden="true"></i>
+              <div>
+                <p><strong>L.T. Jaqueline Arroyo Romo</strong></p>
+                <p class="position">Ejecutivo de Reservaciones</p>
+              </div>
+            </div>
+          </div>
+
+          <details class="reservation-details">
+            <summary>
+              <i class="fas fa-key" aria-hidden="true"></i>
+              <span>Hacer Reservación</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <div class="reservation-content">
+              <div class="reservation-key">
+                <p><strong>Clave de Reserva:</strong></p>
+                <div class="key-badge">COMIIN26</div>
+              </div>
+              <p class="reservation-instructions">
+                Contacta al hotel por correo o teléfono, o usa el botón de WhatsApp para reservar con la clave <strong>COMIIN26</strong>.
+              </p>
+            </div>
+          </details>
+
+          <a href="https://wa.me/527717474762?text=Hola,%20me%20gustar%C3%ADa%20hacer%20una%20reservaci%C3%B3n%20en%20Hotel%20Ciros%20con%20la%20Clave%20COMIIN26%20para%20el%20Congreso%20de%20mayo%202026.%20%C2%BFPodr%C3%ADa%20proporcionarme%20informaci%C3%B3n%20sobre%20disponibilidad%20y%20tarifas?" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="whatsapp-btn">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotel-map-column">
+      <div class="hotel-map-card">
+        <header class="subsection-title">
+          <h2>Ubicación Hotel Ciros</h2>
+          <address>Plaza Independencia no. 110, Col. Centro, Pachuca de Soto, Hgo.</address>
+        </header>
+        
+        <div class="hotel-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3757.844456789012!2d-98.73423499999999!3d20.1281992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109e8b36f03d9%3A0x2f2efe38eebbb542!2sHotel%20Ciros!5e0!3m2!1es-419!2smx!4v1699999999999!5m2!1es-419!2smx" 
+            width="600" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de ubicación del Hotel Ciros"
+            aria-label="Mapa interactivo mostrando la ubicación del Hotel Ciros en Pachuca, Hidalgo"></iframe>
+        </div>
+
+        <a href="https://www.google.com/maps/place/Hotel+Ciros/@20.1282042,-98.734235,17z/data=!4m11!3m10!1s0x85d109e8b36f03d9:0x2f2efe38eebbb542!5m4!1s2025-12-27!2i2!4m1!1i2!8m2!3d20.1281992!4d-98.7316547!16s%2Fg%2F1tfg7_vw?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="btn-primary">
+          <i class="fas fa-directions" aria-hidden="true"></i>
+          Ver en Google Maps
+          <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+</Layout>
+
+    <style>
+        /* ===== SECCIÓN SEDE PRINCIPAL ===== */
+.sede-section {
+    padding: clamp(3.5rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.sede-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header principal */
+.section-header {
+    text-align: center;
+    margin-block-end: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.section-header h1 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+    font-weight: 700;
+    color: #1F407F;
+    margin-block-end: 0.75rem;
+    position: relative;
+    display: inline-block;
+    padding-block-end: 0.85rem;
+}
+
+.section-header h1::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #1F407F;
+    border-radius: 2px;
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    margin-block-start: 1rem;
+    max-width: 700px;
+    margin-inline: auto;
+    line-height: 1.6;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.sede-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sede-info {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ===== SECCIONES DE INFORMACIÓN ===== */
+.info-section,
+.contact-section,
+.facilities-section {
+    background: var(--white);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #1F407F;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-section:hover,
+.contact-section:hover,
+.facilities-section:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+    .info-section:hover,
+    .contact-section:hover,
+    .facilities-section:hover {
+        transform: none;
+    }
+}
+
+.subsection-title {
+    margin-block-end: clamp(1.5rem, 3vw, 2rem);
+}
+
+.subsection-title h2 {
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
+    color: #1F407F;
+    font-weight: 700;
+    margin-block-end: 0.5rem;
+}
+
+.subsection-title p,
+.subsection-title address {
+    color: var(--text-light);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.5;
+    font-style: normal;
+}
+
+/* ===== DETAIL ITEMS ===== */
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-block-end: 1.25rem;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+    background: linear-gradient(135deg, rgba(1, 51, 103, 0.02), rgba(0, 86, 179, 0.03));
+    border-radius: 12px;
+    border: 1px solid rgba(1, 51, 103, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detail-item:last-child {
+    margin-block-end: 0;
+}
+
+.detail-item:hover {
+    transform: translateX(8px);
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.12);
+    border-color: rgba(31, 64, 127, 0.15);
+}
+
+@media (max-width: 768px) {
+    .detail-item:hover {
+        transform: none;
+    }
+}
+
+.icon-wrapper {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1F407F;
+    color: var(--white);
+    border-radius: 12px;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(31, 64, 127, 0.2);
+}
+
+.detail-content h3 {
+    margin-block-end: 0.75rem;
+    color: #1F407F;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+}
+
+.detail-content p {
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+}
+
+.address-box {
+    background: rgba(34, 145, 198, 0.08);
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+    border-radius: 10px;
+    border-inline-start: 4px solid #2291C6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-style: normal;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+}
+
+/* ===== CONTACTO ===== */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+    background: linear-gradient(135deg, rgba(1, 51, 103, 0.02), rgba(0, 86, 179, 0.03));
+    border-radius: 12px;
+    border: 2px solid rgba(1, 51, 103, 0.08);
+}
+
+.contact-link:hover {
+    background: linear-gradient(135deg, rgba(31, 64, 127, 0.06), rgba(34, 145, 198, 0.08));
+    color: #1F407F;
+    transform: translateX(8px);
+    border-color: #1F407F;
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.12);
+}
+
+@media (max-width: 768px) {
+    .contact-link:hover {
+        transform: none;
+    }
+}
+
+.contact-link i:first-child {
+    color: #1F407F;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(31, 64, 127, 0.12);
+    border-radius: 10px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover i:first-child {
+    background: #1F407F;
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.contact-link span {
+    font-weight: 500;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    flex: 1;
+}
+
+/* ===== INSTALACIONES ===== */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.facility-item {
+    text-align: center;
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.25rem);
+    background: linear-gradient(135deg, rgba(1, 51, 103, 0.02), rgba(0, 86, 179, 0.03));
+    border-radius: 12px;
+    border: 2px solid rgba(1, 51, 103, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.facility-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #1F407F;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.facility-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(31, 64, 127, 0.18);
+    border-color: #1F407F;
+}
+
+.facility-item:hover::before {
+    transform: scaleX(1);
+}
+
+.facility-item i {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--white);
+    margin-block-end: 1rem;
+    width: clamp(60px, 12vw, 70px);
+    height: clamp(60px, 12vw, 70px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1F407F;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.25);
+}
+
+.facility-item:hover i {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.35);
+}
+
+.facility-item h3 {
+    color: #1F407F;
+    margin-block-end: 0.65rem;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+}
+
+.facility-item p {
+    color: var(--text-light);
+    margin: 0;
+    font-size: clamp(0.85rem, 1.8vw, 0.9rem);
+    line-height: 1.5;
+}
+
+/* ===== SECCIÓN ALOJAMIENTO ===== */
+.accommodation-section {
+    background: var(--white);
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #2291C6;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.accommodation-section:hover {
+    box-shadow: 0 8px 30px rgba(34, 145, 198, 0.15);
+    transform: translateY(-4px);
+}
+
+/* Layout de Hotel con Mapa Sticky */
+.hotel-section-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+    margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.hotel-info-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-map-column {
+    position: sticky;
+    top: calc(var(--navbar-height, 95px) + 2rem);
+    height: fit-content;
+}
+
+.hotel-map-card {
+    background: var(--white);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #1F407F;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+
+.hotel-map-card:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+    .hotel-map-card:hover {
+        transform: none;
+    }
+}
+
+.hotel-map-card .subsection-title {
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.hotel-map-card .subsection-title h2 {
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
+    color: #1F407F;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hotel-map-card .subsection-title address {
+    color: var(--text-light);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.5;
+    font-style: normal;
+}
+
+.hotel-card {
+    background: var(--white);
+    border: 2px solid rgba(31, 64, 127, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    border-color: #1F407F;
+}
+
+@media (max-width: 1024px) {
+    .hotel-card:hover {
+        transform: none;
+    }
+}
+
+.hotel-header {
+    background: #1F407F;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--white);
+}
+
+.hotel-header i {
+    font-size: clamp(1.75rem, 4vw, 2rem);
+    opacity: 0.95;
+}
+
+.hotel-header h3 {
+    margin: 0;
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
+    font-weight: 700;
+}
+
+.hotel-content {
+    padding: clamp(2rem, 4vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 1.5rem);
+    flex: 1;
+}
+
+.hotel-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+    background: rgba(31, 64, 127, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid #1F407F;
+}
+
+.hotel-location i {
+    color: #1F407F;
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.hotel-location address {
+    font-style: normal;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    margin: 0;
+}
+
+/* Mapa Embebido */
+.hotel-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    border: 3px solid rgba(31, 64, 127, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hotel-map:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    border-color: #1F407F;
+}
+
+.hotel-map iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    display: block;
+}
+
+.hotel-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: clamp(0.85rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.25rem);
+    background: rgba(31, 64, 127, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(31, 64, 127, 0.08);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    background: rgba(31, 64, 127, 0.06);
+    border-color: #1F407F;
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .contact-item:hover {
+        transform: none;
+    }
+}
+
+.contact-item i {
+    color: #1F407F;
+    font-size: 1.1rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(31, 64, 127, 0.1);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.contact-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    transition: color 0.3s ease;
+    word-break: break-all;
+}
+
+.contact-item:hover a {
+    color: #1F407F;
+}
+
+.contact-person {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+    background: linear-gradient(135deg, rgba(31, 64, 127, 0.05), rgba(34, 145, 198, 0.05));
+    border-radius: 12px;
+    border: 2px solid rgba(31, 64, 127, 0.1);
+}
+
+.contact-person i {
+    color: #2291C6;
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.contact-person p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.5;
+}
+
+.contact-person .position {
+    color: var(--text-light);
+    font-size: clamp(0.85rem, 1.8vw, 0.9rem);
+    margin-top: 0.25rem;
+}
+
+/* Desplegable de Reservación */
+.reservation-details {
+    border: 2px solid #1F407F;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    transition: all 0.3s ease;
+}
+
+.reservation-details[open] {
+    box-shadow: 0 6px 20px rgba(31, 64, 127, 0.15);
+}
+
+.reservation-details summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+    background: #1F407F;
+    color: var(--white);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    transition: all 0.3s ease;
+}
+
+.reservation-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.reservation-details summary:hover {
+    background: #163666;
+}
+
+.reservation-details summary i:first-child {
+    font-size: 1.1rem;
+}
+
+.reservation-details summary i:last-child {
+    margin-left: auto;
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+.reservation-details[open] summary i:last-child {
+    transform: rotate(180deg);
+}
+
+.reservation-content {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: rgba(31, 64, 127, 0.02);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reservation-key {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.reservation-key p {
+    margin: 0 0 0.75rem 0;
+    color: #1F407F;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+}
+
+.key-badge {
+    display: inline-block;
+    background: #1F407F;
+    color: var(--white);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    border-radius: 50px;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+    user-select: all;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(31, 64, 127, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 25px rgba(31, 64, 127, 0.4);
+    }
+}
+
+.reservation-instructions {
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    margin: 0;
+    text-align: center;
+}
+
+.reservation-instructions strong {
+    color: #1F407F;
+    font-weight: 600;
+}
+
+/* Botón de WhatsApp */
+.whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: clamp(1rem, 2.5vw, 1.25rem);
+    background: #25D366;
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.whatsapp-btn:hover {
+    background: #20BA5A;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-btn:hover::before {
+    left: 100%;
+}
+
+.whatsapp-btn i {
+    font-size: 1.5rem;
+    animation: ring 1.5s ease-in-out infinite;
+}
+
+@keyframes ring {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    10%, 30% {
+        transform: rotate(-10deg);
+    }
+    20%, 40% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+}
+
+/* ===== SECCIÓN MAPA ===== */
+.map-section {
+    background: var(--white);
+    padding: clamp(2rem, 4vw, 2.5rem);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--navbar-height, 95px) + 2rem);
+    border-top: 4px solid #1F407F;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-section:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+    .map-section:hover {
+        transform: none;
+    }
+}
+
+.sede-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-block-end: clamp(1.5rem, 3vw, 2rem);
+    border: 3px solid rgba(31, 64, 127, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sede-map:hover {
+    box-shadow: 0 8px 30px rgba(31, 64, 127, 0.15);
+    border-color: #1F407F;
+}
+
+.sede-map iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    display: block;
+}
+
+/* Botón mejorado */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: #1F407F;
+    color: var(--white);
+    padding: clamp(0.85rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(31, 64, 127, 0.3);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(31, 64, 127, 0.4);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary i:last-child {
+    font-size: 0.85em;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i:last-child {
+    transform: translateX(4px);
+}
+
+/* Info box para transporte */
+.map-section .info-box {
+    margin-block-start: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(1.25rem, 2.5vw, 1.5rem);
+    background: rgba(34, 145, 198, 0.08);
+    border-radius: 12px;
+    border-inline-start: 4px solid #2291C6;
+}
+
+.info-box-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-block-end: 0.75rem;
+}
+
+.info-box-header i {
+    color: #2291C6;
+    font-size: 1.25rem;
+}
+
+.info-box-header h3 {
+    color: #1F407F;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    font-weight: 600;
+    margin: 0;
+}
+
+.map-section .info-box p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+}
+
+.map-section .info-box strong {
+    color: #1F407F;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.info-section,
+.contact-section,
+.facilities-section,
+.map-section {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.info-section {
+    animation-delay: 0.1s;
+}
+
+.contact-section {
+    animation-delay: 0.2s;
+}
+
+.facilities-section {
+    animation-delay: 0.3s;
+}
+
+.accommodation-section {
+    animation-delay: 0.35s;
+}
+
+.map-section {
+    animation-delay: 0.4s;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .sede-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .map-section {
+        position: static;
+        order: -1;
+    }
+
+    .hotel-section-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hotel-map-column {
+        position: static;
+        order: -1;
+    }
+
+    .hotel-map iframe {
+        height: 350px;
+    }
+    
+    .sede-info {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sede-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .facilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .detail-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 1.25rem;
+    }
+
+    .contact-link {
+        padding: 1rem;
+    }
+
+    .sede-map iframe {
+        height: 300px;
+    }
+
+    .hotel-section-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hotel-map iframe {
+        height: 300px;
+    }
+
+    .contact-person {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .key-badge {
+        font-size: 1.15rem;
+        padding: 0.75rem 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .whatsapp-btn {
+        padding: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .whatsapp-btn i {
+        font-size: 1.3rem;
+    }
+    
+    .info-section,
+    .contact-section,
+    .facilities-section,
+    .map-section,
+    .hotel-card,
+    .hotel-map-card {
+        padding: 1.75rem;
+    }
+    
+    .sede-info {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sede-section {
+        padding: 2.5rem 1rem;
+    }
+    
+    .facilities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .sede-map iframe {
+        height: 250px;
+    }
+
+    .hotel-map iframe {
+        height: 250px;
+    }
+
+    .hotel-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 1.5rem;
+    }
+
+    .hotel-location {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+    }
+
+    .reservation-details summary {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .whatsapp-btn {
+        padding: 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-btn i {
+        font-size: 1.2rem;
+    }
+
+    .info-section,
+    .contact-section,
+    .facilities-section,
+    .map-section,
+    .hotel-card,
+    .hotel-map-card {
+        padding: 1.5rem;
+    }
+    
+    .hotel-content {
+        padding: 1.5rem;
+    }
+    
+    .detail-item {
+        padding: 1rem;
+    }
+    
+    .sede-info {
+        gap: 1.25rem;
+    }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible para accesibilidad */
+.btn-primary:focus-visible,
+.contact-link:focus-visible {
+    outline: 3px solid #2291C6;
+    outline-offset: 3px;
+}
+
+/* Mejora para address en modo oscuro */
+address {
+    font-style: normal;
+}
+
+abbr {
+    text-decoration: none;
+    cursor: help;
+}
+    </style>
