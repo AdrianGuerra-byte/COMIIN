@@ -511,7 +511,7 @@
 
 <script is:inline>
 // Script para FAQs - expandir/contraer preguntas
-document.addEventListener('DOMContentLoaded', function() {
+function initFaqs() {
     const faqItems = document.querySelectorAll('.faq-item');
 
     // Funcionalidad para abrir/cerrar FAQs
@@ -559,5 +559,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-});
+}
+document.addEventListener('astro:page-load', initFaqs);
 </script>
