@@ -12,7 +12,8 @@
       <!-- Logos secundarios (abajo) -->
       <div class="footer-logos-secondary">
         <img src="/logos/UPNHLogo.avif" alt="Logo UPNH" class="footer-logo footer-logo-small" loading="lazy" />
-        <img src="/logos/logoSopes.avif" alt="Logo INSUPEH" class="footer-logo footer-logo-small" loading="lazy" />
+        <img src="/logos/insupeh.avif" alt="Logo INSUPEH" class="footer-logo footer-logo-small" loading="lazy" />
+        <img src="/logos/redie.avif" alt="Logo REDIE" class="footer-logo footer-logo-small footer-logo-redie" loading="lazy" />
       </div>
     </div>
 
@@ -94,6 +95,15 @@
   /* Logos secundarios (UPNH e INSUPEH) - más pequeños */
   .footer-logo-small {
     height: 50px;
+  }
+
+  /* Logo REDIE - aplicar filtro blanco */
+  .footer-logo-redie {
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-logo-redie:hover {
+    filter: brightness(0) invert(1);
   }
 
   /* Links del footer */

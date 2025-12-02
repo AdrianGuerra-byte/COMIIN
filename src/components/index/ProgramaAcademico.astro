@@ -254,7 +254,7 @@ const daysToShow = variant === 'compacto'
       </header>
     )}
 
-    <nav class="programa-tabs" role="tablist" aria-label="Días del programa">
+    <div class="programa-tabs" role="tablist" aria-label="Días del programa">
       {
         daysToShow.map((day, index) => (
           <button
@@ -269,12 +269,12 @@ const daysToShow = variant === 'compacto'
           </button>
         ))
       }
-    </nav>
+    </div>
 
     <div class="programa-content">
       {
         daysToShow.map((day, index) => (
-          <article
+          <div
             class:list={["day-panel", { active: index === 0 }]}
             id={`panel-${day.id}`}
             role="tabpanel"
@@ -309,7 +309,7 @@ const daysToShow = variant === 'compacto'
                 </div>
               ))}
             </div>
-          </article>
+          </div>
         ))
       }
     </div>
