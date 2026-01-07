@@ -11,7 +11,7 @@
       </div>
       <!-- Logos secundarios (abajo) -->
       <div class="footer-logos-secondary">
-        <img src="/logos/UPNHLogo.avif" alt="Logo UPNH" class="footer-logo footer-logo-small" loading="lazy" />
+        <img src="/logos/UPNHLogo.avif" alt="Logo UPNH" class="footer-logo footer-logo-small footer-logo-upnh" loading="lazy" />
         <img src="/logos/insupeh.avif" alt="Logo INSUPEH" class="footer-logo footer-logo-small" loading="lazy" />
         <img src="/logos/redie.avif" alt="Logo REDIE" class="footer-logo footer-logo-small footer-logo-redie" loading="lazy" />
       </div>
@@ -97,6 +97,11 @@
     height: 50px;
   }
 
+  /* Logo UPNH - 10% más grande (55px vs 50px) */
+  .footer-logo-upnh {
+    height: 65px !important;
+  }
+
   /* Logo REDIE - aplicar filtro blanco */
   .footer-logo-redie {
     filter: brightness(0) invert(1);
@@ -169,7 +174,7 @@
   /* ===================================
      Diseño Responsivo
      =================================== */
-  
+
   @media (max-width: 768px) {
     footer {
       padding: 2rem 1.5rem 1.25rem;
@@ -194,6 +199,10 @@
 
     .footer-logo-small {
       height: 40px;
+    }
+
+    .footer-logo-upnh {
+      height: 44px !important;
     }
 
     .footer-links {
