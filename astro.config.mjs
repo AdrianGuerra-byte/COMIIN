@@ -1,12 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
+import react from '@astrojs/react';
 import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()],
-  
+  integrations: [icon(), react()],
+
   // Optimizaciones de rendimiento
   vite: {
     build: {
@@ -25,7 +25,7 @@ export default defineConfig({
       noExternal: ['@vercel/analytics']
     }
   },
-  
+
   // Configuración de compilación optimizada
   build: {
     inlineStylesheets: 'auto',
