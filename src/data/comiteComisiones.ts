@@ -29,84 +29,72 @@ export const comiteComisiones: ComiteMember[] = [
   },
   {
     id: 'com-4',
-    nombre: 'Psic. Daniela Oliver Sánchez',
-    cargo: 'Comisión Académica',
-    imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    id: 'com-5',
-    nombre: 'Lic. Abigali Villagomez Mendoza',
-    cargo: 'Comisión Académica',
-    imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    id: 'com-6',
     nombre: 'Lic. Natalia Paredes del Villar',
     cargo: 'Comisión Académica',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-7',
+    id: 'com-5',
     nombre: 'Lic. Cielo Yennin Flores Gutiérrez',
     cargo: 'Comisión de Imagen',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-8',
+    id: 'com-6',
     nombre: 'Lic. Brenda Tolentino Hernández',
     cargo: 'Comisión de Imagen',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-9',
+    id: 'com-7',
     nombre: 'Lic. Guadalupe Angeles Tello',
     cargo: 'Comisión de Infraestructura Tecnológica',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-10',
+    id: 'com-8',
     nombre: 'Ing. Gustavo Adolfo Bautista Hernández',
     cargo: 'Comisión de Infraestructura Tecnológica',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-16',
+    id: 'com-9',
     nombre: 'Ing. Angel Adrian Guerra Avila',
     cargo: 'Comisión de Infraestructura Tecnológica',
     imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-11',
+    id: 'com-10',
     nombre: 'Ing. Leonardo Morales Reyes',
     cargo: 'Comisión de Infraestructura Tecnológica',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-12',
+    id: 'com-11',
     nombre: 'Ing. Jesús Itzcóatl Montoya Nateras',
     cargo: 'Comisión de Infraestructura Tecnológica',
     imagen: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-13',
+    id: 'com-12',
     nombre: 'Lic. Miguel Ángel López Castillo',
     cargo: 'Comisión de Vinculación',
     imagen: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-14',
+    id: 'com-13',
     nombre: 'Lic. Olivia Dennis García Orozco',
     cargo: 'Comisión de Vinculación',
     imagen: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-15',
+    id: 'com-14',
     nombre: 'C. Fernanda Badillo Lazcano',
     cargo: 'Comisión de Comunicación',
     imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   },
   {
-    id: 'com-16',
+    id: 'com-15',
     nombre: 'C. Yamina García Orozco',
     cargo: 'Enlace Institucional',
     imagen: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
