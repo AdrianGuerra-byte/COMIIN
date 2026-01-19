@@ -215,11 +215,31 @@
     });
   }
 
+  // Función para manejar el scroll del navbar
+  function handleNavbarScroll() {
+    const header = document.querySelector('.main-header');
+    if (!header) return;
+
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
   // Inicializar en carga inicial
-  document.addEventListener('DOMContentLoaded', initNavbar);
+  document.addEventListener('DOMContentLoaded', () => {
+    initNavbar();
+    handleNavbarScroll();
+    window.addEventListener('scroll', handleNavbarScroll);
+  });
 
   // Reinicializar después de navegaciones de Astro (View Transitions)
-  document.addEventListener('astro:page-load', initNavbar);
+  document.addEventListener('astro:page-load', () => {
+    initNavbar();
+    handleNavbarScroll();
+    window.addEventListener('scroll', handleNavbarScroll);
+  });
 </script>
 
 
@@ -244,19 +264,28 @@
   }
 
   .main-header {
-    background: #1F407F;
+    background: rgba(31, 64, 127, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     height: var(--navbar-height);
   }
 
   .main-header.scrolled {
-    background: #1F407F;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(31, 64, 127, 0.95);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .header-container {
@@ -283,7 +312,7 @@
     height: 95px;
     width: auto;
     transition: transform 0.4s ease, filter 0.4s ease, height 0.4s ease;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
   }
 
   .main-header.scrolled .logo {
@@ -333,6 +362,7 @@
     border: none;
     cursor: pointer;
     font-family: inherit;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .nav-link::before {
@@ -732,6 +762,19 @@
     .dropdown-menu a:active,
     .dropdown-menu a:hover {
       padding-left: 2.75rem;
+    }
+  }
+</style>
+<style is:global>
+  /* Hero siempre visible bajo el Navbar, sin espacio blanco */
+  .hero, .hero-section, .main-hero, .hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  @media (max-width: 768px) {
+    .hero, .hero-section, .main-hero, .hero-container {
     }
   }
 </style>
