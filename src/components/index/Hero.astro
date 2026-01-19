@@ -65,7 +65,7 @@ const {
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initHeroCarousel() {
     const hero = document.querySelector('.hero');
     const slides = hero?.querySelectorAll('.hero-slide');
 
@@ -74,11 +74,10 @@ const {
     let currentSlide = 0;
     let carouselInterval: number | undefined;
 
-    // MEJORA: Respetar preferencias de accesibilidad
+    // Respetar preferencias de accesibilidad
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function changeSlide() {
-      // Más eficiente: solo quita 'active' del slide actual
       if (!slides) return;
       slides[currentSlide].classList.remove('active');
       currentSlide = (currentSlide + 1) % slides.length;
@@ -96,10 +95,14 @@ const {
     function stopCarousel() {
       if (carouselInterval !== undefined) {
         clearInterval(carouselInterval);
+        carouselInterval = undefined;
       }
     }
-    // Iniciar
+
+    // Iniciar el carrusel
     startCarousel();
+
+    // Escuchar cambios en preferencias de movimiento
     motionQuery.addEventListener('change', () => {
       if (motionQuery.matches) {
         stopCarousel();
@@ -107,7 +110,16 @@ const {
         startCarousel();
       }
     });
-  });
+
+    // Limpiar cuando se navegue a otra página (View Transitions)
+    document.addEventListener('astro:before-preparation', stopCarousel, { once: true });
+  }
+
+  // Inicializar en carga inicial
+  initHeroCarousel();
+
+  // Re-inicializar después de navegación con View Transitions
+  document.addEventListener('astro:page-load', initHeroCarousel);
 </script>
 
 <style>

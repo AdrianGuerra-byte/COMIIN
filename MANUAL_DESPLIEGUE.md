@@ -6,7 +6,7 @@
 
 ### Descripción del Proyecto
 
-Este documento detalla el proceso completo para desplegar la aplicación **COMIIN Landing Page** desarrollada con **Astro** en un servidor **Ubuntu Server** utilizando **NGINX** como servidor web.
+Este documento detalla el proceso completo para desplegar la pagina **COMIIN Landing Page**.
 
 ---
 
