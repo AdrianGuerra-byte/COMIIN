@@ -242,21 +242,25 @@
   :root {
     --navbar-height: 95px;
   }
-
   .main-header {
-    background: #1F407F;
+    background: rgba(31, 64, 127, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.5s, box-shadow 0.5s, backdrop-filter 0.5s;
     height: var(--navbar-height);
   }
-
   .main-header.scrolled {
-    background: #1F407F;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(31, 64, 127, 0.92);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.18);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
   .header-container {
@@ -733,5 +737,20 @@
     .dropdown-menu a:hover {
       padding-left: 2.75rem;
     }
+  }
+</style>
+<style is:global>
+  /* Hero pegado al top, sin margen ni padding extra */
+  .hero, .hero-section, .main-hero, .hero-container {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
   }
 </style>
