@@ -33,11 +33,5 @@ export const comiteGeneral: ComiteMember[] = [
     nombre: 'Lic. Yessenia Ramírez Gómez',
     cargo: 'Coordinación General',
     imagen: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    id: 'gen-5',
-    nombre: 'Dr. Carlos Mejía Reyes',
-    cargo: 'Representante UPN-H',
-    imagen: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'
   }
 ];
